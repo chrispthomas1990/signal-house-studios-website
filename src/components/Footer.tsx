@@ -82,7 +82,10 @@ export function Footer() {
         </div>
 
         <div className="site-footer__brand">
-          <img className="site-footer__monogram" src={monogram} alt="" aria-hidden="true" />
+          <NavLink to="/" className="site-footer__logo">
+            <img className="site-footer__monogram" src={monogram} alt="" aria-hidden="true" />
+            <span className="visually-hidden">{siteInfo.name}</span>
+          </NavLink>
           <p className="site-footer__copyright">{siteInfo.copyright}</p>
         </div>
       </div>

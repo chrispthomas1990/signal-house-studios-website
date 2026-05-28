@@ -26,7 +26,7 @@ export function Header() {
   }
 
   return (
-    <header className="site-header">
+    <header className={`site-header ${isMenuOpen ? "site-header--menu-open" : ""}`}>
       <div className="site-header__inner">
         <NavLink to="/" className="site-logo" onClick={closeMenu}>
           <Logo />
@@ -36,9 +36,9 @@ export function Header() {
 
         <nav className="site-nav site-nav--desktop" aria-label="Main navigation">
           {mainNavigation.map((item) => (
-            <NavLink key={item.href} to={item.href}>
-              {item.label}
-            </NavLink>
+            <div key={item.href} className="site-nav__item">
+              <NavLink to={item.href}>{item.label}</NavLink>
+            </div>
           ))}
 
           <NavLink to="/contact" className="site-nav__cta">
@@ -64,12 +64,14 @@ export function Header() {
         aria-label="Mobile navigation"
       >
         {mainNavigation.map((item) => (
-          <NavLink key={item.href} to={item.href} onClick={closeMenu}>
-            {item.label}
-          </NavLink>
+          <div key={item.href} className="site-nav-mobile__item">
+            <NavLink to={item.href} onClick={closeMenu}>
+              {item.label}
+            </NavLink>
+          </div>
         ))}
 
-        <NavLink to="/contact" onClick={closeMenu}>
+        <NavLink to="/contact" className="site-nav__cta" onClick={closeMenu}>
           Let’s Talk
         </NavLink>
       </nav>
