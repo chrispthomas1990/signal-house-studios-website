@@ -6,6 +6,7 @@ import { AudioProduction } from "./pages/AudioProduction";
 import { VideoProduction } from "./pages/VideoProduction";
 import { LiveStreaming } from "./pages/LiveStreaming";
 import { Contact } from "./pages/Contact";
+import { NotFound } from "./pages/NotFound";
 
 function ScrollToTop() {
   const { pathname, search } = useLocation();
@@ -28,6 +29,7 @@ function App() {
           <Route path="video-production" element={<VideoProduction />} />
           <Route path="live-streaming" element={<LiveStreaming />} />
           <Route path="contact" element={<Contact />} />
+          <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
     </BrowserRouter>

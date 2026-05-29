@@ -1,7 +1,9 @@
 export function AudioProduction() {
   return (
-    <section className="page-section">
-      <h1>Audio Production</h1>
-    </section>
+    <article className="content-page">
+      <section className="content-page__section">
+        <h1>Audio Production</h1>
+      </section>
+    </article>
   );
 }

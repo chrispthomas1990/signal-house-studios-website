@@ -1,7 +1,9 @@
 export function Home() {
   return (
-    <section className="page-section">
-      <h1>Home</h1>
-    </section>
+    <article className="home-page">
+      <section className="content-page__section">
+        <h1>Home</h1>
+      </section>
+    </article>
   );
 }

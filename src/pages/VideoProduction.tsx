@@ -1,7 +1,9 @@
 export function VideoProduction() {
   return (
-    <section className="page-section">
-      <h1>Video Production</h1>
-    </section>
+    <article className="content-page">
+      <section className="content-page__section">
+        <h1>Video Production</h1>
+      </section>
+    </article>
   );
 }
