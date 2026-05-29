@@ -1,6 +1,6 @@
 export function Home() {
   return (
-    <article className="home-page">
+    <article className="content-page">
       <section className="content-page__section">
         <h1>Home</h1>
       </section>

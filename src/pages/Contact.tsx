@@ -7,7 +7,7 @@ export function Contact() {
       <section className="content-page__section contact-section">
         <div className="content-page__section-copy">
           <p className="content-page__eyebrow">Contact</p>
-          <h2>Tell us about your project, goals and next steps.</h2>
+          <h1>Tell us about your project, goals and next steps.</h1>
           <p>
             A clear brief helps make the first reply more useful. Share what 
             you’re looking to create, update or improve, along with any practical 

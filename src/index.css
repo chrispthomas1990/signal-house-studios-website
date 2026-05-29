@@ -1,6 +1,6 @@
 @font-face {
   font-family: "Korolev Condensed Bold";
-  src: url("/fonts/korolev-condensed-bold.woff2") format("woff2");
+  src: url("/signal-house-studios-website/fonts/korolev-condensed-bold.woff2") format("woff2");
   font-display: swap;
   font-style: normal;
   font-weight: 700;
@@ -345,34 +345,6 @@ button {
   padding-top: var(--header-height);
 }
 
-.home-page {
-  background: var(--color-charcoal);
-  color: var(--color-gold);
-}
-
-.home-page h1,
-.home-page h2,
-.home-page h3,
-.home-page h4,
-.home-page h5,
-.home-page h6 {
-  margin: 0;
-  color: var(--color-gold);
-  font-family: var(--font-display);
-  font-weight: 700;
-  letter-spacing: 0;
-  line-height: var(--line-tight);
-  text-transform: uppercase;
-}
-
-.home-page p {
-  margin: 0;
-  color: var(--color-white);
-  font-family: var(--font-body);
-  font-size: var(--type-body);
-  line-height: var(--line-body);
-}
-
 .content-page {
   background: var(--color-white);
   color: var(--color-charcoal);
@@ -401,30 +373,24 @@ button {
   line-height: var(--line-body);
 }
 
-.content-page h1,
-.home-page h1 {
+.content-page h1 {
   font-size: var(--type-h1);
 }
 
-.content-page h2,
-.home-page h2 {
+.content-page h2 {
   font-size: var(--type-h2);
 }
 
-.content-page h3,
-.home-page h3 {
+.content-page h3 {
   font-size: var(--type-h3);
 }
 
-.content-page h4,
-.home-page h4 {
+.content-page h4 {
   font-size: var(--type-h4);
 }
 
 .content-page h5,
-.home-page h5,
-.content-page h6,
-.home-page h6 {
+.content-page h6 {
   font-size: var(--type-h5);
 }
 
@@ -442,7 +408,7 @@ button {
   max-width: var(--page-max);
   margin: 0 auto;
   padding: var(--page-pad-y) var(--page-pad-x);
-  background: var(--color-charcoal);
+  background: var(--color-white);
   color: var(--color-gold);
 }
 
