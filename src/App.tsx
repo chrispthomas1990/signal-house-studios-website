@@ -1,12 +1,12 @@
 import { useEffect } from "react";
 import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
-import { Layout } from "./components/Layout";
-import { Home } from "./pages/Home";
+import { Layout } from "./components/Layout/Layout";
 import { AudioProduction } from "./pages/AudioProduction";
-import { VideoProduction } from "./pages/VideoProduction";
+import { Contact } from "./pages/Contact/Contact";
+import { Home } from "./pages/Home";
 import { LiveStreaming } from "./pages/LiveStreaming";
-import { Contact } from "./pages/Contact";
 import { NotFound } from "./pages/NotFound";
+import { VideoProduction } from "./pages/VideoProduction";
 
 function ScrollToTop() {
   const { pathname, search } = useLocation();

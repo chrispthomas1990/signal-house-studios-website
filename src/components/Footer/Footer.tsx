@@ -1,14 +1,15 @@
 import { NavLink } from "react-router-dom";
-import emailIcon from "../assets/shs-gold-email.svg";
-import facebookIcon from "../assets/shs-gold-facebook.svg";
-import instagramIcon from "../assets/shs-gold-instagram.svg";
-import locationIcon from "../assets/shs-gold-location.svg";
-import monogram from "../assets/shs-gold-monogram.svg";
-import phoneIcon from "../assets/shs-gold-phone.svg";
-import tidalIcon from "../assets/shs-gold-tidal.svg";
-import youtubeIcon from "../assets/shs-gold-youtube.svg";
-import { footerNavigation } from "../content/navigation";
-import { siteInfo } from "../content/siteInfo";
+import emailIcon from "../../assets/shs-gold-email.svg";
+import facebookIcon from "../../assets/shs-gold-facebook.svg";
+import instagramIcon from "../../assets/shs-gold-instagram.svg";
+import locationIcon from "../../assets/shs-gold-location.svg";
+import monogram from "../../assets/shs-gold-monogram.svg";
+import phoneIcon from "../../assets/shs-gold-phone.svg";
+import tidalIcon from "../../assets/shs-gold-tidal.svg";
+import youtubeIcon from "../../assets/shs-gold-youtube.svg";
+import { footerNavigation } from "../../content/navigation";
+import { siteInfo } from "../../content/siteInfo";
+import "./Footer.css";
 
 const socialIcons: Record<string, string> = {
   Facebook: facebookIcon,
@@ -39,7 +40,12 @@ export function Footer() {
 
             <div className="footer-contact">
               <div className="footer-contact__item">
-                <img className="footer-contact__icon--location" src={locationIcon} alt="" aria-hidden="true" />
+                <img
+                  className="footer-contact__icon--location"
+                  src={locationIcon}
+                  alt=""
+                  aria-hidden="true"
+                />
                 <p>
                   {siteInfo.name}
                   <br />
@@ -47,11 +53,21 @@ export function Footer() {
                 </p>
               </div>
               <div className="footer-contact__item">
-                <img className="footer-contact__icon--phone" src={phoneIcon} alt="" aria-hidden="true" />
+                <img
+                  className="footer-contact__icon--phone"
+                  src={phoneIcon}
+                  alt=""
+                  aria-hidden="true"
+                />
                 <a href={`tel:${siteInfo.phoneHref}`}>{siteInfo.phone}</a>
               </div>
               <div className="footer-contact__item">
-                <img className="footer-contact__icon--email" src={emailIcon} alt="" aria-hidden="true" />
+                <img
+                  className="footer-contact__icon--email"
+                  src={emailIcon}
+                  alt=""
+                  aria-hidden="true"
+                />
                 <a href={`mailto:${siteInfo.email}`}>{siteInfo.email}</a>
               </div>
             </div>

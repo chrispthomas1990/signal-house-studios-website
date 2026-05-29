@@ -1,5 +1,4 @@
-import { useState } from "react";
-import type { FormEvent } from "react";
+import { type FormEvent, useState } from "react";
 import "./ContactForm.css";
 
 const destinationEmail = "hello@christhomasdesign.co.uk";
@@ -233,8 +232,8 @@ export function ContactForm() {
           >
             <option value="">Select one</option>
             <option value="Under £1k">Under £1k</option>
-            <option value="£1k - £3k">£1k - £3k</option>
-            <option value="£3k - £10k">£3k - £10k</option>
+            <option value="£1k – £3k">£1k – £3k</option>
+            <option value="£3k – £10k">£3k – £10k</option>
             <option value="£10k+">£10k+</option>
           </select>
           {showError("budget") ? (

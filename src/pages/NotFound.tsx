@@ -1,11 +1,15 @@
 export function NotFound() {
   return (
     <article className="content-page">
-      <h1>Page not found</h1>
-      <p>
-        The page you were looking for does not exist. The main services are below if you want
-        to get back to the right place quickly.
-      </p>
+      <section className="content-page__section">
+        <div className="content-page__section-copy">
+          <h1>Page not found</h1>
+          <p>
+            The page you were looking for does not exist. Use the main navigation to return to the
+            site or head to the contact page if you need to get in touch.
+          </p>
+        </div>
+      </section>
     </article>
   );
 }

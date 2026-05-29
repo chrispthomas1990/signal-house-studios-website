@@ -1,0 +1,121 @@
+.cta-section {
+  width: 100%;
+  background: var(--color-white);
+  color: var(--color-charcoal);
+}
+
+.cta-section__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 32px;
+  width: 100%;
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: var(--page-pad-y) var(--page-pad-x);
+}
+
+.cta-section--reversed .cta-section__content {
+  order: 2;
+}
+
+.cta-section--reversed .cta-section__action {
+  order: 1;
+  justify-content: flex-start;
+}
+
+.cta-section__content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 760px;
+}
+
+.cta-section__title {
+  margin: 0;
+  color: var(--color-gold);
+  font-family: var(--font-display);
+  font-size: var(--type-h2);
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: var(--line-tight);
+  text-transform: uppercase;
+}
+
+.cta-section__body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: var(--type-body-large);
+  line-height: var(--line-body);
+}
+
+.cta-section__action {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.cta-section__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: min-content;
+  min-height: 46px;
+  padding: 10px 22px 12px;
+  border: 2px solid var(--color-gold);
+  border-radius: 9999px;
+  background-color: transparent;
+  color: var(--color-gold) !important;
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1.5;
+  text-align: center;
+  text-decoration: none !important;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition:
+    color var(--transition-link),
+    background-color var(--transition-link);
+}
+
+.cta-section__button:hover {
+  background-color: var(--color-gold);
+  color: var(--color-white) !important;
+}
+
+.cta-section--light {
+  background: var(--color-white);
+  color: var(--color-charcoal);
+}
+
+.cta-section--dark {
+  background: var(--color-charcoal);
+  color: var(--color-white);
+}
+
+.cta-section--dark .cta-section__body {
+  color: var(--color-white);
+}
+
+@media (max-width: 991.98px) {
+  .cta-section__inner {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .cta-section--reversed .cta-section__content,
+  .cta-section--reversed .cta-section__action {
+    order: initial;
+  }
+
+  .cta-section__action {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .cta-section__inner {
+    gap: 20px;
+  }
+}
