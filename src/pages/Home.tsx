@@ -3,6 +3,7 @@ import { HeroSection } from "../components/HeroSection/HeroSection";
 import { TestimonialCarousel } from "../components/TestimonialCarousel/TestimonialCarousel";
 import { ThreeCardSection } from "../components/ThreeCardSection/ThreeCardSection";
 import { homePageContent } from "../content/home";
+import { testimonials } from "../content/testimonials";
 
 export function Home() {
   return (
@@ -13,7 +14,7 @@ export function Home() {
 
       <HeroSection {...homePageContent.whySignalHouse} />
 
-      <TestimonialCarousel testimonials={homePageContent.testimonials} />
+      <TestimonialCarousel testimonials={testimonials} />
 
       <CTASection />
     </article>
