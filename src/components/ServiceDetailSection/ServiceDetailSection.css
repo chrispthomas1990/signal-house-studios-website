@@ -7,7 +7,7 @@
 .service-detail-section__inner {
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: var(--page-pad-y);
   width: 100%;
   max-width: var(--page-max);
   margin: 0 auto;
@@ -195,10 +195,6 @@
     align-items: stretch;
   }
 
-  .service-detail-section__inner {
-    gap: 24px;
-  }
-
   .service-detail-section__grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -212,12 +208,13 @@
 }
 
 @media (max-width: 575.98px) {
-  .service-detail-section__inner {
-    gap: 20px;
+  .service-detail-section__grid,
+  .service-detail-section--grid-2 .service-detail-section__grid {
+    grid-template-columns: 1fr;
   }
 
-  .service-detail-section__grid {
-    grid-template-columns: 1fr;
+  .service-detail-section--has-video-cards .service-detail-section__grid {
+    row-gap: 32px;
   }
 
   .service-detail-section__card {

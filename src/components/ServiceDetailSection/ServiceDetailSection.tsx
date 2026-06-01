@@ -1,6 +1,75 @@
+import { useEffect, useMemo, useRef } from "react";
 import "./ServiceDetailSection.css";
 
 type ServiceDetailSectionTheme = "light" | "dark" | "grey";
+
+type YouTubePlayer = {
+  pauseVideo: () => void;
+  destroy: () => void;
+};
+
+type YouTubePlayerEvent = {
+  target: YouTubePlayer;
+  data: number;
+};
+
+type YouTubeConstructor = new (
+  element: HTMLIFrameElement,
+  options: {
+    events: {
+      onStateChange: (event: YouTubePlayerEvent) => void;
+    };
+  },
+) => YouTubePlayer;
+
+declare global {
+  interface Window {
+    YT?: {
+      Player: YouTubeConstructor;
+      PlayerState: {
+        PLAYING: number;
+      };
+    };
+    onYouTubeIframeAPIReady?: () => void;
+  }
+}
+
+let youTubeApiPromise: Promise<void> | null = null;
+const activeYouTubePlayers = new Set<YouTubePlayer>();
+
+function loadYouTubeIframeApi() {
+  if (window.YT?.Player) {
+    return Promise.resolve();
+  }
+
+  if (!youTubeApiPromise) {
+    youTubeApiPromise = new Promise((resolve) => {
+      const previousCallback = window.onYouTubeIframeAPIReady;
+
+      window.onYouTubeIframeAPIReady = () => {
+        previousCallback?.();
+        resolve();
+      };
+
+      if (!document.querySelector('script[src="https://www.youtube.com/iframe_api"]')) {
+        const script = document.createElement("script");
+        script.src = "https://www.youtube.com/iframe_api";
+        document.head.appendChild(script);
+      }
+    });
+  }
+
+  return youTubeApiPromise;
+}
+
+function getApiEnabledYouTubeSrc(src: string) {
+  const url = new URL(src);
+
+  url.searchParams.set("enablejsapi", "1");
+  url.searchParams.set("origin", window.location.origin);
+
+  return url.toString();
+}
 
 type ServiceDetailCard = {
   title: string;
@@ -30,6 +99,63 @@ type ServiceDetailSectionProps = {
   theme?: ServiceDetailSectionTheme;
 };
 
+function YouTubeCardEmbed({ src, title }: ServiceDetailEmbed) {
+  const iframeRef = useRef<HTMLIFrameElement>(null);
+  const playerRef = useRef<YouTubePlayer | null>(null);
+  const apiEnabledSrc = useMemo(() => getApiEnabledYouTubeSrc(src), [src]);
+
+  useEffect(() => {
+    let isMounted = true;
+
+    loadYouTubeIframeApi().then(() => {
+      if (!isMounted || !iframeRef.current || !window.YT?.Player) {
+        return;
+      }
+
+      const player = new window.YT.Player(iframeRef.current, {
+        events: {
+          onStateChange: (event) => {
+            if (event.data !== window.YT?.PlayerState.PLAYING) {
+              return;
+            }
+
+            activeYouTubePlayers.forEach((activePlayer) => {
+              if (activePlayer !== event.target) {
+                activePlayer.pauseVideo();
+              }
+            });
+          },
+        },
+      });
+
+      playerRef.current = player;
+      activeYouTubePlayers.add(player);
+    });
+
+    return () => {
+      isMounted = false;
+
+      if (playerRef.current) {
+        activeYouTubePlayers.delete(playerRef.current);
+        playerRef.current.destroy();
+        playerRef.current = null;
+      }
+    };
+  }, []);
+
+  return (
+    <iframe
+      ref={iframeRef}
+      src={apiEnabledSrc}
+      title={title}
+      loading="lazy"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
+      referrerPolicy="strict-origin-when-cross-origin"
+      allowFullScreen
+    />
+  );
+}
+
 export function ServiceDetailSection({
   eyebrow,
   title,
@@ -44,6 +170,7 @@ export function ServiceDetailSection({
   theme = "light",
 }: ServiceDetailSectionProps) {
   const bodyParagraphs = typeof body === "string" ? [body] : body;
+  const hasVideoCards = cards?.some((card) => card.videoEmbed);
   const className = [
     "service-detail-section",
     `service-detail-section--${theme}`,
@@ -52,6 +179,7 @@ export function ServiceDetailSection({
     compactTopPadding ? "service-detail-section--compact-top" : "",
     borderlessCards ? "service-detail-section--borderless-cards" : "",
     embed || hasImagePlaceholder ? "service-detail-section--media-layout" : "",
+    hasVideoCards ? "service-detail-section--has-video-cards" : "",
   ]
     .filter(Boolean)
     .join(" ");
@@ -102,14 +230,7 @@ export function ServiceDetailSection({
                 ) : null}
                 {card.videoEmbed ? (
                   <div className="service-detail-section__card-video">
-                    <iframe
-                      src={card.videoEmbed.src}
-                      title={card.videoEmbed.title}
-                      loading="lazy"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
-                      referrerPolicy="strict-origin-when-cross-origin"
-                      allowFullScreen
-                    />
+                    <YouTubeCardEmbed {...card.videoEmbed} />
                   </div>
                 ) : null}
                 {card.iconSrc ? (
