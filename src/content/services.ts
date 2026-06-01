@@ -1,10 +1,10 @@
+import preProductionIcon from "../assets/services/audio/shs-services-audio-pre-production.svg";
+import trackingIcon from "../assets/services/audio/shs-services-audio-tracking.svg";
 import drumProgrammingIcon from "../assets/services/audio/shs-services-audio-drum-programming.svg";
 import editingCompingIcon from "../assets/services/audio/shs-services-audio-editing-comping.svg";
-import masteringIcon from "../assets/services/audio/shs-services-audio-mastering.svg";
-import mixingIcon from "../assets/services/audio/shs-services-audio-mixing.svg";
-import preProductionIcon from "../assets/services/audio/shs-services-audio-pre-production.svg";
 import reAmpingIcon from "../assets/services/audio/shs-services-audio-re-amping.svg";
-import trackingIcon from "../assets/services/audio/shs-services-audio-tracking.svg";
+import mixingIcon from "../assets/services/audio/shs-services-audio-mixing.svg";
+import masteringIcon from "../assets/services/audio/shs-services-audio-mastering.svg";
 
 export const servicePageContent = {
   audioProduction: {

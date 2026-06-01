@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import { Layout } from "./components/Layout/Layout";
-import { AudioProduction } from "./pages/AudioProduction";
-import { Contact } from "./pages/Contact/Contact";
 import { cookiePolicyContent, privacyPolicyContent } from "./content/legal";
+import { AudioProduction } from "./pages/AudioProduction";
+import { Contact } from "./pages/Contact";
 import { Home } from "./pages/Home";
 import { LegalPage } from "./pages/LegalPage";
 import { LiveStreaming } from "./pages/LiveStreaming";
