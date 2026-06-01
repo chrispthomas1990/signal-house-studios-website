@@ -16,7 +16,7 @@ export const servicePageContent = {
     },
     audioShowreel: {
       eyebrow: "Audio showreel",
-      title: "A dedicated showreel section for recent productions.",
+      title: "Recent productions with depth, detail and intent.",
       body: "Listen through a selection of recent productions from Signal House Studios, covering the sound, feel and finish of the studio’s audio work.",
       embed: {
         src: "https://embed.tidal.com/playlists/6ef56bda-2da3-431b-b083-651303e46c4b",
@@ -26,7 +26,7 @@ export const servicePageContent = {
       theme: "dark",
     },
     recentWork: {
-      eyebrow: "Recent audio/video work",
+      eyebrow: "Recent sessions",
       title: "Live sessions with studio-grade sound and visuals.",
       body: "Watch recent audio and video work from Signal House Studios, including live sessions shaped around strong performances, polished sound and clean visual delivery.",
       cards: [
