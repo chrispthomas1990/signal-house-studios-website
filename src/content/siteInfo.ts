@@ -4,7 +4,7 @@ export const siteInfo = {
   phone: "+44 (0)7859 821 284",
   phoneHref: "+447859821284",
   email: "info@signalhousestudios.com",
-  copyright: "© SIGNAL HOUSE STUDIOS LTD 2026",
+  copyright: "© Signal House Studios Ltd 2026",
   socialLinks: [
     {
       label: "Facebook",

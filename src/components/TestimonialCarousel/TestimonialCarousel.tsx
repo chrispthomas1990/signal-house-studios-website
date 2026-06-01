@@ -7,10 +7,10 @@ type Testimonial = {
 };
 
 type TestimonialCarouselProps = {
-  testimonials: Testimonial[];
+  testimonials: readonly Testimonial[];
 };
 
-const rotationDelay = 6000;
+const rotationDelay = 8000;
 const swipeThreshold = 40;
 
 export function TestimonialCarousel({ testimonials }: TestimonialCarouselProps) {

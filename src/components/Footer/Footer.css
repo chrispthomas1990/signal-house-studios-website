@@ -183,6 +183,35 @@
   font-family: var(--font-body);
   font-size: 12px;
   line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.site-footer__legal {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+.site-footer__legal-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+}
+
+.site-footer__legal-links a {
+  color: var(--color-white);
+  font-family: var(--font-body);
+  font-size: 12px;
+  line-height: 1.2;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color var(--transition-link);
+}
+
+.site-footer__legal-links a:hover,
+.site-footer__legal-links a.active {
+  color: var(--color-gold);
 }
 
 .site-footer__logo {

@@ -14,7 +14,7 @@ type ThreeCardSectionProps = {
   eyebrow: string;
   title: string;
   body: string;
-  cards: [ThreeCard, ThreeCard, ThreeCard];
+  cards: readonly [ThreeCard, ThreeCard, ThreeCard];
   theme?: ThreeCardSectionTheme;
   reversed?: boolean;
 };

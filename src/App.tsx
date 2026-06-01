@@ -3,7 +3,9 @@ import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import { Layout } from "./components/Layout/Layout";
 import { AudioProduction } from "./pages/AudioProduction";
 import { Contact } from "./pages/Contact/Contact";
+import { cookiePolicyContent, privacyPolicyContent } from "./content/legal";
 import { Home } from "./pages/Home";
+import { LegalPage } from "./pages/LegalPage";
 import { LiveStreaming } from "./pages/LiveStreaming";
 import { NotFound } from "./pages/NotFound";
 import { VideoProduction } from "./pages/VideoProduction";
@@ -29,6 +31,8 @@ function App() {
           <Route path="video-production" element={<VideoProduction />} />
           <Route path="live-streaming" element={<LiveStreaming />} />
           <Route path="contact" element={<Contact />} />
+          <Route path="privacy-policy" element={<LegalPage content={privacyPolicyContent} />} />
+          <Route path="cookie-policy" element={<LegalPage content={cookiePolicyContent} />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>

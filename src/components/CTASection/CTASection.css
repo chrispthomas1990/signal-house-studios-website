@@ -64,14 +64,14 @@
   border: 2px solid var(--color-gold);
   border-radius: 9999px;
   background-color: transparent;
-  color: var(--color-gold) !important;
+  color: var(--color-gold);
   font-family: var(--font-display);
   font-size: 20px;
   font-weight: 700;
   letter-spacing: 0;
   line-height: 1.5;
   text-align: center;
-  text-decoration: none !important;
+  text-decoration: none;
   text-transform: uppercase;
   white-space: nowrap;
   transition:
@@ -81,7 +81,7 @@
 
 .cta-section__button:hover {
   background-color: var(--color-gold);
-  color: var(--color-white) !important;
+  color: var(--color-white);
 }
 
 .cta-section--light {

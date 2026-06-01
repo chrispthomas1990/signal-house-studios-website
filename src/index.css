@@ -83,6 +83,8 @@
 html {
   min-height: 100%;
   background: var(--color-white);
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 body {
@@ -117,7 +119,8 @@ button {
   white-space: nowrap;
 }
 
-.site-nav__cta,
+.site-nav a.site-nav__cta,
+.site-nav-mobile a.site-nav__cta,
 .content-page__button {
   display: inline-flex;
   flex: none;
@@ -129,7 +132,7 @@ button {
   border: 2px solid var(--color-gold);
   border-radius: 9999px;
   background-color: transparent;
-  color: var(--color-gold) !important;
+  color: var(--color-gold);
   cursor: pointer;
   font-family: var(--font-display);
   font-size: 20px;
@@ -137,7 +140,7 @@ button {
   letter-spacing: 0;
   line-height: 1.5;
   text-align: center;
-  text-decoration: none !important;
+  text-decoration: none;
   text-transform: uppercase;
   white-space: nowrap;
   transition:
@@ -145,11 +148,12 @@ button {
     background-color var(--transition-link);
 }
 
-.site-nav__cta:hover,
+.site-nav a.site-nav__cta:hover,
+.site-nav-mobile a.site-nav__cta:hover,
 .content-page__button:hover {
   background-color: var(--color-gold);
-  color: var(--color-white) !important;
-  text-decoration: none !important;
+  color: var(--color-white);
+  text-decoration: none;
 }
 
 .site-main {
@@ -208,12 +212,12 @@ button {
   font-size: var(--type-h5);
 }
 
-.content-page__eyebrow {
-  color: var(--color-gold);
-  font-family: var(--font-display) !important;
-  font-size: var(--type-h5) !important;
+.content-page .content-page__eyebrow {
+  color: var(--color-charcoal);
+  font-family: var(--font-display);
+  font-size: var(--type-h5);
   font-weight: 700;
-  line-height: var(--line-tight) !important;
+  line-height: var(--line-tight);
   text-transform: uppercase;
 }
 

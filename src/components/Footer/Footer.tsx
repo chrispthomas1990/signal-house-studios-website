@@ -1,12 +1,12 @@
 import { NavLink } from "react-router-dom";
-import emailIcon from "../../assets/shs-gold-email.svg";
-import facebookIcon from "../../assets/shs-gold-facebook.svg";
-import instagramIcon from "../../assets/shs-gold-instagram.svg";
-import locationIcon from "../../assets/shs-gold-location.svg";
-import monogram from "../../assets/shs-gold-monogram.svg";
-import phoneIcon from "../../assets/shs-gold-phone.svg";
-import tidalIcon from "../../assets/shs-gold-tidal.svg";
-import youtubeIcon from "../../assets/shs-gold-youtube.svg";
+import monogram from "../../assets/brand/shs-gold-monogram.svg";
+import emailIcon from "../../assets/icons/contact/shs-gold-email.svg";
+import locationIcon from "../../assets/icons/contact/shs-gold-location.svg";
+import phoneIcon from "../../assets/icons/contact/shs-gold-phone.svg";
+import facebookIcon from "../../assets/icons/social/shs-gold-facebook.svg";
+import instagramIcon from "../../assets/icons/social/shs-gold-instagram.svg";
+import tidalIcon from "../../assets/icons/social/shs-gold-tidal.svg";
+import youtubeIcon from "../../assets/icons/social/shs-gold-youtube.svg";
 import { footerNavigation } from "../../content/navigation";
 import { siteInfo } from "../../content/siteInfo";
 import "./Footer.css";
@@ -102,7 +102,13 @@ export function Footer() {
             <img className="site-footer__monogram" src={monogram} alt="" aria-hidden="true" />
             <span className="visually-hidden">{siteInfo.name}</span>
           </NavLink>
-          <p className="site-footer__copyright">{siteInfo.copyright}</p>
+          <div className="site-footer__legal">
+            <div className="site-footer__legal-links">
+              <NavLink to="/privacy-policy">Privacy Policy</NavLink>
+              <NavLink to="/cookie-policy">Cookie Policy</NavLink>
+            </div>
+            <p className="site-footer__copyright">{siteInfo.copyright}</p>
+          </div>
         </div>
       </div>
     </footer>

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
-import logo from "../../assets/shs-gold-logo.svg";
-import monogram from "../../assets/shs-gold-monogram.svg";
+import logo from "../../assets/brand/shs-gold-logo.svg";
+import monogram from "../../assets/brand/shs-gold-monogram.svg";
 import { mainNavigation } from "../../content/navigation";
 import { siteInfo } from "../../content/siteInfo";
 import "./Header.css";
