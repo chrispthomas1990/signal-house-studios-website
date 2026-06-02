@@ -71,6 +71,20 @@ function getApiEnabledYouTubeSrc(src: string) {
   return url.toString();
 }
 
+function getEmbedProvider(src: string) {
+  const hostname = new URL(src).hostname;
+
+  if (hostname.includes("youtube.com") || hostname.includes("youtu.be")) {
+    return "youtube";
+  }
+
+  if (hostname.includes("tidal.com")) {
+    return "tidal";
+  }
+
+  return "default";
+}
+
 type ServiceDetailCard = {
   title: string;
   body: string;
@@ -196,7 +210,14 @@ export function ServiceDetailSection({
         </div>
 
         {embed ? (
-          <div className="service-detail-section__embed">
+          <div
+            className={[
+              "service-detail-section__embed",
+              `service-detail-section__embed--${getEmbedProvider(embed.src)}`,
+            ]
+              .filter(Boolean)
+              .join(" ")}
+          >
             <iframe
               src={embed.src}
               title={embed.title}
