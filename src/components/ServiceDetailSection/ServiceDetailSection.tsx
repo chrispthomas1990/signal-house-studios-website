@@ -82,6 +82,10 @@ function getEmbedProvider(src: string) {
     return "tidal";
   }
 
+  if (hostname.includes("vimeo.com")) {
+    return "vimeo";
+  }
+
   return "default";
 }
 
@@ -113,12 +117,20 @@ type ServiceDetailSectionProps = {
   theme?: ServiceDetailSectionTheme;
 };
 
-function YouTubeCardEmbed({ src, title }: ServiceDetailEmbed) {
+function ServiceDetailCardEmbed({ src, title }: ServiceDetailEmbed) {
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const playerRef = useRef<YouTubePlayer | null>(null);
-  const apiEnabledSrc = useMemo(() => getApiEnabledYouTubeSrc(src), [src]);
+  const provider = useMemo(() => getEmbedProvider(src), [src]);
+  const iframeSrc = useMemo(
+    () => (provider === "youtube" ? getApiEnabledYouTubeSrc(src) : src),
+    [provider, src],
+  );
 
   useEffect(() => {
+    if (provider !== "youtube") {
+      return;
+    }
+
     let isMounted = true;
 
     loadYouTubeIframeApi().then(() => {
@@ -155,12 +167,12 @@ function YouTubeCardEmbed({ src, title }: ServiceDetailEmbed) {
         playerRef.current = null;
       }
     };
-  }, []);
+  }, [provider]);
 
   return (
     <iframe
       ref={iframeRef}
-      src={apiEnabledSrc}
+      src={iframeSrc}
       title={title}
       loading="lazy"
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
@@ -251,7 +263,7 @@ export function ServiceDetailSection({
                 ) : null}
                 {card.videoEmbed ? (
                   <div className="service-detail-section__card-video">
-                    <YouTubeCardEmbed {...card.videoEmbed} />
+                    <ServiceDetailCardEmbed {...card.videoEmbed} />
                   </div>
                 ) : null}
                 {card.iconSrc ? (

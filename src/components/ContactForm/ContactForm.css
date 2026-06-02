@@ -13,6 +13,18 @@
   gap: 24px 12px;
 }
 
+.contact-form__error-summary {
+  padding: 12px 16px;
+  border: 1px solid coral;
+  background: var(--color-white);
+  color: var(--color-charcoal);
+}
+
+.contact-form__error-summary p {
+  margin: 0;
+  font-size: var(--type-small);
+}
+
 .contact-form__field {
   display: flex;
   flex-direction: column;

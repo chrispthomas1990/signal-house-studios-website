@@ -1,4 +1,4 @@
-import { type FormEvent, useState } from "react";
+import { type FormEvent, useRef, useState } from "react";
 import "./ContactForm.css";
 
 const destinationEmail = "hello@christhomasdesign.co.uk";
@@ -15,6 +15,7 @@ type ContactFormValues = {
 };
 
 type ContactFormErrors = Partial<Record<keyof ContactFormValues, string>>;
+type RequiredContactFormField = Exclude<keyof ContactFormValues, "company">;
 
 const initialValues: ContactFormValues = {
   name: "",
@@ -26,6 +27,16 @@ const initialValues: ContactFormValues = {
   details: "",
   consent: false,
 };
+
+const requiredFields: readonly RequiredContactFormField[] = [
+  "name",
+  "email",
+  "projectType",
+  "timeline",
+  "budget",
+  "details",
+  "consent",
+];
 
 function validate(values: ContactFormValues) {
   const errors: ContactFormErrors = {};
@@ -81,6 +92,7 @@ export function ContactForm() {
   const [values, setValues] = useState<ContactFormValues>(initialValues);
   const [errors, setErrors] = useState<ContactFormErrors>({});
   const [touched, setTouched] = useState<Partial<Record<keyof ContactFormValues, boolean>>>({});
+  const formRef = useRef<HTMLFormElement>(null);
 
   const updateValue = (field: keyof ContactFormValues, value: string | boolean) => {
     setValues((current) => ({ ...current, [field]: value }));
@@ -107,6 +119,14 @@ export function ContactForm() {
     });
 
     if (Object.keys(nextErrors).length > 0) {
+      const firstInvalidField = requiredFields.find((field) => nextErrors[field]);
+
+      if (firstInvalidField) {
+        formRef.current
+          ?.querySelector<HTMLElement>(`[name="${firstInvalidField}"]`)
+          ?.focus();
+      }
+
       return;
     }
 
@@ -114,9 +134,16 @@ export function ContactForm() {
   };
 
   const showError = (field: keyof ContactFormValues) => Boolean(touched[field] && errors[field]);
+  const visibleErrors = requiredFields.filter((field) => showError(field));
 
   return (
-    <form className="contact-form" onSubmit={handleSubmit} noValidate>
+    <form className="contact-form" ref={formRef} onSubmit={handleSubmit} noValidate>
+      {visibleErrors.length > 0 ? (
+        <div className="contact-form__error-summary" role="alert" aria-labelledby="form-errors">
+          <p id="form-errors">Please check the highlighted fields.</p>
+        </div>
+      ) : null}
+
       <div className="contact-form__grid">
         <div className="contact-form__field">
           <label htmlFor="name">Name</label>
@@ -128,8 +155,10 @@ export function ContactForm() {
             onChange={(event) => updateValue("name", event.target.value)}
             onBlur={() => markTouched("name")}
             aria-invalid={showError("name")}
+            aria-required="true"
             aria-describedby={showError("name") ? "name-error" : undefined}
             placeholder="Your name"
+            required
           />
           {showError("name") ? (
             <p id="name-error" className="contact-form__error">
@@ -148,8 +177,10 @@ export function ContactForm() {
             onChange={(event) => updateValue("email", event.target.value)}
             onBlur={() => markTouched("email")}
             aria-invalid={showError("email")}
+            aria-required="true"
             aria-describedby={showError("email") ? "email-error" : undefined}
             placeholder="name@example.com"
+            required
           />
           {showError("email") ? (
             <p id="email-error" className="contact-form__error">
@@ -180,7 +211,9 @@ export function ContactForm() {
             onChange={(event) => updateValue("projectType", event.target.value)}
             onBlur={() => markTouched("projectType")}
             aria-invalid={showError("projectType")}
+            aria-required="true"
             aria-describedby={showError("projectType") ? "projectType-error" : undefined}
+            required
           >
             <option value="">Select one</option>
             <option value="Audio production">Audio production</option>
@@ -204,7 +237,9 @@ export function ContactForm() {
             onChange={(event) => updateValue("timeline", event.target.value)}
             onBlur={() => markTouched("timeline")}
             aria-invalid={showError("timeline")}
+            aria-required="true"
             aria-describedby={showError("timeline") ? "timeline-error" : undefined}
+            required
           >
             <option value="">Select one</option>
             <option value="ASAP">ASAP</option>
@@ -228,7 +263,9 @@ export function ContactForm() {
             onChange={(event) => updateValue("budget", event.target.value)}
             onBlur={() => markTouched("budget")}
             aria-invalid={showError("budget")}
+            aria-required="true"
             aria-describedby={showError("budget") ? "budget-error" : undefined}
+            required
           >
             <option value="">Select one</option>
             <option value="Under £1k">Under £1k</option>
@@ -253,8 +290,10 @@ export function ContactForm() {
             onChange={(event) => updateValue("details", event.target.value)}
             onBlur={() => markTouched("details")}
             aria-invalid={showError("details")}
+            aria-required="true"
             aria-describedby={showError("details") ? "details-error" : "details-hint"}
             placeholder="Tell us about the brief, what needs to be delivered, and anything that will help us understand the work."
+            required
           />
           <p id="details-hint" className="contact-form__hint">
             Minimum 20 characters. Include the key deliverables, audience and any references if they
@@ -276,7 +315,9 @@ export function ContactForm() {
             onChange={(event) => updateValue("consent", event.target.checked)}
             onBlur={() => markTouched("consent")}
             aria-invalid={showError("consent")}
+            aria-required="true"
             aria-describedby={showError("consent") ? "consent-error" : undefined}
+            required
           />
           <span>
             I agree that Signal House Studios can reply to this enquiry at the email address

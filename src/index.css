@@ -119,6 +119,26 @@ button {
   white-space: nowrap;
 }
 
+.skip-link {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 100;
+  padding: 10px 14px;
+  background: var(--color-white);
+  color: var(--color-charcoal);
+  font-family: var(--font-display);
+  font-size: var(--type-body);
+  font-weight: 700;
+  text-transform: uppercase;
+  transform: translateY(-160%);
+  transition: transform var(--transition-link);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
 .site-nav a.site-nav__cta,
 .site-nav-mobile a.site-nav__cta,
 .content-page__button {

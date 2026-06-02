@@ -51,6 +51,7 @@ export function Header() {
           className="menu-toggle"
           type="button"
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+          aria-controls="mobile-navigation"
           aria-expanded={isMenuOpen}
           onClick={() => setIsMenuOpen((current) => !current)}
         >
@@ -61,8 +62,11 @@ export function Header() {
       </div>
 
       <nav
+        id="mobile-navigation"
         className={`site-nav-mobile ${isMenuOpen ? "is-open" : ""}`}
         aria-label="Mobile navigation"
+        aria-hidden={!isMenuOpen}
+        inert={!isMenuOpen}
       >
         {mainNavigation.map((item) => (
           <div key={item.href} className="site-nav-mobile__item">

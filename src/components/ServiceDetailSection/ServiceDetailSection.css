@@ -112,6 +112,11 @@
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
+.service-detail-section--has-video-cards .service-detail-section__grid {
+  column-gap: 16px;
+  row-gap: 32px;
+}
+
 .service-detail-section__card {
   display: flex;
   flex-direction: column;
@@ -222,10 +227,6 @@
   .service-detail-section__grid,
   .service-detail-section--grid-2 .service-detail-section__grid {
     grid-template-columns: 1fr;
-  }
-
-  .service-detail-section--has-video-cards .service-detail-section__grid {
-    row-gap: 32px;
   }
 
   .service-detail-section__card {

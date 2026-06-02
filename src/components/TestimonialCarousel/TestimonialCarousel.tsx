@@ -22,6 +22,10 @@ export function TestimonialCarousel({ testimonials }: TestimonialCarouselProps) 
       return;
     }
 
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      return;
+    }
+
     const timeoutId = window.setTimeout(() => {
       setActiveIndex((current) => (current + 1) % testimonials.length);
     }, rotationDelay);
