@@ -86,6 +86,10 @@
   background: var(--color-white);
 }
 
+.service-detail-section__embed--tidal {
+  border: 0;
+}
+
 .service-detail-section__embed--youtube,
 .service-detail-section__embed--youtube iframe {
   background: #000;
