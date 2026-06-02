@@ -136,11 +136,6 @@
   cursor: pointer;
 }
 
-.menu-toggle:focus,
-.menu-toggle:focus-visible {
-  outline: none;
-}
-
 .menu-toggle span {
   position: absolute;
   width: 34px;

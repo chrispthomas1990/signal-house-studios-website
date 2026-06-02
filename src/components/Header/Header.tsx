@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { NavLink } from "react-router-dom";
 import logo from "../../assets/brand/shs-gold-logo.svg";
 import monogram from "../../assets/brand/shs-gold-monogram.svg";
@@ -21,6 +21,16 @@ function Logo({ compact = false }: { compact?: boolean }) {
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const mobileNavRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    if (isMenuOpen) {
+      mobileNavRef.current?.removeAttribute("inert");
+      return;
+    }
+
+    mobileNavRef.current?.setAttribute("inert", "");
+  }, [isMenuOpen]);
 
   function closeMenu() {
     setIsMenuOpen(false);
@@ -62,11 +72,11 @@ export function Header() {
       </div>
 
       <nav
+        ref={mobileNavRef}
         id="mobile-navigation"
         className={`site-nav-mobile ${isMenuOpen ? "is-open" : ""}`}
         aria-label="Mobile navigation"
         aria-hidden={!isMenuOpen}
-        inert={!isMenuOpen}
       >
         {mainNavigation.map((item) => (
           <div key={item.href} className="site-nav-mobile__item">

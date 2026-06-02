@@ -26,38 +26,38 @@ const defaultSeo = {
 const routeSeo: Record<string, SeoConfig> = {
   "/": defaultSeo,
   "/audio-production": {
-    title: "Audio Production Hertfordshire | Signal House Studios",
+    title: "Signal House Studios | Audio Production Hertfordshire",
     description:
       "Recording, production, mixing and mastering for artists at Signal House Studios, a Hertfordshire production studio led by producer Tim Kramer.",
     serviceName: "Audio Production",
     serviceType: "Recording, production, mixing and mastering",
   },
   "/video-production": {
-    title: "Video Production Hertfordshire | Signal House Studios",
+    title: "Signal House Studios | Video Production Hertfordshire",
     description:
       "Strategy-led video production for brands, campaigns, corporate films and short form content from Signal House Studios in Hertfordshire.",
     serviceName: "Video Production",
     serviceType: "Corporate films, campaign content and short form video production",
   },
   "/live-streaming": {
-    title: "Live Streaming Production Hertfordshire | Signal House Studios",
+    title: "Signal House Studios | Live Streaming Production Hertfordshire",
     description:
       "Live streaming production for launches, performances, hybrid events and broadcasts, planned and delivered by Signal House Studios.",
     serviceName: "Live Streaming Production",
     serviceType: "Live streaming for launches, performances, hybrid events and broadcasts",
   },
   "/contact": {
-    title: "Contact Signal House Studios | Start a Project",
+    title: "Signal House Studios | Contact",
     description:
       "Contact Signal House Studios to discuss audio production, video production, live streaming or a mixed production project.",
   },
   "/privacy-policy": {
-    title: "Privacy Policy | Signal House Studios",
+    title: "Signal House Studios | Privacy Policy",
     description:
       "Read the Signal House Studios privacy policy for information about how enquiries and site data are handled.",
   },
   "/cookie-policy": {
-    title: "Cookie Policy | Signal House Studios",
+    title: "Signal House Studios | Cookie Policy",
     description:
       "Read the Signal House Studios cookie policy for information about cookies, analytics and third-party embedded features.",
   },
@@ -176,7 +176,7 @@ function SeoMetadata() {
 
   useEffect(() => {
     const seo = routeSeo[pathname] ?? {
-      title: "Page Not Found | Signal House Studios",
+      title: "Signal House Studios | Page Not Found",
       description:
         "The page you were looking for could not be found. Explore Signal House Studios audio, video and live streaming services.",
     };

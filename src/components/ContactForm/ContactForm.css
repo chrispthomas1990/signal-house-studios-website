@@ -59,8 +59,7 @@
   line-height: var(--line-body);
   transition:
     border-color var(--transition-link),
-    background-color var(--transition-link),
-    box-shadow var(--transition-link);
+    background-color var(--transition-link);
 }
 
 .contact-form input::placeholder,
@@ -72,8 +71,6 @@
 .contact-form select:focus,
 .contact-form textarea:focus {
   border-color: var(--color-gold);
-  outline: none;
-  box-shadow: 0 0 0 1px rgba(205, 168, 91, 0.25);
 }
 
 .contact-form select {
@@ -139,16 +136,6 @@
 
 .contact-form__consent input:focus {
   border-color: var(--color-charcoal);
-  box-shadow: none;
-}
-
-.contact-form__consent input:focus:not(:focus-visible) {
-  outline: none;
-}
-
-.contact-form__consent input:focus-visible {
-  outline: 2px solid var(--color-charcoal);
-  outline-offset: 2px;
 }
 
 .contact-form__actions {

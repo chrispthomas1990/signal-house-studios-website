@@ -6,6 +6,8 @@ type ThreeCardSectionTheme = "light" | "dark";
 type ThreeCard = {
   title: string;
   body: string;
+  iconSrc?: string;
+  iconAlt?: string;
   buttonText?: string;
   buttonHref?: string;
 };
@@ -47,6 +49,14 @@ export function ThreeCardSection({
         <div className="three-card-section__grid">
           {cards.map((card) => (
             <article className="three-card-section__card" key={card.title}>
+              {card.iconSrc ? (
+                <img
+                  className="three-card-section__card-icon"
+                  src={card.iconSrc}
+                  alt={card.iconAlt ?? ""}
+                  aria-hidden={card.iconAlt ? undefined : "true"}
+                />
+              ) : null}
               <h3 className="three-card-section__card-title">{card.title}</h3>
               <p className="three-card-section__card-body">{card.body}</p>
               {card.buttonText && card.buttonHref ? (

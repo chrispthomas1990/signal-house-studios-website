@@ -1,3 +1,7 @@
+import audioMasteringIcon from "../assets/services/audio/shs-services-audio-mastering.svg";
+import liveTrainingIcon from "../assets/services/live/shs-services-live-training.svg";
+import videoFilmingIcon from "../assets/services/video/shs-services-video-filming.svg";
+
 export const homePageContent = {
   hero: {
     eyebrow: "Signal House Studios",
@@ -13,18 +17,21 @@ export const homePageContent = {
       {
         title: "Audio Production",
         body: "Recording, production, mixing and mastering for artists who want a focused studio process.",
+        iconSrc: audioMasteringIcon,
         buttonText: "Read more",
         buttonHref: "/audio-production",
       },
       {
         title: "Video Production",
         body: "Strategy-led films and content for campaigns, businesses, artists and editorial projects.",
+        iconSrc: videoFilmingIcon,
         buttonText: "Read more",
         buttonHref: "/video-production",
       },
       {
         title: "Live Streaming",
         body: "Broadcast planning and delivery for launches, performances, panels and hybrid events.",
+        iconSrc: liveTrainingIcon,
         buttonText: "Read more",
         buttonHref: "/live-streaming",
       },

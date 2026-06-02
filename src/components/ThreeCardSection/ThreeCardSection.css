@@ -74,6 +74,13 @@
   background: transparent;
 }
 
+.three-card-section__card-icon {
+  display: block;
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+}
+
 .three-card-section__card-title {
   margin: 0;
   color: var(--color-gold);

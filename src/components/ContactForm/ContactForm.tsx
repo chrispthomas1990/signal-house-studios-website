@@ -1,7 +1,8 @@
 import { type FormEvent, useRef, useState } from "react";
+import { siteInfo } from "../../content/siteInfo";
 import "./ContactForm.css";
 
-const destinationEmail = "hello@christhomasdesign.co.uk";
+const destinationEmail = siteInfo.email;
 
 type ContactFormValues = {
   name: string;
