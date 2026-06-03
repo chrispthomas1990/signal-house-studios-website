@@ -55,6 +55,7 @@
   font-family: var(--font-body);
   font-size: var(--type-body-large);
   line-height: var(--line-body);
+  text-wrap: pretty;
 }
 
 .three-card-section__grid {
@@ -98,6 +99,7 @@
   font-family: var(--font-body);
   font-size: var(--type-body);
   line-height: var(--line-body);
+  text-wrap: pretty;
 }
 
 .three-card-section__card-button {

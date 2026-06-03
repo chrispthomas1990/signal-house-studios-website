@@ -47,6 +47,7 @@
   font-family: var(--font-body);
   font-size: var(--type-body-large);
   line-height: var(--line-body);
+  text-wrap: pretty;
 }
 
 .cta-section__action {

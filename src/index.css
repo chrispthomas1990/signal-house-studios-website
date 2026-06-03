@@ -215,6 +215,7 @@ button {
   font-family: var(--font-body);
   font-size: var(--type-body);
   line-height: var(--line-body);
+  text-wrap: pretty;
 }
 
 .content-page h1 {

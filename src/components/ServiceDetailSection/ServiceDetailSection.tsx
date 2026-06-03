@@ -174,7 +174,6 @@ function ServiceDetailCardEmbed({ src, title }: ServiceDetailEmbed) {
       ref={iframeRef}
       src={iframeSrc}
       title={title}
-      loading="lazy"
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
       referrerPolicy="strict-origin-when-cross-origin"
       allowFullScreen
@@ -233,7 +232,6 @@ export function ServiceDetailSection({
             <iframe
               src={embed.src}
               title={embed.title}
-              loading="lazy"
               allow="encrypted-media; fullscreen"
             />
           </div>
