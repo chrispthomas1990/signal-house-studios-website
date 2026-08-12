@@ -19,6 +19,19 @@ function Logo({ compact = false }: { compact?: boolean }) {
   );
 }
 
+function NavigationLabel({ label }: { label: string }) {
+  const [firstWord, ...remainingWords] = label.split(" ");
+
+  return (
+    <>
+      {firstWord}
+      {" "}
+      <br className="site-nav__responsive-break" aria-hidden="true" />
+      <span>{remainingWords.join(" ")}</span>
+    </>
+  );
+}
+
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const mobileNavRef = useRef<HTMLElement>(null);
@@ -48,7 +61,9 @@ export function Header() {
         <nav className="site-nav site-nav--desktop" aria-label="Main navigation">
           {mainNavigation.map((item) => (
             <div key={item.href} className="site-nav__item">
-              <NavLink to={item.href}>{item.label}</NavLink>
+              <NavLink to={item.href} aria-label={item.label}>
+                <NavigationLabel label={item.label} />
+              </NavLink>
             </div>
           ))}
 
@@ -80,8 +95,8 @@ export function Header() {
       >
         {mainNavigation.map((item) => (
           <div key={item.href} className="site-nav-mobile__item">
-            <NavLink to={item.href} onClick={closeMenu}>
-              {item.label}
+            <NavLink to={item.href} aria-label={item.label} onClick={closeMenu}>
+              <NavigationLabel label={item.label} />
             </NavLink>
           </div>
         ))}

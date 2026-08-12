@@ -22,16 +22,16 @@ const clientLogos: readonly ClientLogo[] = [];
 const clientLogoPlaceholderCount = 8;
 
 const processStages = [
-  { title: "Strategy", detail: "Purpose, audience and intended outcome.", icon: animationIcon },
-  { title: "Creative planning", detail: "The creative route and content format.", icon: photographyIcon },
-  { title: "Pre-production", detail: "The brief, requirements and shoot preparation.", icon: preProductionIcon },
-  { title: "Scheduling", detail: "A practical production schedule.", icon: preProductionIcon },
-  { title: "Filming", detail: "Production built around the agreed plan.", icon: filmingIcon },
-  { title: "Editing and post-production", detail: "Narrative, picture, sound and finish.", icon: editingIcon },
-  { title: "Social media content creation", detail: "Planned versions for relevant channels.", icon: animationIcon },
-  { title: "Output planning", detail: "Formats and versions identified early.", icon: colourGradingIcon },
-  { title: "Delivery", detail: "Approved files prepared for use.", icon: editingIcon },
-  { title: "Distribution", detail: "Final destinations confirmed with the brief.", icon: colourGradingIcon },
+  { title: "Strategy", detail: "We define the purpose, audience and outcome the content needs to achieve.", icon: animationIcon },
+  { title: "Creative planning", detail: "We shape a creative route and format that brings the central idea to life.", icon: photographyIcon },
+  { title: "Pre-production", detail: "We prepare the brief, locations, contributors and practical requirements for the shoot.", icon: preProductionIcon },
+  { title: "Scheduling", detail: "We build a clear production schedule that keeps the people and moving parts aligned.", icon: preProductionIcon },
+  { title: "Filming", detail: "We capture purposeful footage around the agreed creative and production plan.", icon: filmingIcon },
+  { title: "Editing and post-production", detail: "We shape the narrative, picture, sound and finishing details into a polished film.", icon: editingIcon },
+  { title: "Social media content creation", detail: "We create focused edits designed to work naturally across the relevant social channels.", icon: animationIcon },
+  { title: "Output planning", detail: "We identify every required format and version before the final files are prepared.", icon: colourGradingIcon },
+  { title: "Delivery", detail: "We supply approved files in the right specifications, ready for their intended use.", icon: editingIcon },
+  { title: "Distribution", detail: "We confirm where each asset needs to go and support a smooth final handover.", icon: colourGradingIcon },
 ] as const;
 
 const corporateOutputs = [
@@ -211,15 +211,20 @@ export function VideoProduction() {
             <p className="video-page__eyebrow">Corporate tailored</p>
             <h2 id="corporate-content-title">Corporate video does not need to feel generic.</h2>
             <p>
-              The right edit, pacing, framing and sound design can make the message feel far more
-              considered and credible.
+              The right edit, pacing, framing and sound design can transform a straightforward
+              message into something considered, engaging and credible. By shaping each element
+              around your audience and objectives, we create corporate content that feels polished
+              and purposeful without losing the personality behind the organisation.
             </p>
           </div>
-          <ul className="corporate-content__outputs">
-            {corporateOutputs.map((output) => (
-              <li key={output}>{output}</li>
-            ))}
-          </ul>
+          <div className="corporate-content__formats">
+            <h3 className="video-page__eyebrow">Content tailored to your brief</h3>
+            <ul className="corporate-content__outputs">
+              {corporateOutputs.map((output) => (
+                <li key={output}>{output}</li>
+              ))}
+            </ul>
+          </div>
         </div>
       </section>
 
