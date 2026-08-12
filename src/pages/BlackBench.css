@@ -1,0 +1,38 @@
+.black-bench-page {
+  min-height: calc(100vh - var(--header-height));
+  background: var(--color-charcoal);
+}
+
+.black-bench-page__hero {
+  display: grid;
+  min-height: calc(100vh - var(--header-height));
+  place-items: center;
+  padding: var(--page-pad-y) var(--page-pad-x);
+}
+
+.black-bench-page__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+  width: 100%;
+  max-width: 760px;
+}
+
+.black-bench-page__inner h1 {
+  font-size: clamp(42px, 7vw, 88px);
+}
+
+.black-bench-page__inner p {
+  max-width: 620px;
+  color: var(--color-white);
+  font-size: var(--type-body-large);
+}
+
+.black-bench-page__inner .black-bench-page__eyebrow {
+  color: var(--color-gold);
+  font-family: var(--font-display);
+  font-size: var(--type-h5);
+  font-weight: 700;
+  text-transform: uppercase;
+}

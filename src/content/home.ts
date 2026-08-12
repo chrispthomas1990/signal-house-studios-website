@@ -15,13 +15,6 @@ export const homePageContent = {
     body: "Signal House Studios supports projects from early planning through to delivery, with each service shaped around the brief, audience and final output.",
     cards: [
       {
-        title: "Audio Production",
-        body: "Recording, production, mixing and mastering for artists who want a focused studio process.",
-        iconSrc: audioMasteringIcon,
-        buttonText: "Read more",
-        buttonHref: "/audio-production",
-      },
-      {
         title: "Video Production",
         body: "Strategy-led films and content for campaigns, businesses, artists and editorial projects.",
         iconSrc: videoFilmingIcon,
@@ -34,6 +27,13 @@ export const homePageContent = {
         iconSrc: liveTrainingIcon,
         buttonText: "Read more",
         buttonHref: "/live-streaming",
+      },
+      {
+        title: "Audio Production",
+        body: "Recording, production, mixing and mastering for artists who want a focused studio process.",
+        iconSrc: audioMasteringIcon,
+        buttonText: "Read more",
+        buttonHref: "/audio-production",
       },
     ],
     theme: "dark",

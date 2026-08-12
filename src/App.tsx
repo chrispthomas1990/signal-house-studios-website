@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import { Layout } from "./components/Layout/Layout";
 import { cookiePolicyContent, privacyPolicyContent } from "./content/legal";
 import { AudioProduction } from "./pages/AudioProduction";
+import { BlackBench } from "./pages/BlackBench";
 import { Contact } from "./pages/Contact";
 import { Home } from "./pages/Home";
 import { LegalPage } from "./pages/LegalPage";
@@ -45,6 +46,11 @@ const routeSeo: Record<string, SeoConfig> = {
       "Live streaming production for launches, performances, hybrid events and broadcasts, planned and delivered by Signal House Studios.",
     serviceName: "Live Streaming Production",
     serviceType: "Live streaming for launches, performances, hybrid events and broadcasts",
+  },
+  "/black-bench": {
+    title: "Signal House Studios | Black Bench",
+    description:
+      "Black Bench content is being prepared. Contact Signal House Studios for current information.",
   },
   "/contact": {
     title: "Signal House Studios | Contact",
@@ -231,6 +237,7 @@ function App() {
           <Route path="audio-production" element={<AudioProduction />} />
           <Route path="video-production" element={<VideoProduction />} />
           <Route path="live-streaming" element={<LiveStreaming />} />
+          <Route path="black-bench" element={<BlackBench />} />
           <Route path="contact" element={<Contact />} />
           <Route path="privacy-policy" element={<LegalPage content={privacyPolicyContent} />} />
           <Route path="cookie-policy" element={<LegalPage content={cookiePolicyContent} />} />

@@ -60,14 +60,14 @@
   align-items: center;
   justify-content: center;
   width: min-content;
-  min-height: 46px;
-  padding: 10px 22px 12px;
+  min-height: var(--button-min-height);
+  padding: var(--button-padding);
   border: 2px solid var(--color-gold);
   border-radius: 9999px;
-  background-color: transparent;
-  color: var(--color-gold);
+  background-color: var(--color-gold);
+  color: var(--color-dark-charcoal);
   font-family: var(--font-display);
-  font-size: 20px;
+  font-size: var(--button-font-size);
   font-weight: 700;
   letter-spacing: 0;
   line-height: 1.5;
@@ -81,8 +81,8 @@
 }
 
 .cta-section__button:hover {
-  background-color: var(--color-gold);
-  color: var(--color-white);
+  background-color: transparent;
+  color: var(--color-gold);
 }
 
 .cta-section--light {
@@ -97,6 +97,11 @@
 
 .cta-section--dark .cta-section__body {
   color: var(--color-white);
+}
+
+.cta-section--dark .cta-section__button:hover {
+  background-color: transparent;
+  color: var(--color-gold);
 }
 
 @media (max-width: 991.98px) {

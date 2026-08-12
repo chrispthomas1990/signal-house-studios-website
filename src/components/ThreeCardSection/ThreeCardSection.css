@@ -103,23 +103,33 @@
 }
 
 .three-card-section__card-button {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   width: min-content;
+  min-height: var(--button-min-height);
   margin-top: auto;
-  color: var(--color-gold);
+  padding: var(--button-padding);
+  border: 2px solid var(--color-gold);
+  border-radius: 9999px;
+  background-color: var(--color-gold);
+  color: var(--color-dark-charcoal);
   font-family: var(--font-display);
-  font-size: 20px;
+  font-size: var(--button-font-size);
   font-weight: 700;
   letter-spacing: 0;
   line-height: 1.5;
   text-decoration: none;
   text-transform: uppercase;
   white-space: nowrap;
-  transition: color var(--transition-link);
+  transition:
+    background-color var(--transition-link),
+    color var(--transition-link);
 }
 
 .three-card-section__card-button:hover {
-  color: var(--color-white);
+  background-color: transparent;
+  color: var(--color-gold);
 }
 
 .three-card-section--light {
@@ -130,6 +140,10 @@
 .three-card-section--dark {
   background: var(--color-charcoal);
   color: var(--color-white);
+}
+
+.three-card-section--dark .three-card-section__card-button:hover {
+  background-color: transparent;
 }
 
 .three-card-section--dark .three-card-section__intro p,

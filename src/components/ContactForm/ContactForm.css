@@ -146,13 +146,14 @@
 }
 
 .contact-form .content-page__button {
-  border-color: var(--color-charcoal);
-  color: var(--color-charcoal);
+  border-color: var(--color-gold);
+  background-color: var(--color-gold);
+  color: var(--color-dark-charcoal);
 }
 
 .contact-form .content-page__button:hover {
-  background-color: var(--color-charcoal);
-  color: var(--color-white);
+  background-color: transparent;
+  color: var(--color-gold);
 }
 
 .contact-form .contact-form__note {

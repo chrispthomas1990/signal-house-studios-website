@@ -55,16 +55,15 @@
   align-items: center;
   justify-content: center;
   width: min-content;
-  min-width: 104px;
-  min-height: 46px;
-  padding: 10px 22px 12px;
+  min-height: var(--button-min-height);
+  padding: var(--button-padding);
   border: 2px solid var(--color-gold);
   border-radius: 9999px;
-  background-color: transparent;
-  color: var(--color-gold);
+  background-color: var(--color-gold);
+  color: var(--color-dark-charcoal);
   cursor: pointer;
   font-family: var(--font-display);
-  font-size: 20px;
+  font-size: var(--button-font-size);
   font-weight: 700;
   letter-spacing: 0;
   line-height: 1.5;
@@ -76,14 +75,18 @@
     color var(--transition-link);
 }
 
-.cookie-consent__actions button:hover,
+.cookie-consent__actions button:hover {
+  background-color: transparent;
+  color: var(--color-gold);
+}
+
 .cookie-consent__actions .cookie-consent__button--primary {
   background-color: var(--color-gold);
-  color: var(--color-white);
+  color: var(--color-dark-charcoal);
 }
 
 .cookie-consent__actions .cookie-consent__button--primary:hover {
-  background-color: var(--color-white);
+  background-color: transparent;
   color: var(--color-gold);
 }
 

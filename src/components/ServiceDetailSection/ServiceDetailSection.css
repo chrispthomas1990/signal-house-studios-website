@@ -31,7 +31,7 @@
 .service-detail-section__divider {
   grid-column: 1 / -1;
   width: 100%;
-  height: 2px;
+  height: 1px;
   background: var(--color-gold);
 }
 

@@ -35,6 +35,9 @@
   --transition-link: 250ms var(--ease-standard);
   --transition-menu: 300ms var(--ease-standard);
   --transition-icon: 180ms ease;
+  --button-min-height: 42px;
+  --button-padding: 7px 18px 9px;
+  --button-font-size: 20px;
   --type-h1: 40px;
   --type-h2: 34px;
   --type-h3: 28px;
@@ -154,15 +157,15 @@ button {
   align-items: center;
   justify-content: center;
   width: min-content;
-  min-height: 46px;
-  padding: 10px 22px 12px;
+  min-height: var(--button-min-height);
+  padding: var(--button-padding);
   border: 2px solid var(--color-gold);
   border-radius: 9999px;
-  background-color: transparent;
-  color: var(--color-gold);
+  background-color: var(--color-gold);
+  color: var(--color-dark-charcoal);
   cursor: pointer;
   font-family: var(--font-display);
-  font-size: 20px;
+  font-size: var(--button-font-size);
   font-weight: 700;
   letter-spacing: 0;
   line-height: 1.5;
@@ -178,8 +181,8 @@ button {
 .site-nav a.site-nav__cta:hover,
 .site-nav-mobile a.site-nav__cta:hover,
 .content-page__button:hover {
-  background-color: var(--color-gold);
-  color: var(--color-white);
+  background-color: transparent;
+  color: var(--color-gold);
   text-decoration: none;
 }
 
