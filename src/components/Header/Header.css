@@ -120,7 +120,7 @@
   transform: scaleX(1);
 }
 
-@media (min-width: 992px) and (max-width: 1032px) {
+@media (min-width: 992px) and (max-width: 1044px) {
   .site-nav__responsive-break {
     display: initial;
   }

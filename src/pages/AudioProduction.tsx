@@ -14,8 +14,6 @@ export function AudioProduction() {
 
       <ServiceDetailSection {...audioProduction.audioShowreel} />
 
-      <ServiceDetailSection {...audioProduction.recentWork} />
-
       <ServiceDetailSection {...audioProduction.approach} />
 
       <ServiceDetailSection {...audioProduction.services} />

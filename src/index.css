@@ -31,6 +31,7 @@
   --page-pad-x: 18px;
   --page-pad-y: 48px;
   --header-height: 82px;
+  --section-image-height: clamp(300px, 34vw, 420px);
   --ease-standard: cubic-bezier(0.44, 0, 0.56, 1);
   --transition-link: 250ms var(--ease-standard);
   --transition-menu: 300ms var(--ease-standard);

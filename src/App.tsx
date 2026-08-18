@@ -1,11 +1,10 @@
 import { useEffect } from "react";
-import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes, useLocation } from "react-router-dom";
 import { Layout } from "./components/Layout/Layout";
 import { cookiePolicyContent, privacyPolicyContent } from "./content/legal";
 import { AudioProduction } from "./pages/AudioProduction";
 import { BlackBench } from "./pages/BlackBench";
 import { Contact } from "./pages/Contact";
-import { Home } from "./pages/Home";
 import { LegalPage } from "./pages/LegalPage";
 import { LiveStreaming } from "./pages/LiveStreaming";
 import { NotFound } from "./pages/NotFound";
@@ -19,9 +18,11 @@ type SeoConfig = {
 };
 
 const defaultSeo = {
-  title: "Signal House Studios | Audio, Video and Live Streaming Production",
+  title: "Signal House Studios | Video Production Hertfordshire",
   description:
-    "Signal House Studios is a Hertfordshire production studio for audio production, video production and live streaming, led by producer Tim Kramer.",
+    "Strategy-led video production for brands, campaigns, corporate films and content from Signal House Studios in Hertfordshire.",
+  serviceName: "Video Production",
+  serviceType: "Corporate films, campaign content and short form video production",
 };
 
 const routeSeo: Record<string, SeoConfig> = {
@@ -32,13 +33,6 @@ const routeSeo: Record<string, SeoConfig> = {
       "Recording, production, mixing and mastering for artists at Signal House Studios, a Hertfordshire production studio led by producer Tim Kramer.",
     serviceName: "Audio Production",
     serviceType: "Recording, production, mixing and mastering",
-  },
-  "/video-production": {
-    title: "Signal House Studios | Video Production Hertfordshire",
-    description:
-      "Strategy-led video production for brands, campaigns, corporate films and short form content from Signal House Studios in Hertfordshire.",
-    serviceName: "Video Production",
-    serviceType: "Corporate films, campaign content and short form video production",
   },
   "/live-streaming": {
     title: "Signal House Studios | Live Streaming Production Hertfordshire",
@@ -233,9 +227,9 @@ function App() {
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
+          <Route index element={<VideoProduction />} />
           <Route path="audio-production" element={<AudioProduction />} />
-          <Route path="video-production" element={<VideoProduction />} />
+          <Route path="video-production" element={<Navigate to="/" replace />} />
           <Route path="live-streaming" element={<LiveStreaming />} />
           <Route path="black-bench" element={<BlackBench />} />
           <Route path="contact" element={<Contact />} />

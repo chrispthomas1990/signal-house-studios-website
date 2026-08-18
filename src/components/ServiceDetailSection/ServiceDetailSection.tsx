@@ -93,6 +93,8 @@ type ServiceDetailCard = {
   title: string;
   body: string;
   hasImagePlaceholder?: boolean;
+  imageSrc?: string;
+  imageAlt?: string;
   iconSrc?: string;
   iconAlt?: string;
   videoEmbed?: ServiceDetailEmbed;
@@ -112,6 +114,9 @@ type ServiceDetailSectionProps = {
   hasBottomDivider?: boolean;
   compactTopPadding?: boolean;
   hasImagePlaceholder?: boolean;
+  imageSrc?: string;
+  imageAlt?: string;
+  mediaOnLeft?: boolean;
   borderlessCards?: boolean;
   gridColumns?: 2 | 3;
   theme?: ServiceDetailSectionTheme;
@@ -190,6 +195,9 @@ export function ServiceDetailSection({
   hasBottomDivider = false,
   compactTopPadding = false,
   hasImagePlaceholder = false,
+  imageSrc,
+  imageAlt,
+  mediaOnLeft = false,
   borderlessCards = false,
   gridColumns = 3,
   theme = "light",
@@ -203,7 +211,8 @@ export function ServiceDetailSection({
     hasBottomDivider ? "service-detail-section--has-bottom-divider" : "",
     compactTopPadding ? "service-detail-section--compact-top" : "",
     borderlessCards ? "service-detail-section--borderless-cards" : "",
-    embed || hasImagePlaceholder ? "service-detail-section--media-layout" : "",
+    embed || hasImagePlaceholder || imageSrc ? "service-detail-section--media-layout" : "",
+    mediaOnLeft ? "service-detail-section--media-left" : "",
     hasVideoCards ? "service-detail-section--has-video-cards" : "",
   ]
     .filter(Boolean)
@@ -237,7 +246,11 @@ export function ServiceDetailSection({
           </div>
         ) : null}
 
-        {hasImagePlaceholder ? (
+        {imageSrc ? (
+          <div className="service-detail-section__image">
+            <img src={imageSrc} alt={imageAlt ?? ""} loading="lazy" decoding="async" />
+          </div>
+        ) : hasImagePlaceholder ? (
           <div className="service-detail-section__image-placeholder" aria-hidden="true" />
         ) : null}
 
@@ -253,7 +266,16 @@ export function ServiceDetailSection({
                   .join(" ")}
                 key={card.title}
               >
-                {card.hasImagePlaceholder ? (
+                {card.imageSrc ? (
+                  <div className="service-detail-section__card-image">
+                    <img
+                      src={card.imageSrc}
+                      alt={card.imageAlt ?? ""}
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                ) : card.hasImagePlaceholder ? (
                   <div
                     className="service-detail-section__card-image-placeholder"
                     aria-hidden="true"

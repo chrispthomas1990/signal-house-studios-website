@@ -1,7 +1,7 @@
 export const mainNavigation = [
   {
     label: "Video Production",
-    href: "/video-production",
+    href: "/",
   },
   {
     label: "Live Streaming",
@@ -21,10 +21,6 @@ export const footerNavigation = [
   {
     label: "Home",
     href: "/",
-  },
-  {
-    label: "Video Production",
-    href: "/video-production",
   },
   {
     label: "Live Streaming",

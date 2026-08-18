@@ -37,7 +37,14 @@ export function HeroSection({
     <section className={className}>
       <div className="hero-section__inner">
         <div className="hero-section__image">
-          {imageSrc ? <img src={imageSrc} alt={imageAlt ?? ""} /> : null}
+          {imageSrc ? (
+            <img
+              src={imageSrc}
+              alt={imageAlt ?? ""}
+              decoding="async"
+              fetchPriority={headingLevel === "h1" ? "high" : "auto"}
+            />
+          ) : null}
         </div>
 
         <div className="hero-section__content">
