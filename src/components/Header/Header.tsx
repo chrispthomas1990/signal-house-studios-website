@@ -35,14 +35,37 @@ function NavigationLabel({ label }: { label: string }) {
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const mobileNavRef = useRef<HTMLElement>(null);
+  const menuToggleRef = useRef<HTMLButtonElement>(null);
+  const wasMenuOpenRef = useRef(false);
 
   useEffect(() => {
     if (isMenuOpen) {
       mobileNavRef.current?.removeAttribute("inert");
-      return;
+      wasMenuOpenRef.current = true;
+
+      const frameId = window.requestAnimationFrame(() => {
+        mobileNavRef.current?.querySelector<HTMLAnchorElement>("a")?.focus();
+      });
+      const handleKeyDown = (event: KeyboardEvent) => {
+        if (event.key === "Escape") {
+          setIsMenuOpen(false);
+        }
+      };
+
+      window.addEventListener("keydown", handleKeyDown);
+
+      return () => {
+        window.cancelAnimationFrame(frameId);
+        window.removeEventListener("keydown", handleKeyDown);
+      };
     }
 
     mobileNavRef.current?.setAttribute("inert", "");
+
+    if (wasMenuOpenRef.current) {
+      menuToggleRef.current?.focus();
+      wasMenuOpenRef.current = false;
+    }
   }, [isMenuOpen]);
 
   function closeMenu() {
@@ -67,12 +90,13 @@ export function Header() {
             </div>
           ))}
 
-          <NavLink to="/contact" className="site-nav__cta">
+          <NavLink to="/contact" className="button site-nav__cta">
             Let’s Talk
           </NavLink>
         </nav>
 
         <button
+          ref={menuToggleRef}
           className="menu-toggle"
           type="button"
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
@@ -101,7 +125,7 @@ export function Header() {
           </div>
         ))}
 
-        <NavLink to="/contact" className="site-nav__cta" onClick={closeMenu}>
+        <NavLink to="/contact" className="button site-nav__cta" onClick={closeMenu}>
           Let’s Talk
         </NavLink>
       </nav>

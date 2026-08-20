@@ -1,5 +1,6 @@
-import { type ImgHTMLAttributes, useEffect, useRef } from "react";
 import { CTASection } from "../components/CTASection/CTASection";
+import { ClientLogoTicker } from "../components/ClientLogoTicker/ClientLogoTicker";
+import { VideoHeroMedia } from "../components/VideoHeroMedia/VideoHeroMedia";
 import animationIcon from "../assets/icons/services/video/shs-services-video-animation.svg";
 import editingIcon from "../assets/icons/services/video/shs-services-video-editing.svg";
 import filmingIcon from "../assets/icons/services/video/shs-services-video-filming.svg";
@@ -10,53 +11,11 @@ import distributionIcon from "../assets/icons/services/video/shs-services-video-
 import outputPlanningIcon from "../assets/icons/services/video/shs-services-video-output-planning.svg";
 import schedulingIcon from "../assets/icons/services/video/shs-services-video-scheduling.svg";
 import strategyIcon from "../assets/icons/services/video/shs-services-video-strategy.svg";
-import avivaLogo from "../assets/images/client-logos/aviva-investors.svg";
-import bellIntegrationLogo from "../assets/images/client-logos/bell-integration.svg";
-import boultLogo from "../assets/images/client-logos/boult.svg";
-import brainlabsLogo from "../assets/images/client-logos/brainlabs.svg";
-import charlesTyrwhittLogo from "../assets/images/client-logos/charles-tyrwhitt.svg";
-import cranborneAudioLogo from "../assets/images/client-logos/cranborne-audio.svg";
-import kognityLogo from "../assets/images/client-logos/kognity.svg";
-import lloydsBankingGroupLogo from "../assets/images/client-logos/lloyds-banking-group.svg";
-import maitlandChambersLogo from "../assets/images/client-logos/maitland-chambers.svg";
-import meysanLogo from "../assets/images/client-logos/meysan.svg";
-import nikeLogo from "../assets/images/client-logos/nike.svg";
-import rollsRoyceLogo from "../assets/images/client-logos/rolls-royce.svg";
-import southeasternLogo from "../assets/images/client-logos/southeastern.svg";
-import tjxLogo from "../assets/images/client-logos/tjx.svg";
-import musicVideoBandImage from "../assets/images/projects/music-video/music-video-band-setup-edited.webp";
 import lakeDistrictFilmingImage from "../assets/images/projects/lake-district/lake-district-filming-landscape-colour.webp";
 import motorsportCameraRigImage from "../assets/images/projects/motorsport/motorsport-camera-rig.webp";
 import teamImage from "../assets/images/team/team-portrait-annie-and-tim.webp";
-import showreelVideo from "../assets/videos/shs-showreel-2160p.mp4";
 import { servicePageContent } from "../content/services";
 import "./VideoProduction.css";
-
-const heroVideoSrc = showreelVideo;
-const heroPosterSrc = musicVideoBandImage;
-
-type ClientLogo = {
-  name: string;
-  src: string;
-  alt: ImgHTMLAttributes<HTMLImageElement>["alt"];
-};
-
-const clientLogos: readonly ClientLogo[] = [
-  { name: "Aviva Investors", src: avivaLogo, alt: "Aviva Investors" },
-  { name: "Bell Integration", src: bellIntegrationLogo, alt: "Bell Integration" },
-  { name: "Boult", src: boultLogo, alt: "Boult" },
-  { name: "Brainlabs", src: brainlabsLogo, alt: "Brainlabs" },
-  { name: "Charles Tyrwhitt", src: charlesTyrwhittLogo, alt: "Charles Tyrwhitt" },
-  { name: "Cranborne Audio", src: cranborneAudioLogo, alt: "Cranborne Audio" },
-  { name: "Kognity", src: kognityLogo, alt: "Kognity" },
-  { name: "Lloyds Banking Group", src: lloydsBankingGroupLogo, alt: "Lloyds Banking Group" },
-  { name: "Maitland Chambers", src: maitlandChambersLogo, alt: "Maitland Chambers" },
-  { name: "Meysan", src: meysanLogo, alt: "Meysan" },
-  { name: "Nike", src: nikeLogo, alt: "Nike" },
-  { name: "Rolls-Royce", src: rollsRoyceLogo, alt: "Rolls-Royce" },
-  { name: "Southeastern", src: southeasternLogo, alt: "Southeastern" },
-  { name: "TJX", src: tjxLogo, alt: "TJX" },
-];
 
 const processStages = [
   { title: "Strategy", detail: "We define the purpose, audience and outcome the content needs to achieve.", icon: strategyIcon },
@@ -80,60 +39,6 @@ const corporateOutputs = [
   "Training content",
 ] as const;
 
-function VideoHeroMedia() {
-  const videoRef = useRef<HTMLVideoElement>(null);
-
-  useEffect(() => {
-    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-
-    if (reducedMotion.matches) {
-      videoRef.current?.pause();
-    }
-  }, []);
-
-  if (!heroVideoSrc) {
-    return (
-      <div
-        className="video-hero__placeholder"
-        role="img"
-        aria-label="Video production hero asset pending"
-      >
-        <span>Video to be supplied</span>
-      </div>
-    );
-  }
-
-  return (
-    <video
-      ref={videoRef}
-      autoPlay
-      loop
-      muted
-      playsInline
-      poster={heroPosterSrc || undefined}
-      aria-label="Signal House Studios video production showreel"
-    >
-      <source src={heroVideoSrc} />
-    </video>
-  );
-}
-
-function ClientLogoItems({ duplicate = false }: { duplicate?: boolean }) {
-  return (
-    <ul
-      className="client-logos__group"
-      aria-label={duplicate ? undefined : "Client logos"}
-      aria-hidden={duplicate ? "true" : undefined}
-    >
-      {clientLogos.map((logo) => (
-        <li className="client-logos__box" key={logo.name}>
-          <img src={logo.src} alt={duplicate ? "" : logo.alt} loading="lazy" decoding="async" />
-        </li>
-      ))}
-    </ul>
-  );
-}
-
 export function VideoProduction() {
   const { videoProduction } = servicePageContent;
 
@@ -142,6 +47,13 @@ export function VideoProduction() {
       <section className="video-hero" aria-label="Video production hero">
         <div className="video-hero__media">
           <VideoHeroMedia />
+        </div>
+      </section>
+
+      <section className="client-logos" aria-labelledby="client-logos-title">
+        <div className="video-page__inner client-logos__inner">
+          <p id="client-logos-title" className="client-logos__title">Trusted by:</p>
+          <ClientLogoTicker />
         </div>
       </section>
 
@@ -168,18 +80,6 @@ export function VideoProduction() {
               loading="lazy"
               decoding="async"
             />
-          </div>
-        </div>
-      </section>
-
-      <section className="client-logos" aria-labelledby="client-logos-title">
-        <div className="video-page__inner client-logos__inner">
-          <h2 id="client-logos-title">Trusted by:</h2>
-          <div className="client-logos__viewport" role="region" aria-label="Client logo ticker" tabIndex={0}>
-            <div className="client-logos__track">
-              <ClientLogoItems />
-              <ClientLogoItems duplicate />
-            </div>
           </div>
         </div>
       </section>

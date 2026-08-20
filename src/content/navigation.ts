@@ -19,7 +19,7 @@ export const mainNavigation = [
 
 export const footerNavigation = [
   {
-    label: "Home",
+    label: "Video Production",
     href: "/",
   },
   {

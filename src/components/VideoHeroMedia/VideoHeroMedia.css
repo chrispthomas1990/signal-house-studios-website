@@ -1,0 +1,9 @@
+.video-hero__media {
+  width: 100%;
+}
+
+.video-hero__media video {
+  display: block;
+  width: 100%;
+  height: auto;
+}

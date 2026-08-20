@@ -73,6 +73,13 @@
   border-color: var(--color-gold);
 }
 
+.contact-form input:focus-visible,
+.contact-form select:focus-visible,
+.contact-form textarea:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 0;
+}
+
 .contact-form select {
   appearance: none;
 }
@@ -134,26 +141,11 @@
   opacity: 1;
 }
 
-.contact-form__consent input:focus {
-  border-color: var(--color-charcoal);
-}
-
 .contact-form__actions {
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
   gap: 24px;
-}
-
-.contact-form .content-page__button {
-  border-color: var(--color-gold);
-  background-color: var(--color-gold);
-  color: var(--color-dark-charcoal);
-}
-
-.contact-form .content-page__button:hover {
-  background-color: transparent;
-  color: var(--color-gold);
 }
 
 .contact-form .contact-form__note {

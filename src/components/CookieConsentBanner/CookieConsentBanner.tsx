@@ -57,11 +57,11 @@ export function CookieConsentBanner() {
       </div>
 
       <div className="cookie-consent__actions">
-        <button type="button" onClick={() => handleConsent("rejected")}>
+        <button className="button" type="button" onClick={() => handleConsent("rejected")}>
           Reject
         </button>
         <button
-          className="cookie-consent__button--primary"
+          className="button"
           type="button"
           onClick={() => handleConsent("accepted")}
         >

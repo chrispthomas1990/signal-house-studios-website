@@ -1,21 +1,14 @@
 import { type FormEvent, useRef, useState } from "react";
 import { siteInfo } from "../../content/siteInfo";
+import {
+  type ContactFormErrors,
+  type ContactFormValues,
+  validateContactForm,
+} from "./contactFormValidation";
 import "./ContactForm.css";
 
 const destinationEmail = siteInfo.email;
 
-type ContactFormValues = {
-  name: string;
-  email: string;
-  company: string;
-  projectType: string;
-  timeline: string;
-  budget: string;
-  details: string;
-  consent: boolean;
-};
-
-type ContactFormErrors = Partial<Record<keyof ContactFormValues, string>>;
 type RequiredContactFormField = Exclude<keyof ContactFormValues, "company">;
 
 const initialValues: ContactFormValues = {
@@ -39,39 +32,29 @@ const requiredFields: readonly RequiredContactFormField[] = [
   "consent",
 ];
 
-function validate(values: ContactFormValues) {
-  const errors: ContactFormErrors = {};
+const textFields = [
+  { name: "name", label: "Name", type: "text", placeholder: "Your name", required: true },
+  { name: "email", label: "Email", type: "email", placeholder: "name@example.com", required: true },
+  { name: "company", label: "Company or artist name", type: "text", placeholder: "Optional", required: false },
+] as const;
 
-  if (values.name.trim().length < 2) {
-    errors.name = "Please enter your name.";
-  }
-
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(values.email.trim())) {
-    errors.email = "Please use a valid email address.";
-  }
-
-  if (!values.projectType) {
-    errors.projectType = "Choose a project type.";
-  }
-
-  if (!values.timeline) {
-    errors.timeline = "Choose a timeframe.";
-  }
-
-  if (!values.budget) {
-    errors.budget = "Choose a budget range.";
-  }
-
-  if (values.details.trim().length < 20) {
-    errors.details = "Add a little more detail about the project.";
-  }
-
-  if (!values.consent) {
-    errors.consent = "Please confirm that we can reply to your email address.";
-  }
-
-  return errors;
-}
+const selectFields = [
+  {
+    name: "projectType",
+    label: "Project type",
+    options: ["Audio production", "Video production", "Live streaming", "Mixed project"],
+  },
+  {
+    name: "timeline",
+    label: "Ideal timeframe",
+    options: ["ASAP", "Within 2 weeks", "Within a month", "Flexible"],
+  },
+  {
+    name: "budget",
+    label: "Budget range",
+    options: ["Under £1k", "£1k – £3k", "£3k – £10k", "£10k+"],
+  },
+] as const;
 
 function buildMailto(values: ContactFormValues) {
   const subject = `Project enquiry from ${values.name.trim()}`;
@@ -101,12 +84,12 @@ export function ContactForm() {
 
   const markTouched = (field: keyof ContactFormValues) => {
     setTouched((current) => ({ ...current, [field]: true }));
-    setErrors(validate(values));
+    setErrors(validateContactForm(values));
   };
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const nextErrors = validate(values);
+    const nextErrors = validateContactForm(values);
     setErrors(nextErrors);
     setTouched({
       name: true,
@@ -146,140 +129,64 @@ export function ContactForm() {
       ) : null}
 
       <div className="contact-form__grid">
-        <div className="contact-form__field">
-          <label htmlFor="name">Name</label>
-          <input
-            id="name"
-            name="name"
-            type="text"
-            value={values.name}
-            onChange={(event) => updateValue("name", event.target.value)}
-            onBlur={() => markTouched("name")}
-            aria-invalid={showError("name")}
-            aria-required="true"
-            aria-describedby={showError("name") ? "name-error" : undefined}
-            placeholder="Your name"
-            required
-          />
-          {showError("name") ? (
-            <p id="name-error" className="contact-form__error">
-              {errors.name}
-            </p>
-          ) : null}
-        </div>
+        {textFields.map((field) => {
+          const hasError = showError(field.name);
 
-        <div className="contact-form__field">
-          <label htmlFor="email">Email</label>
-          <input
-            id="email"
-            name="email"
-            type="email"
-            value={values.email}
-            onChange={(event) => updateValue("email", event.target.value)}
-            onBlur={() => markTouched("email")}
-            aria-invalid={showError("email")}
-            aria-required="true"
-            aria-describedby={showError("email") ? "email-error" : undefined}
-            placeholder="name@example.com"
-            required
-          />
-          {showError("email") ? (
-            <p id="email-error" className="contact-form__error">
-              {errors.email}
-            </p>
-          ) : null}
-        </div>
+          return (
+            <div className="contact-form__field" key={field.name}>
+              <label htmlFor={field.name}>{field.label}</label>
+              <input
+                id={field.name}
+                name={field.name}
+                type={field.type}
+                value={values[field.name]}
+                onChange={(event) => updateValue(field.name, event.target.value)}
+                onBlur={() => markTouched(field.name)}
+                aria-invalid={hasError || undefined}
+                aria-required={field.required || undefined}
+                aria-describedby={hasError ? `${field.name}-error` : undefined}
+                placeholder={field.placeholder}
+                required={field.required}
+              />
+              {hasError ? (
+                <p id={`${field.name}-error`} className="contact-form__error">
+                  {errors[field.name]}
+                </p>
+              ) : null}
+            </div>
+          );
+        })}
 
-        <div className="contact-form__field">
-          <label htmlFor="company">Company or artist name</label>
-          <input
-            id="company"
-            name="company"
-            type="text"
-            value={values.company}
-            onChange={(event) => updateValue("company", event.target.value)}
-            onBlur={() => markTouched("company")}
-            placeholder="Optional"
-          />
-        </div>
+        {selectFields.map((field) => {
+          const hasError = showError(field.name);
 
-        <div className="contact-form__field">
-          <label htmlFor="projectType">Project type</label>
-          <select
-            id="projectType"
-            name="projectType"
-            value={values.projectType}
-            onChange={(event) => updateValue("projectType", event.target.value)}
-            onBlur={() => markTouched("projectType")}
-            aria-invalid={showError("projectType")}
-            aria-required="true"
-            aria-describedby={showError("projectType") ? "projectType-error" : undefined}
-            required
-          >
-            <option value="">Select one</option>
-            <option value="Audio production">Audio production</option>
-            <option value="Video production">Video production</option>
-            <option value="Live streaming">Live streaming</option>
-            <option value="Mixed project">Mixed project</option>
-          </select>
-          {showError("projectType") ? (
-            <p id="projectType-error" className="contact-form__error">
-              {errors.projectType}
-            </p>
-          ) : null}
-        </div>
-
-        <div className="contact-form__field">
-          <label htmlFor="timeline">Ideal timeframe</label>
-          <select
-            id="timeline"
-            name="timeline"
-            value={values.timeline}
-            onChange={(event) => updateValue("timeline", event.target.value)}
-            onBlur={() => markTouched("timeline")}
-            aria-invalid={showError("timeline")}
-            aria-required="true"
-            aria-describedby={showError("timeline") ? "timeline-error" : undefined}
-            required
-          >
-            <option value="">Select one</option>
-            <option value="ASAP">ASAP</option>
-            <option value="Within 2 weeks">Within 2 weeks</option>
-            <option value="Within a month">Within a month</option>
-            <option value="Flexible">Flexible</option>
-          </select>
-          {showError("timeline") ? (
-            <p id="timeline-error" className="contact-form__error">
-              {errors.timeline}
-            </p>
-          ) : null}
-        </div>
-
-        <div className="contact-form__field">
-          <label htmlFor="budget">Budget range</label>
-          <select
-            id="budget"
-            name="budget"
-            value={values.budget}
-            onChange={(event) => updateValue("budget", event.target.value)}
-            onBlur={() => markTouched("budget")}
-            aria-invalid={showError("budget")}
-            aria-required="true"
-            aria-describedby={showError("budget") ? "budget-error" : undefined}
-            required
-          >
-            <option value="">Select one</option>
-            <option value="Under £1k">Under £1k</option>
-            <option value="£1k – £3k">£1k – £3k</option>
-            <option value="£3k – £10k">£3k – £10k</option>
-            <option value="£10k+">£10k+</option>
-          </select>
-          {showError("budget") ? (
-            <p id="budget-error" className="contact-form__error">
-              {errors.budget}
-            </p>
-          ) : null}
-        </div>
+          return (
+            <div className="contact-form__field" key={field.name}>
+              <label htmlFor={field.name}>{field.label}</label>
+              <select
+                id={field.name}
+                name={field.name}
+                value={values[field.name]}
+                onChange={(event) => updateValue(field.name, event.target.value)}
+                onBlur={() => markTouched(field.name)}
+                aria-invalid={hasError || undefined}
+                aria-required="true"
+                aria-describedby={hasError ? `${field.name}-error` : undefined}
+                required
+              >
+                <option value="">Select one</option>
+                {field.options.map((option) => (
+                  <option value={option} key={option}>{option}</option>
+                ))}
+              </select>
+              {hasError ? (
+                <p id={`${field.name}-error`} className="contact-form__error">
+                  {errors[field.name]}
+                </p>
+              ) : null}
+            </div>
+          );
+        })}
 
         <div className="contact-form__field contact-form__field--full">
           <label htmlFor="details">Project details</label>
@@ -314,6 +221,12 @@ export function ContactForm() {
             type="checkbox"
             checked={values.consent}
             onChange={(event) => updateValue("consent", event.target.checked)}
+            onKeyDown={(event) => {
+              if (event.key === "Enter") {
+                event.preventDefault();
+                updateValue("consent", !event.currentTarget.checked);
+              }
+            }}
             onBlur={() => markTouched("consent")}
             aria-invalid={showError("consent")}
             aria-required="true"
@@ -336,7 +249,7 @@ export function ContactForm() {
         <p className="contact-form__note">
           Submitting the form will open an email draft to {destinationEmail}.
         </p>
-        <button className="content-page__button" type="submit">
+        <button className="button content-page__button" type="submit">
           Send enquiry
         </button>
       </div>

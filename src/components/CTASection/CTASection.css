@@ -8,11 +8,11 @@
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
-  gap: 32px;
+  gap: clamp(40px, 6vw, 80px);
   width: 100%;
   max-width: var(--page-max);
   margin: 0 auto;
-  padding: var(--page-pad-y) var(--page-pad-x);
+  padding: clamp(56px, 6vw, 80px) var(--page-pad-x);
 }
 
 .cta-section--reversed .cta-section__content {
@@ -27,7 +27,7 @@
 .cta-section__content {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 20px;
   max-width: 760px;
 }
 
@@ -35,7 +35,7 @@
   margin: 0;
   color: var(--color-gold);
   font-family: var(--font-display);
-  font-size: var(--type-h2);
+  font-size: clamp(40px, 4vw, 52px);
   font-weight: 700;
   letter-spacing: 0;
   line-height: var(--line-tight);
@@ -55,36 +55,6 @@
   justify-content: flex-end;
 }
 
-.cta-section__button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: min-content;
-  min-height: var(--button-min-height);
-  padding: var(--button-padding);
-  border: 2px solid var(--color-gold);
-  border-radius: 9999px;
-  background-color: var(--color-gold);
-  color: var(--color-dark-charcoal);
-  font-family: var(--font-display);
-  font-size: var(--button-font-size);
-  font-weight: 700;
-  letter-spacing: 0;
-  line-height: 1.5;
-  text-align: center;
-  text-decoration: none;
-  text-transform: uppercase;
-  white-space: nowrap;
-  transition:
-    color var(--transition-link),
-    background-color var(--transition-link);
-}
-
-.cta-section__button:hover {
-  background-color: transparent;
-  color: var(--color-gold);
-}
-
 .cta-section--light {
   background: var(--color-white);
   color: var(--color-charcoal);
@@ -99,15 +69,10 @@
   color: var(--color-white);
 }
 
-.cta-section--dark .cta-section__button:hover {
-  background-color: transparent;
-  color: var(--color-gold);
-}
-
 @media (max-width: 991.98px) {
   .cta-section__inner {
     grid-template-columns: 1fr;
-    gap: 24px;
+    gap: 28px;
   }
 
   .cta-section--reversed .cta-section__content,
@@ -122,6 +87,12 @@
 
 @media (max-width: 575.98px) {
   .cta-section__inner {
-    gap: 20px;
+    gap: 24px;
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+
+  .cta-section__title {
+    font-size: clamp(32px, 9vw, 38px);
   }
 }

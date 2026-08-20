@@ -99,7 +99,9 @@ export function Footer() {
             </div>
             <p className="site-footer__copyright">{siteInfo.copyright}</p>
             <p className="site-footer__registration">
-              Registered in England and Wales. Company no. 16746077.
+              Registered in England and Wales.
+              <br />
+              Company no. 16746077.
             </p>
           </div>
         </div>

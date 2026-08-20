@@ -1,75 +1,14 @@
 import { useEffect, useMemo, useRef } from "react";
+import {
+  getApiEnabledYouTubeSrc,
+  loadYouTubeIframeApi,
+  type YouTubePlayer,
+} from "../../lib/youtubeIframeApi";
 import "./ServiceDetailSection.css";
 
 type ServiceDetailSectionTheme = "light" | "dark" | "grey";
 
-type YouTubePlayer = {
-  pauseVideo: () => void;
-  destroy: () => void;
-};
-
-type YouTubePlayerEvent = {
-  target: YouTubePlayer;
-  data: number;
-};
-
-type YouTubeConstructor = new (
-  element: HTMLIFrameElement,
-  options: {
-    events: {
-      onStateChange: (event: YouTubePlayerEvent) => void;
-    };
-  },
-) => YouTubePlayer;
-
-declare global {
-  interface Window {
-    YT?: {
-      Player: YouTubeConstructor;
-      PlayerState: {
-        PLAYING: number;
-      };
-    };
-    onYouTubeIframeAPIReady?: () => void;
-  }
-}
-
-let youTubeApiPromise: Promise<void> | null = null;
 const activeYouTubePlayers = new Set<YouTubePlayer>();
-
-function loadYouTubeIframeApi() {
-  if (window.YT?.Player) {
-    return Promise.resolve();
-  }
-
-  if (!youTubeApiPromise) {
-    youTubeApiPromise = new Promise((resolve) => {
-      const previousCallback = window.onYouTubeIframeAPIReady;
-
-      window.onYouTubeIframeAPIReady = () => {
-        previousCallback?.();
-        resolve();
-      };
-
-      if (!document.querySelector('script[src="https://www.youtube.com/iframe_api"]')) {
-        const script = document.createElement("script");
-        script.src = "https://www.youtube.com/iframe_api";
-        document.head.appendChild(script);
-      }
-    });
-  }
-
-  return youTubeApiPromise;
-}
-
-function getApiEnabledYouTubeSrc(src: string) {
-  const url = new URL(src);
-
-  url.searchParams.set("enablejsapi", "1");
-  url.searchParams.set("origin", window.location.origin);
-
-  return url.toString();
-}
 
 function getEmbedProvider(src: string) {
   const hostname = new URL(src).hostname;
@@ -161,6 +100,8 @@ function ServiceDetailCardEmbed({ src, title }: ServiceDetailEmbed) {
 
       playerRef.current = player;
       activeYouTubePlayers.add(player);
+    }).catch(() => {
+      // The iframe remains usable even when API-based player coordination is unavailable.
     });
 
     return () => {

@@ -1,6 +1,6 @@
 @font-face {
   font-family: "Korolev Condensed Bold";
-  src: url("/signal-house-studios-website/fonts/korolev-condensed-bold.woff2") format("woff2");
+  src: url("/fonts/korolev-condensed-bold.woff2") format("woff2");
   font-display: swap;
   font-style: normal;
   font-weight: 700;
@@ -116,9 +116,13 @@ button {
   outline: none;
 }
 
-:where(a, button, input, select, textarea):focus-visible {
+:where(button, input, select, textarea):focus-visible {
   outline: 1px solid var(--color-gold);
   outline-offset: 3px;
+}
+
+a:focus-visible {
+  outline: none;
 }
 
 .visually-hidden {
@@ -135,24 +139,14 @@ button {
   top: 12px;
   left: 12px;
   z-index: 100;
-  padding: 10px 14px;
-  background: var(--color-white);
-  color: var(--color-charcoal);
-  font-family: var(--font-display);
-  font-size: var(--type-body);
-  font-weight: 700;
-  text-transform: uppercase;
   transform: translateY(-160%);
-  transition: transform var(--transition-link);
 }
 
 .skip-link:focus {
   transform: translateY(0);
 }
 
-.site-nav a.site-nav__cta,
-.site-nav-mobile a.site-nav__cta,
-.content-page__button {
+.button {
   display: inline-flex;
   flex: none;
   align-items: center;
@@ -175,21 +169,34 @@ button {
   text-transform: uppercase;
   white-space: nowrap;
   transition:
+    transform var(--transition-link),
     color var(--transition-link),
     background-color var(--transition-link);
 }
 
-.site-nav a.site-nav__cta:hover,
-.site-nav-mobile a.site-nav__cta:hover,
-.content-page__button:hover {
+.button:hover,
+.button:focus-visible {
+  outline: none;
   background-color: transparent;
   color: var(--color-gold);
   text-decoration: none;
 }
 
+@media (hover: none), (pointer: coarse) {
+  .button:hover:not(:focus-visible) {
+    background-color: var(--color-gold);
+    color: var(--color-dark-charcoal);
+  }
+}
+
 .site-main {
   min-height: 100vh;
   padding-top: var(--header-height);
+}
+
+.site-main:focus,
+.site-main h1:focus {
+  outline: none;
 }
 
 .content-page {
