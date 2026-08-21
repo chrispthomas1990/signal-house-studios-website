@@ -269,7 +269,6 @@
   transition: opacity var(--transition-link);
 }
 
-.site-footer__logo:hover,
 .site-footer__logo:focus-visible {
   opacity: 0.72;
 }
@@ -293,8 +292,7 @@
     color: var(--color-white);
   }
 
-  .footer-socials a:hover:not(:focus-visible),
-  .site-footer__logo:hover:not(:focus-visible) {
+  .footer-socials a:hover:not(:focus-visible) {
     opacity: 1;
   }
 }
