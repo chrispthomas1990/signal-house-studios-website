@@ -19,17 +19,53 @@ function Logo({ compact = false }: { compact?: boolean }) {
   );
 }
 
+function NavigationLabel({ label }: { label: string }) {
+  const [firstWord, ...remainingWords] = label.split(" ");
+
+  return (
+    <>
+      {firstWord}
+      {" "}
+      <br className="site-nav__responsive-break" aria-hidden="true" />
+      <span>{remainingWords.join(" ")}</span>
+    </>
+  );
+}
+
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const mobileNavRef = useRef<HTMLElement>(null);
+  const menuToggleRef = useRef<HTMLButtonElement>(null);
+  const wasMenuOpenRef = useRef(false);
 
   useEffect(() => {
     if (isMenuOpen) {
       mobileNavRef.current?.removeAttribute("inert");
-      return;
+      wasMenuOpenRef.current = true;
+
+      const frameId = window.requestAnimationFrame(() => {
+        mobileNavRef.current?.querySelector<HTMLAnchorElement>("a")?.focus();
+      });
+      const handleKeyDown = (event: KeyboardEvent) => {
+        if (event.key === "Escape") {
+          setIsMenuOpen(false);
+        }
+      };
+
+      window.addEventListener("keydown", handleKeyDown);
+
+      return () => {
+        window.cancelAnimationFrame(frameId);
+        window.removeEventListener("keydown", handleKeyDown);
+      };
     }
 
     mobileNavRef.current?.setAttribute("inert", "");
+
+    if (wasMenuOpenRef.current) {
+      menuToggleRef.current?.focus();
+      wasMenuOpenRef.current = false;
+    }
   }, [isMenuOpen]);
 
   function closeMenu() {
@@ -48,16 +84,19 @@ export function Header() {
         <nav className="site-nav site-nav--desktop" aria-label="Main navigation">
           {mainNavigation.map((item) => (
             <div key={item.href} className="site-nav__item">
-              <NavLink to={item.href}>{item.label}</NavLink>
+              <NavLink to={item.href} aria-label={item.label}>
+                <NavigationLabel label={item.label} />
+              </NavLink>
             </div>
           ))}
 
-          <NavLink to="/contact" className="site-nav__cta">
+          <NavLink to="/contact" className="button site-nav__cta">
             Let’s Talk
           </NavLink>
         </nav>
 
         <button
+          ref={menuToggleRef}
           className="menu-toggle"
           type="button"
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
@@ -80,13 +119,13 @@ export function Header() {
       >
         {mainNavigation.map((item) => (
           <div key={item.href} className="site-nav-mobile__item">
-            <NavLink to={item.href} onClick={closeMenu}>
-              {item.label}
+            <NavLink to={item.href} aria-label={item.label} onClick={closeMenu}>
+              <NavigationLabel label={item.label} />
             </NavLink>
           </div>
         ))}
 
-        <NavLink to="/contact" className="site-nav__cta" onClick={closeMenu}>
+        <NavLink to="/contact" className="button site-nav__cta" onClick={closeMenu}>
           Let’s Talk
         </NavLink>
       </nav>

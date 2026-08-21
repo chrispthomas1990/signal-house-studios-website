@@ -60,7 +60,7 @@ export function ThreeCardSection({
               <h3 className="three-card-section__card-title">{card.title}</h3>
               <p className="three-card-section__card-body">{card.body}</p>
               {card.buttonText && card.buttonHref ? (
-                <Link className="three-card-section__card-button" to={card.buttonHref}>
+                <Link className="button three-card-section__card-button" to={card.buttonHref}>
                   {card.buttonText}
                 </Link>
               ) : null}

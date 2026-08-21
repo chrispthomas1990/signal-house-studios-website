@@ -1,6 +1,5 @@
 import { NavLink } from "react-router-dom";
 import monogram from "../../assets/brand/shs-gold-monogram.svg";
-import emailIcon from "../../assets/icons/contact/shs-gold-email.svg";
 import locationIcon from "../../assets/icons/contact/shs-gold-location.svg";
 import phoneIcon from "../../assets/icons/contact/shs-gold-phone.svg";
 import facebookIcon from "../../assets/icons/social/shs-gold-facebook.svg";
@@ -61,15 +60,6 @@ export function Footer() {
                 />
                 <a href={`tel:${siteInfo.phoneHref}`}>{siteInfo.phone}</a>
               </div>
-              <div className="footer-contact__item">
-                <img
-                  className="footer-contact__icon--email"
-                  src={emailIcon}
-                  alt=""
-                  aria-hidden="true"
-                />
-                <a href={`mailto:${siteInfo.email}`}>{siteInfo.email}</a>
-              </div>
             </div>
           </div>
 
@@ -104,10 +94,15 @@ export function Footer() {
           </NavLink>
           <div className="site-footer__legal">
             <div className="site-footer__legal-links">
-              <NavLink to="/privacy-policy">Privacy Policy</NavLink>
-              <NavLink to="/cookie-policy">Cookie Policy</NavLink>
+              <NavLink to="/privacy-policy">Privacy policy</NavLink>
+              <NavLink to="/cookie-policy">Cookie policy</NavLink>
             </div>
             <p className="site-footer__copyright">{siteInfo.copyright}</p>
+            <p className="site-footer__registration">
+              Registered in England and Wales.
+              <br />
+              Company no. 16746077.
+            </p>
           </div>
         </div>
       </div>

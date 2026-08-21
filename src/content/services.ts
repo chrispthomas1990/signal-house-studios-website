@@ -1,23 +1,22 @@
-import preProductionIcon from "../assets/services/audio/shs-services-audio-pre-production.svg";
-import trackingIcon from "../assets/services/audio/shs-services-audio-tracking.svg";
-import drumProgrammingIcon from "../assets/services/audio/shs-services-audio-drum-programming.svg";
-import editingCompingIcon from "../assets/services/audio/shs-services-audio-editing-comping.svg";
-import reAmpingIcon from "../assets/services/audio/shs-services-audio-re-amping.svg";
-import mixingIcon from "../assets/services/audio/shs-services-audio-mixing.svg";
-import masteringIcon from "../assets/services/audio/shs-services-audio-mastering.svg";
-import videoAnimationIcon from "../assets/services/video/shs-services-video-animation.svg";
-import videoColourGradingIcon from "../assets/services/video/shs-services-video-colour-grading.svg";
-import videoDroneOperationIcon from "../assets/services/video/shs-services-video-drone-operation.svg";
-import videoEditingIcon from "../assets/services/video/shs-services-video-editing.svg";
-import videoFilmingIcon from "../assets/services/video/shs-services-video-filming.svg";
-import videoPhotographyIcon from "../assets/services/video/shs-services-video-photography.svg";
-import videoPreProductionIcon from "../assets/services/video/shs-services-video-pre-production.svg";
-import liveHybridEventsIcon from "../assets/services/live/shs-services-live-hybrid-events.svg";
-import liveInternalCommsIcon from "../assets/services/live/shs-services-live-internal-comms.svg";
-import liveLaunchesIcon from "../assets/services/live/shs-services-live-launches.svg";
-import livePanelsIcon from "../assets/services/live/shs-services-live-panels.svg";
-import livePerformancesIcon from "../assets/services/live/shs-services-live-performances.svg";
-import liveTrainingIcon from "../assets/services/live/shs-services-live-training.svg";
+import preProductionIcon from "../assets/icons/services/audio/shs-services-audio-pre-production.svg";
+import trackingIcon from "../assets/icons/services/audio/shs-services-audio-tracking.svg";
+import editingCompingIcon from "../assets/icons/services/audio/shs-services-audio-editing-comping.svg";
+import reAmpingIcon from "../assets/icons/services/audio/shs-services-audio-re-amping.svg";
+import mixingIcon from "../assets/icons/services/audio/shs-services-audio-mixing.svg";
+import masteringIcon from "../assets/icons/services/audio/shs-services-audio-mastering.svg";
+import videoAnimationIcon from "../assets/icons/services/video/shs-services-video-animation.svg";
+import videoColourGradingIcon from "../assets/icons/services/video/shs-services-video-colour-grading.svg";
+import videoDroneOperationIcon from "../assets/icons/services/video/shs-services-video-drone-operation.svg";
+import videoEditingIcon from "../assets/icons/services/video/shs-services-video-editing.svg";
+import videoFilmingIcon from "../assets/icons/services/video/shs-services-video-filming.svg";
+import videoPhotographyIcon from "../assets/icons/services/video/shs-services-video-photography.svg";
+import videoPreProductionIcon from "../assets/icons/services/video/shs-services-video-pre-production.svg";
+import liveHybridEventsIcon from "../assets/icons/services/live/shs-services-live-hybrid-events.svg";
+import liveInternalCommsIcon from "../assets/icons/services/live/shs-services-live-internal-comms.svg";
+import liveLaunchesIcon from "../assets/icons/services/live/shs-services-live-launches.svg";
+import livePanelsIcon from "../assets/icons/services/live/shs-services-live-panels.svg";
+import livePerformancesIcon from "../assets/icons/services/live/shs-services-live-performances.svg";
+import liveTrainingIcon from "../assets/icons/services/live/shs-services-live-training.svg";
 
 export const servicePageContent = {
   audioProduction: {
@@ -35,33 +34,6 @@ export const servicePageContent = {
         src: "https://embed.tidal.com/playlists/6ef56bda-2da3-431b-b083-651303e46c4b",
         title: "Signal House Studios TIDAL playlist",
       },
-      hasBottomDivider: true,
-      theme: "dark",
-    },
-    recentWork: {
-      eyebrow: "Recent sessions",
-      title: "Live sessions with studio-grade sound and visuals.",
-      body: "Watch recent audio and video work from Signal House Studios, including live sessions shaped around strong performances, polished sound and clean visual delivery.",
-      cards: [
-        {
-          title: "Harsh Language",
-          body: "Imperial Bedrooms",
-          videoEmbed: {
-            src: "https://www.youtube.com/embed/hPRJQFNQp0U?controls=0&iv_load_policy=3&modestbranding=1&playsinline=1&rel=0",
-            title: "Harsh Language - Imperial Bedrooms Live at Signal House Studios",
-          },
-        },
-        {
-          title: "Joseph Lofthouse",
-          body: "London",
-          videoEmbed: {
-            src: "https://www.youtube.com/embed/UoFN2eAFQkk?controls=0&iv_load_policy=3&modestbranding=1&playsinline=1&rel=0",
-            title: "Signal House Sessions presents Joseph Lofthouse - London",
-          },
-        },
-      ],
-      gridColumns: 2,
-      compactTopPadding: true,
       theme: "dark",
     },
     approach: {
@@ -72,6 +44,7 @@ export const servicePageContent = {
         "Depending on the project, tracking can happen at Signal House or across a range of suitable studios and spaces. That flexibility means the production can be shaped around budget, scale, instrumentation and the sound the record needs.",
       ],
       hasImagePlaceholder: true,
+      mediaOnLeft: true,
       theme: "light",
     },
     services: {
@@ -88,11 +61,6 @@ export const servicePageContent = {
           title: "Tracking",
           body: "Capture performances with the right room, microphones and signal chain for the project. Sessions can be built around the studio, or around other spaces when budget and requirements call for it.",
           iconSrc: trackingIcon,
-        },
-        {
-          title: "Drum programming",
-          body: "Program realistic, musical drum parts for demos, releases and productions where live drums are not the right fit.",
-          iconSrc: drumProgrammingIcon,
         },
         {
           title: "Editing & comping",

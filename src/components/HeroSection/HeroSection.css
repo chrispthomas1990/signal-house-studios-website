@@ -61,7 +61,7 @@
 
 .hero-section__image {
   overflow: hidden;
-  min-height: 420px;
+  height: var(--section-image-height);
   border-radius: 12px;
   background: var(--color-grey);
 }
@@ -103,9 +103,6 @@
     order: initial;
   }
 
-  .hero-section__image {
-    min-height: 340px;
-  }
 }
 
 @media (max-width: 575.98px) {
@@ -113,7 +110,4 @@
     gap: 16px;
   }
 
-  .hero-section__image {
-    min-height: 240px;
-  }
 }

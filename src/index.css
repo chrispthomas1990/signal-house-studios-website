@@ -1,6 +1,6 @@
 @font-face {
   font-family: "Korolev Condensed Bold";
-  src: url("/signal-house-studios-website/fonts/korolev-condensed-bold.woff2") format("woff2");
+  src: url("/fonts/korolev-condensed-bold.woff2") format("woff2");
   font-display: swap;
   font-style: normal;
   font-weight: 700;
@@ -31,10 +31,14 @@
   --page-pad-x: 18px;
   --page-pad-y: 48px;
   --header-height: 82px;
+  --section-image-height: clamp(300px, 34vw, 420px);
   --ease-standard: cubic-bezier(0.44, 0, 0.56, 1);
   --transition-link: 250ms var(--ease-standard);
   --transition-menu: 300ms var(--ease-standard);
   --transition-icon: 180ms ease;
+  --button-min-height: 42px;
+  --button-padding: 7px 18px 9px;
+  --button-font-size: 20px;
   --type-h1: 40px;
   --type-h2: 34px;
   --type-h3: 28px;
@@ -112,9 +116,13 @@ button {
   outline: none;
 }
 
-:where(a, button, input, select, textarea):focus-visible {
+:where(button, input, select, textarea):focus-visible {
   outline: 1px solid var(--color-gold);
   outline-offset: 3px;
+}
+
+a:focus-visible {
+  outline: none;
 }
 
 .visually-hidden {
@@ -131,38 +139,28 @@ button {
   top: 12px;
   left: 12px;
   z-index: 100;
-  padding: 10px 14px;
-  background: var(--color-white);
-  color: var(--color-charcoal);
-  font-family: var(--font-display);
-  font-size: var(--type-body);
-  font-weight: 700;
-  text-transform: uppercase;
   transform: translateY(-160%);
-  transition: transform var(--transition-link);
 }
 
 .skip-link:focus {
   transform: translateY(0);
 }
 
-.site-nav a.site-nav__cta,
-.site-nav-mobile a.site-nav__cta,
-.content-page__button {
+.button {
   display: inline-flex;
   flex: none;
   align-items: center;
   justify-content: center;
   width: min-content;
-  min-height: 46px;
-  padding: 10px 22px 12px;
+  min-height: var(--button-min-height);
+  padding: var(--button-padding);
   border: 2px solid var(--color-gold);
   border-radius: 9999px;
-  background-color: transparent;
-  color: var(--color-gold);
+  background-color: var(--color-gold);
+  color: var(--color-dark-charcoal);
   cursor: pointer;
   font-family: var(--font-display);
-  font-size: 20px;
+  font-size: var(--button-font-size);
   font-weight: 700;
   letter-spacing: 0;
   line-height: 1.5;
@@ -171,21 +169,34 @@ button {
   text-transform: uppercase;
   white-space: nowrap;
   transition:
+    transform var(--transition-link),
     color var(--transition-link),
     background-color var(--transition-link);
 }
 
-.site-nav a.site-nav__cta:hover,
-.site-nav-mobile a.site-nav__cta:hover,
-.content-page__button:hover {
-  background-color: var(--color-gold);
-  color: var(--color-white);
+.button:hover,
+.button:focus-visible {
+  outline: none;
+  background-color: transparent;
+  color: var(--color-gold);
   text-decoration: none;
+}
+
+@media (hover: none), (pointer: coarse) {
+  .button:hover:not(:focus-visible) {
+    background-color: var(--color-gold);
+    color: var(--color-dark-charcoal);
+  }
 }
 
 .site-main {
   min-height: 100vh;
   padding-top: var(--header-height);
+}
+
+.site-main:focus,
+.site-main h1:focus {
+  outline: none;
 }
 
 .content-page {

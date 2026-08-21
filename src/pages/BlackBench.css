@@ -1,0 +1,9 @@
+.black-bench-page {
+  min-height: calc(100vh - var(--header-height));
+  padding: var(--page-pad-y) var(--page-pad-x);
+  background: var(--color-charcoal);
+}
+
+.black-bench-page p {
+  color: var(--color-white);
+}

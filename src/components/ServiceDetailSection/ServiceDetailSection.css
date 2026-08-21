@@ -20,6 +20,17 @@
   align-items: center;
 }
 
+.service-detail-section--media-left .service-detail-section__intro {
+  grid-column: 2;
+}
+
+.service-detail-section--media-left .service-detail-section__embed,
+.service-detail-section--media-left .service-detail-section__image,
+.service-detail-section--media-left .service-detail-section__image-placeholder {
+  grid-column: 1;
+  grid-row: 1;
+}
+
 .service-detail-section--has-bottom-divider .service-detail-section__inner {
   padding-bottom: 0;
 }
@@ -31,7 +42,7 @@
 .service-detail-section__divider {
   grid-column: 1 / -1;
   width: 100%;
-  height: 2px;
+  height: 1px;
   background: var(--color-gold);
 }
 
@@ -96,11 +107,20 @@
   background: #000;
 }
 
-.service-detail-section__image-placeholder {
+.service-detail-section__image-placeholder,
+.service-detail-section__image {
+  overflow: hidden;
   width: 100%;
-  min-height: 420px;
+  height: var(--section-image-height);
   border-radius: 12px;
   background: var(--color-grey);
+}
+
+.service-detail-section__image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .service-detail-section__grid {
@@ -150,11 +170,20 @@
   object-fit: contain;
 }
 
-.service-detail-section__card-image-placeholder {
+.service-detail-section__card-image-placeholder,
+.service-detail-section__card-image {
+  overflow: hidden;
   width: 100%;
   aspect-ratio: 16 / 10;
   border-radius: 8px;
   background: var(--color-grey);
+}
+
+.service-detail-section__card-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .service-detail-section__card-video {
@@ -213,13 +242,20 @@
     align-items: stretch;
   }
 
+  .service-detail-section--media-left .service-detail-section__intro,
+  .service-detail-section--media-left .service-detail-section__embed,
+  .service-detail-section--media-left .service-detail-section__image,
+  .service-detail-section--media-left .service-detail-section__image-placeholder {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
   .service-detail-section__grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .service-detail-section__embed,
-  .service-detail-section__embed iframe,
-  .service-detail-section__image-placeholder {
+  .service-detail-section__embed iframe {
     min-height: 300px;
     height: 300px;
   }
@@ -241,8 +277,7 @@
   }
 
   .service-detail-section__embed,
-  .service-detail-section__embed iframe,
-  .service-detail-section__image-placeholder {
+  .service-detail-section__embed iframe {
     min-height: 400px;
     height: 400px;
   }
