@@ -1,10 +1,24 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { selectHeroVideo } from "./videoSources";
 import "./VideoHeroMedia.css";
 
+const mobileVideoQuery = "(max-width: 360px)";
+
 export function VideoHeroMedia() {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const heroVideoSrc = selectHeroVideo();
+  const [isMobile, setIsMobile] = useState(() =>
+    window.matchMedia(mobileVideoQuery).matches,
+  );
+  const heroVideoSrc = selectHeroVideo(isMobile);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia(mobileVideoQuery);
+    const handleViewportChange = (event: MediaQueryListEvent) => setIsMobile(event.matches);
+
+    mediaQuery.addEventListener("change", handleViewportChange);
+
+    return () => mediaQuery.removeEventListener("change", handleViewportChange);
+  }, []);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -17,7 +31,7 @@ export function VideoHeroMedia() {
     } else {
       void video.play().catch(() => undefined);
     }
-  }, []);
+  }, [heroVideoSrc]);
 
   return (
     <video
