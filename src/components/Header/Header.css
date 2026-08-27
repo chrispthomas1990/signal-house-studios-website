@@ -6,7 +6,7 @@
   z-index: 20;
   height: var(--header-height);
   border-bottom: 2px solid var(--color-gold);
-  background: var(--color-charcoal);
+  background: var(--color-dark-charcoal);
 }
 
 .site-header__inner {

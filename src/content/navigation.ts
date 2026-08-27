@@ -11,10 +11,6 @@ export const mainNavigation = [
     label: "Audio Production",
     href: "/audio-production",
   },
-  {
-    label: "Black Bench",
-    href: "/black-bench",
-  },
 ];
 
 export const footerNavigation = [

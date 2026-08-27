@@ -93,6 +93,12 @@ export function Header() {
           <NavLink to="/contact" className="button site-nav__cta">
             Let’s Talk
           </NavLink>
+
+          <div className="site-nav__item">
+            <NavLink to="/black-bench" aria-label="Black Bench">
+              <NavigationLabel label="Black Bench" />
+            </NavLink>
+          </div>
         </nav>
 
         <button
@@ -128,6 +134,12 @@ export function Header() {
         <NavLink to="/contact" className="button site-nav__cta" onClick={closeMenu}>
           Let’s Talk
         </NavLink>
+
+        <div className="site-nav-mobile__item">
+          <NavLink to="/black-bench" aria-label="Black Bench" onClick={closeMenu}>
+            <NavigationLabel label="Black Bench" />
+          </NavLink>
+        </div>
       </nav>
     </header>
   );
