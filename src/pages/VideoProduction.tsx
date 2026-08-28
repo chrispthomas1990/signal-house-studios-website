@@ -96,12 +96,23 @@ export function VideoProduction() {
           </div>
           <div className="video-page__copy">
             <p className="video-page__eyebrow">The team</p>
-            <h2 id="video-team-title">The people behind the work.</h2>
+            <h2 id="video-team-title">
+              <strong>Two Sides of the Same Studio.</strong>
+            </h2>
             <p>
-              Couple-owned and led by Tim and Annie, Signal House Studios brings a personal,
-              collaborative approach to every production. Together, they combine creative thinking,
-              technical expertise and a shared commitment to making work that connects with its
-              audience.
+              We share the same vision, standards, and work ethic—but the magic happens in how our
+              individual skill sets cross paths.
+            </p>
+            <p>
+              <strong>Tim</strong> brings technical ambition grounded in real-world execution. With a
+              background in engineering, project management, and production, he’s built to push
+              creative boundaries while keeping high-stakes projects running seamlessly.
+            </p>
+            <p>
+              <strong>Annie</strong> grounds the work in story, aesthetic, and meticulous detail.
+              Drawing on her experience in product development, studio photography, and interiors,
+              she excels at capturing the true character of people and places, ensuring every frame
+              feels intentional.
             </p>
           </div>
         </div>

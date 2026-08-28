@@ -1,0 +1,26 @@
+.black-bench-mark {
+  display: block;
+  width: 100px;
+  background-color: var(--color-gold);
+  -webkit-mask: url("../../assets/brand/black-bench-logo.svg") center / contain no-repeat;
+  mask: url("../../assets/brand/black-bench-logo.svg") center / contain no-repeat;
+}
+
+.black-bench-mark img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: opacity var(--transition-link);
+}
+
+a:hover .black-bench-mark img,
+a:focus-visible .black-bench-mark img,
+a.active .black-bench-mark img {
+  opacity: 0;
+}
+
+@media (hover: none), (pointer: coarse) {
+  a:not(.active):hover:not(:focus-visible) .black-bench-mark img {
+    opacity: 1;
+  }
+}

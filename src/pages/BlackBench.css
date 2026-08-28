@@ -1,9 +1,15 @@
 .black-bench-page {
+  display: flex;
+  justify-content: center;
   min-height: calc(100vh - var(--header-height));
   padding: var(--page-pad-y) var(--page-pad-x);
   background: var(--color-charcoal);
 }
 
-.black-bench-page p {
-  color: var(--color-white);
+.black-bench-page__placeholder {
+  display: block;
+  width: 100%;
+  max-width: 520px;
+  height: auto;
+  align-self: flex-start;
 }

@@ -42,7 +42,7 @@ const selectFields = [
   {
     name: "projectType",
     label: "Project type",
-    options: ["Audio production", "Video production", "Live streaming", "Mixed project"],
+    options: ["Video production", "Live streaming", "Audio production", "Mixed project"],
   },
   {
     name: "timeline",

@@ -27,10 +27,6 @@ export const footerNavigation = [
     href: "/audio-production",
   },
   {
-    label: "Black Bench",
-    href: "/black-bench",
-  },
-  {
     label: "Contact",
     href: "/contact",
   },

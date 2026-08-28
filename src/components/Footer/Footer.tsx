@@ -8,6 +8,7 @@ import tidalIcon from "../../assets/icons/social/shs-gold-tidal.svg";
 import youtubeIcon from "../../assets/icons/social/shs-gold-youtube.svg";
 import { footerNavigation } from "../../content/navigation";
 import { siteInfo } from "../../content/siteInfo";
+import { BlackBenchLogo } from "../BlackBenchLogo/BlackBenchLogo";
 import "./Footer.css";
 
 const socialIcons: Record<string, string> = {
@@ -31,6 +32,13 @@ export function Footer() {
                   {item.label}
                 </NavLink>
               ))}
+              <NavLink
+                to="/black-bench"
+                className="footer-nav__black-bench"
+                aria-label="Black Bench"
+              >
+                <BlackBenchLogo />
+              </NavLink>
             </nav>
           </div>
 

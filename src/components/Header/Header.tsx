@@ -4,6 +4,7 @@ import logo from "../../assets/brand/shs-gold-logo.svg";
 import monogram from "../../assets/brand/shs-gold-monogram.svg";
 import { mainNavigation } from "../../content/navigation";
 import { siteInfo } from "../../content/siteInfo";
+import { BlackBenchLogo } from "../BlackBenchLogo/BlackBenchLogo";
 import "./Header.css";
 
 function Logo({ compact = false }: { compact?: boolean }) {
@@ -16,19 +17,6 @@ function Logo({ compact = false }: { compact?: boolean }) {
         aria-hidden="true"
       />
     </span>
-  );
-}
-
-function NavigationLabel({ label }: { label: string }) {
-  const [firstWord, ...remainingWords] = label.split(" ");
-
-  return (
-    <>
-      {firstWord}
-      {" "}
-      <br className="site-nav__responsive-break" aria-hidden="true" />
-      <span>{remainingWords.join(" ")}</span>
-    </>
   );
 }
 
@@ -85,7 +73,7 @@ export function Header() {
           {mainNavigation.map((item) => (
             <div key={item.href} className="site-nav__item">
               <NavLink to={item.href} aria-label={item.label}>
-                <NavigationLabel label={item.label} />
+                {item.label}
               </NavLink>
             </div>
           ))}
@@ -95,8 +83,8 @@ export function Header() {
           </NavLink>
 
           <div className="site-nav__item">
-            <NavLink to="/black-bench" aria-label="Black Bench">
-              <NavigationLabel label="Black Bench" />
+            <NavLink to="/black-bench" aria-label="Black Bench" className="black-bench-link">
+              <BlackBenchLogo className="black-bench-logo" />
             </NavLink>
           </div>
         </nav>
@@ -126,7 +114,7 @@ export function Header() {
         {mainNavigation.map((item) => (
           <div key={item.href} className="site-nav-mobile__item">
             <NavLink to={item.href} aria-label={item.label} onClick={closeMenu}>
-              <NavigationLabel label={item.label} />
+              {item.label}
             </NavLink>
           </div>
         ))}
@@ -136,8 +124,13 @@ export function Header() {
         </NavLink>
 
         <div className="site-nav-mobile__item">
-          <NavLink to="/black-bench" aria-label="Black Bench" onClick={closeMenu}>
-            <NavigationLabel label="Black Bench" />
+          <NavLink
+            to="/black-bench"
+            aria-label="Black Bench"
+            className="black-bench-link"
+            onClick={closeMenu}
+          >
+            <BlackBenchLogo className="black-bench-logo" />
           </NavLink>
         </div>
       </nav>
