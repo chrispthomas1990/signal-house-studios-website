@@ -20,6 +20,12 @@ Object.defineProperty(window, "matchMedia", {
 
 window.scrollTo = vi.fn();
 
+Object.defineProperties(HTMLMediaElement.prototype, {
+  load: { configurable: true, value: vi.fn() },
+  pause: { configurable: true, value: vi.fn() },
+  play: { configurable: true, value: vi.fn().mockResolvedValue(undefined) },
+});
+
 class ResizeObserverMock implements ResizeObserver {
   observe() {}
   unobserve() {}

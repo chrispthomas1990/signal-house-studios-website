@@ -1,9 +1,18 @@
 .video-hero__media {
   width: 100%;
+  aspect-ratio: 1720 / 720;
+  background: var(--color-dark-charcoal);
 }
 
 .video-hero__media video {
   display: block;
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: contain;
+}
+
+@media (max-width: 360px) {
+  .video-hero__media {
+    aspect-ratio: 4 / 5;
+  }
 }

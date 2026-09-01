@@ -4,13 +4,6 @@ import editingCompingIcon from "../assets/icons/services/audio/shs-services-audi
 import reAmpingIcon from "../assets/icons/services/audio/shs-services-audio-re-amping.svg";
 import mixingIcon from "../assets/icons/services/audio/shs-services-audio-mixing.svg";
 import masteringIcon from "../assets/icons/services/audio/shs-services-audio-mastering.svg";
-import videoAnimationIcon from "../assets/icons/services/video/shs-services-video-animation.svg";
-import videoColourGradingIcon from "../assets/icons/services/video/shs-services-video-colour-grading.svg";
-import videoDroneOperationIcon from "../assets/icons/services/video/shs-services-video-drone-operation.svg";
-import videoEditingIcon from "../assets/icons/services/video/shs-services-video-editing.svg";
-import videoFilmingIcon from "../assets/icons/services/video/shs-services-video-filming.svg";
-import videoPhotographyIcon from "../assets/icons/services/video/shs-services-video-photography.svg";
-import videoPreProductionIcon from "../assets/icons/services/video/shs-services-video-pre-production.svg";
 import liveHybridEventsIcon from "../assets/icons/services/live/shs-services-live-hybrid-events.svg";
 import liveInternalCommsIcon from "../assets/icons/services/live/shs-services-live-internal-comms.svg";
 import liveLaunchesIcon from "../assets/icons/services/live/shs-services-live-launches.svg";
@@ -94,152 +87,18 @@ export const servicePageContent = {
           title: "Live room & vocal booth",
           body: "A large live room with an isolated vocal booth, independent stage boxes and adjustable acoustic panels for more reflective or absorptive tones.",
           hasImagePlaceholder: true,
+          hideCopy: true,
         },
         {
           title: "Control room",
           body: "A central production space built around Cubase Pro, Universal Audio Apollo conversion, Adam Audio S3V monitoring and a wide choice of preamps and outboard.",
           hasImagePlaceholder: true,
-        },
-        {
-          title: "Kitchen & lounge",
-          body: "A comfortable upstairs space for writing, admin, breaks and longer sessions where artists need room to reset between takes.",
-          hasImagePlaceholder: true,
+          hideCopy: true,
         },
       ],
       borderlessCards: true,
-      theme: "light",
-    },
-  },
-  videoProduction: {
-    hero: {
-      eyebrow: "Video Production",
-      title: "Strategy-led video production for brands, campaigns and content that needs to land.",
-      body: "Signal House Studios creates corporate films, music visuals, campaign content and short form deliverables with a clear focus on story, audience and platform.",
-      theme: "light",
-    },
-    recentWork: {
-      eyebrow: "Video showreel",
-      title: "Selected clients and campaigns.",
-      cards: [
-        {
-          title: "LBG",
-          body: "Tech Transformations",
-          videoEmbed: {
-            src: "https://player.vimeo.com/video/719858014?h=d7cd956213&loop=false&byline=false&portrait=false&title=false&speed=true&transparent=0&gesture=media",
-            title: "LBG - Tech Transformations",
-          },
-        },
-        {
-          title: "Newton",
-          body: "My Unexpected Journey",
-          videoEmbed: {
-            src: "https://player.vimeo.com/video/681820522?h=7969bef0c7&loop=false&byline=false&portrait=false&title=false&speed=true&transparent=0&gesture=media",
-            title: "Newton - My Unexpected Journey",
-          },
-        },
-        {
-          title: "UKCSD",
-          body: "Scent Dog Training Academy",
-          videoEmbed: {
-            src: "https://player.vimeo.com/video/656592122?h=301c04fe8e&loop=false&byline=false&portrait=false&title=false&speed=true&transparent=0&gesture=media",
-            title: "UKCSD - Scent Dog Training Academy",
-          },
-        },
-        {
-          title: "Aviva",
-          body: "Apprentice Careers Campaign",
-          videoEmbed: {
-            src: "https://player.vimeo.com/video/666117043?h=85fc2b3ea4&loop=false&byline=false&portrait=false&title=false&speed=true&transparent=0&gesture=media",
-            title: "Aviva - Apprentice Careers Campaign",
-          },
-        },
-        {
-          title: "TJX",
-          body: "Early Careers",
-          videoEmbed: {
-            src: "https://player.vimeo.com/video/742857918?h=613f526c7c&loop=false&byline=false&portrait=false&title=false&speed=true&transparent=0&gesture=media",
-            title: "TJX - Early Careers",
-          },
-        },
-        {
-          title: "Let Golf",
-          body: "Womens Qualifiers",
-          videoEmbed: {
-            src: "https://player.vimeo.com/video/615908117?h=aaa41b8359&loop=false&byline=false&portrait=false&title=false&speed=true&transparent=0&gesture=media",
-            title: "LET Golf - Womens Qualifiers",
-          },
-        },
-      ],
       gridColumns: 2,
-      compactTopPadding: true,
-      theme: "dark",
-    },
-    approach: {
-      eyebrow: "The approach",
-      title: "Shape the message first, then build the shoot around what the film needs to do.",
-      body: [
-        "Strong video starts before anyone picks up a camera. We help define the audience, message, format and delivery plan first, so the shoot has a clear purpose and every setup is tied to the final output.",
-        "That approach keeps the work useful after the shoot day. Interviews, cutdowns, social edits, campaign films and internal content can all be planned together, giving the footage more range without losing focus.",
-      ],
-      hasImagePlaceholder: true,
       theme: "light",
-    },
-    services: {
-      eyebrow: "Services",
-      title: "Video production support from strategy to final delivery.",
-      cards: [
-        {
-          title: "Pre-production",
-          body: "Define the message, audience, deliverables and schedule before cameras roll so the content is built around the goal, not just the shoot day.",
-          iconSrc: videoPreProductionIcon,
-        },
-        {
-          title: "Filming",
-          body: "Capture interviews, corporate stories, music visuals, event content and promotional films with a cinematic but efficient production workflow.",
-          iconSrc: videoFilmingIcon,
-        },
-        {
-          title: "Editing",
-          body: "Shape a strong narrative, build cutdowns and version content for different platforms without losing clarity or impact.",
-          iconSrc: videoEditingIcon,
-        },
-        {
-          title: "Colour grading",
-          body: "Finish with a consistent grade that supports the mood, the brand and the intended platform, from clean corporate looks to more stylised finishes.",
-          iconSrc: videoColourGradingIcon,
-        },
-        {
-          title: "Drone operation",
-          body: "Add aerial shots where they genuinely elevate the film and help the viewer understand scale, location or movement.",
-          iconSrc: videoDroneOperationIcon,
-        },
-        {
-          title: "Animation",
-          body: "Create motion graphics, titles, captions and simple animated elements to support the story and improve accessibility.",
-          iconSrc: videoAnimationIcon,
-        },
-        {
-          title: "Photography",
-          body: "Capture stills, BTS, headshots or product imagery alongside the moving image work for a joined-up content package.",
-          iconSrc: videoPhotographyIcon,
-        },
-      ],
-      theme: "dark",
-    },
-    corporateTailored: {
-      eyebrow: "Corporate tailored",
-      title: "Tailored for internal comms, campaigns, socials and client-facing content.",
-      body: [
-        "A corporate film does not need to feel generic. The right edit, pacing, framing and sound design can make the message feel far more considered and credible.",
-        "We can adapt the process around the brief, whether the output is a polished brand film, a series of social assets, a training piece or a more cinematic campaign.",
-      ],
-      theme: "light",
-    },
-    clients: {
-      eyebrow: "Our clients",
-      title: "Trusted by brands, agencies and organisations with messages that need to land clearly.",
-      hasImagePlaceholder: true,
-      theme: "dark",
     },
   },
   liveStreaming: {

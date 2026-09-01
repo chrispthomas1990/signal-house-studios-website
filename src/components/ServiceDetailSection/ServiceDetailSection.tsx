@@ -31,6 +31,7 @@ function getEmbedProvider(src: string) {
 type ServiceDetailCard = {
   title: string;
   body: string;
+  hideCopy?: boolean;
   hasImagePlaceholder?: boolean;
   imageSrc?: string;
   imageAlt?: string;
@@ -202,10 +203,12 @@ export function ServiceDetailSection({
                 className={[
                   "service-detail-section__card",
                   card.videoEmbed ? "service-detail-section__card--video" : "",
+                  card.hideCopy ? "service-detail-section__card--image-only" : "",
                 ]
                   .filter(Boolean)
                   .join(" ")}
                 key={card.title}
+                aria-label={card.hideCopy ? card.title : undefined}
               >
                 {card.imageSrc ? (
                   <div className="service-detail-section__card-image">
@@ -235,8 +238,12 @@ export function ServiceDetailSection({
                     aria-hidden={card.iconAlt ? undefined : "true"}
                   />
                 ) : null}
-                <h3>{card.title}</h3>
-                <p>{card.body}</p>
+                {card.hideCopy ? null : (
+                  <>
+                    <h3>{card.title}</h3>
+                    <p>{card.body}</p>
+                  </>
+                )}
               </article>
             ))}
           </div>

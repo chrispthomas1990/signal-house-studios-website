@@ -154,6 +154,11 @@
   border: 0;
 }
 
+.service-detail-section__card--image-only {
+  gap: 0;
+  min-height: 0;
+}
+
 .service-detail-section__card--video h3 + p {
   margin-top: -8px;
 }
