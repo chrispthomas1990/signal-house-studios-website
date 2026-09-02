@@ -9,6 +9,7 @@ type HeroSectionProps = {
   body: string;
   imageSrc?: string;
   imageAlt?: string;
+  imagePosition?: string;
   headingLevel?: HeroSectionHeadingLevel;
   theme?: HeroSectionTheme;
   reversed?: boolean;
@@ -20,6 +21,7 @@ export function HeroSection({
   body,
   imageSrc,
   imageAlt,
+  imagePosition,
   headingLevel = "h1",
   theme = "light",
   reversed = false,
@@ -41,6 +43,7 @@ export function HeroSection({
             <img
               src={imageSrc}
               alt={imageAlt ?? ""}
+              style={imagePosition ? { objectPosition: imagePosition } : undefined}
               decoding="async"
               fetchPriority={headingLevel === "h1" ? "high" : "auto"}
             />

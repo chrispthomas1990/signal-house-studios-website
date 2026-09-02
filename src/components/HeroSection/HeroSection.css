@@ -63,7 +63,7 @@
   overflow: hidden;
   height: var(--section-image-height);
   border-radius: 12px;
-  background: var(--color-grey);
+  background: var(--color-white);
 }
 
 .hero-section__image img {

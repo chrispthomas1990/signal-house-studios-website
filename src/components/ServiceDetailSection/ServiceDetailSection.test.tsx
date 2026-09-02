@@ -24,4 +24,32 @@ describe("ServiceDetailSection image-only cards", () => {
     expect(screen.queryByText("Hidden description")).not.toBeInTheDocument();
     expect(container.querySelector(".service-detail-section__card-image-placeholder")).toBeInTheDocument();
   });
+
+  it("applies independent focal positions to section and card images", () => {
+    render(
+      <ServiceDetailSection
+        eyebrow="The studio"
+        title="Studio spaces"
+        imageSrc="section.webp"
+        imageAlt="Section image"
+        imagePosition="center 25%"
+        cards={[
+          {
+            title: "Control room",
+            body: "Control room description",
+            imageSrc: "card.webp",
+            imageAlt: "Card image",
+            imagePosition: "center 45%",
+          },
+        ]}
+      />,
+    );
+
+    expect(screen.getByRole("img", { name: "Section image" })).toHaveStyle({
+      objectPosition: "center 25%",
+    });
+    expect(screen.getByRole("img", { name: "Card image" })).toHaveStyle({
+      objectPosition: "center 45%",
+    });
+  });
 });

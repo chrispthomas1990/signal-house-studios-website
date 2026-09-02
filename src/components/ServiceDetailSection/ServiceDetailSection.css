@@ -113,7 +113,14 @@
   width: 100%;
   height: var(--section-image-height);
   border-radius: 12px;
+}
+
+.service-detail-section__image-placeholder {
   background: var(--color-grey);
+}
+
+.service-detail-section__image {
+  background: var(--color-white);
 }
 
 .service-detail-section__image img {
@@ -181,7 +188,14 @@
   width: 100%;
   aspect-ratio: 16 / 10;
   border-radius: 8px;
+}
+
+.service-detail-section__card-image-placeholder {
   background: var(--color-grey);
+}
+
+.service-detail-section__card-image {
+  background: var(--color-white);
 }
 
 .service-detail-section__card-image img {

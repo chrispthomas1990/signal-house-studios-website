@@ -116,7 +116,7 @@
   width: 100%;
   height: var(--section-image-height);
   border-radius: 12px;
-  background: var(--color-grey);
+  background: var(--color-white);
 }
 
 .video-positioning__image img,

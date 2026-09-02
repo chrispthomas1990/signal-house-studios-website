@@ -10,6 +10,13 @@ import liveLaunchesIcon from "../assets/icons/services/live/shs-services-live-la
 import livePanelsIcon from "../assets/icons/services/live/shs-services-live-panels.svg";
 import livePerformancesIcon from "../assets/icons/services/live/shs-services-live-performances.svg";
 import liveTrainingIcon from "../assets/icons/services/live/shs-services-live-training.svg";
+import audioProductionEquipmentImage from "../assets/images/pages/audio/audio-production-equipment.webp";
+import vocalRecordingSessionImage from "../assets/images/pages/audio/vocal-recording-session.webp";
+import recordingStudioControlRoomImage from "../assets/images/pages/audio/recording-studio-control-room.webp";
+import recordingStudioLoungeImage from "../assets/images/pages/audio/recording-studio-lounge.webp";
+import liveStreamingCameraSetupImage from "../assets/images/pages/live/live-streaming-camera-setup.webp";
+import liveStreamingCameraMonitorImage from "../assets/images/pages/live/live-streaming-camera-monitor.webp";
+import liveStreamingInterviewProductionImage from "../assets/images/pages/live/live-streaming-interview-production.webp";
 
 export const servicePageContent = {
   audioProduction: {
@@ -17,6 +24,9 @@ export const servicePageContent = {
       eyebrow: "Audio Production",
       title: "Recording, production, mixing and mastering.",
       body: "For artists who want a focused studio process, strong creative direction and records that feel deliberate from the first take to the final master.",
+      imageSrc: audioProductionEquipmentImage,
+      imageAlt: "Audio production equipment in use at Signal House Studios",
+      imagePosition: "center 50%",
       theme: "light",
     },
     audioShowreel: {
@@ -36,7 +46,9 @@ export const servicePageContent = {
         "The aim is to help new and established artists create records that feel unique, focused and fully realised. Sessions are designed to make people feel comfortable, creative and ready to perform at their best.",
         "Depending on the project, tracking can happen at Signal House or across a range of suitable studios and spaces. That flexibility means the production can be shaped around budget, scale, instrumentation and the sound the record needs.",
       ],
-      hasImagePlaceholder: true,
+      imageSrc: vocalRecordingSessionImage,
+      imageAlt: "Vocalist performing during a recording session",
+      imagePosition: "center 25%",
       mediaOnLeft: true,
       theme: "light",
     },
@@ -84,15 +96,19 @@ export const servicePageContent = {
       body: "Signal House combines treated recording spaces, a flexible control room, analogue outboard, a deep microphone collection and comfortable areas for writing and downtime.",
       cards: [
         {
-          title: "Live room & vocal booth",
-          body: "A large live room with an isolated vocal booth, independent stage boxes and adjustable acoustic panels for more reflective or absorptive tones.",
-          hasImagePlaceholder: true,
+          title: "Control room",
+          body: "A central production space built around Cubase Pro, Universal Audio Apollo conversion, Adam Audio S3V monitoring and a wide choice of preamps and outboard.",
+          imageSrc: recordingStudioControlRoomImage,
+          imageAlt: "Signal House Studios control room and recording equipment",
+          imagePosition: "center 45%",
           hideCopy: true,
         },
         {
-          title: "Control room",
-          body: "A central production space built around Cubase Pro, Universal Audio Apollo conversion, Adam Audio S3V monitoring and a wide choice of preamps and outboard.",
-          hasImagePlaceholder: true,
+          title: "Studio lounge",
+          body: "A comfortable space for writing, listening and taking a break during longer recording and production sessions.",
+          imageSrc: recordingStudioLoungeImage,
+          imageAlt: "A comfortable lounge corner at Signal House Studios",
+          imagePosition: "center 35%",
           hideCopy: true,
         },
       ],
@@ -106,6 +122,9 @@ export const servicePageContent = {
       eyebrow: "Live Streaming",
       title: "Live streaming for launches, performances and events that need to reach people in real time.",
       body: "Signal House Studios plans and delivers live broadcasts with a focus on clarity, stability and a result that still works after the stream ends.",
+      imageSrc: liveStreamingCameraMonitorImage,
+      imageAlt: "Production camera monitor displaying a live performance",
+      imagePosition: "center 18%",
       theme: "light",
     },
     approach: {
@@ -115,7 +134,9 @@ export const servicePageContent = {
         "Live content needs more than a camera and a platform. The broadcast needs a clear technical route, a run of show, audio that actually carries the message and enough rehearsal time to remove unnecessary stress from the day.",
         "We are also direct about scale and limitations. A one-camera stream, a multi-camera production and a hybrid event all demand different levels of crew, connection, monitoring and backup planning, so the right setup depends on the venue, budget and delivery requirement.",
       ],
-      hasImagePlaceholder: true,
+      imageSrc: liveStreamingCameraSetupImage,
+      imageAlt: "Camera operator preparing a professional multi-camera production setup",
+      imagePosition: "center 30%",
       theme: "dark",
     },
     whyItMatters: {
@@ -171,7 +192,9 @@ export const servicePageContent = {
         "Depending on the brief, the stream can be configured for YouTube Live, Vimeo, Zoom, Teams or a private RTMP destination. OBS-style workflows, switchers and capture paths can be matched to the scale of the job rather than forcing every event through the same setup.",
         "The main decision is not just where the stream goes, but how much control the client needs over the broadcast, the latency and the downstream use of the recording.",
       ],
-      hasImagePlaceholder: true,
+      imageSrc: liveStreamingInterviewProductionImage,
+      imageAlt: "Camera crew filming a live interview production",
+      imagePosition: "center 40%",
       theme: "light",
     },
   },

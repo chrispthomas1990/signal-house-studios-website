@@ -1,8 +1,8 @@
 import { CTASection } from "../components/CTASection/CTASection";
 import { ClientLogoTicker } from "../components/ClientLogoTicker/ClientLogoTicker";
 import { VideoHeroMedia } from "../components/VideoHeroMedia/VideoHeroMedia";
-import motorsportCameraRigImage from "../assets/images/projects/motorsport/motorsport-camera-rig.webp";
-import teamImage from "../assets/images/team/team-portrait-annie-and-tim.webp";
+import videoProductionCameraRigImage from "../assets/images/pages/video/video-production-camera-rig.webp";
+import teamImage from "../assets/images/pages/video/signal-house-studios-team.webp";
 import { smoothScrollToElement } from "../lib/smoothScroll";
 import { videoServiceGroups } from "./videoServices";
 import "./VideoProduction.css";
@@ -122,7 +122,7 @@ export function VideoProduction() {
           </div>
           <div className="video-positioning__image">
             <img
-              src={motorsportCameraRigImage}
+              src={videoProductionCameraRigImage}
               alt="Camera operator filming a motorsport production with a stabilised cinema rig"
               loading="lazy"
               decoding="async"

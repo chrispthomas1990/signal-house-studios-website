@@ -35,6 +35,7 @@ type ServiceDetailCard = {
   hasImagePlaceholder?: boolean;
   imageSrc?: string;
   imageAlt?: string;
+  imagePosition?: string;
   iconSrc?: string;
   iconAlt?: string;
   videoEmbed?: ServiceDetailEmbed;
@@ -56,6 +57,7 @@ type ServiceDetailSectionProps = {
   hasImagePlaceholder?: boolean;
   imageSrc?: string;
   imageAlt?: string;
+  imagePosition?: string;
   mediaOnLeft?: boolean;
   borderlessCards?: boolean;
   gridColumns?: 2 | 3;
@@ -139,6 +141,7 @@ export function ServiceDetailSection({
   hasImagePlaceholder = false,
   imageSrc,
   imageAlt,
+  imagePosition,
   mediaOnLeft = false,
   borderlessCards = false,
   gridColumns = 3,
@@ -190,7 +193,13 @@ export function ServiceDetailSection({
 
         {imageSrc ? (
           <div className="service-detail-section__image">
-            <img src={imageSrc} alt={imageAlt ?? ""} loading="lazy" decoding="async" />
+            <img
+              src={imageSrc}
+              alt={imageAlt ?? ""}
+              style={imagePosition ? { objectPosition: imagePosition } : undefined}
+              loading="lazy"
+              decoding="async"
+            />
           </div>
         ) : hasImagePlaceholder ? (
           <div className="service-detail-section__image-placeholder" aria-hidden="true" />
@@ -215,6 +224,7 @@ export function ServiceDetailSection({
                     <img
                       src={card.imageSrc}
                       alt={card.imageAlt ?? ""}
+                      style={card.imagePosition ? { objectPosition: card.imagePosition } : undefined}
                       loading="lazy"
                       decoding="async"
                     />
