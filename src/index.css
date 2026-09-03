@@ -226,7 +226,7 @@ a:focus-visible {
   font-family: var(--font-body);
   font-size: var(--type-body);
   line-height: var(--line-body);
-  text-wrap: pretty;
+  text-wrap: balance;
 }
 
 .content-page h1 {
@@ -256,6 +256,7 @@ a:focus-visible {
   font-size: var(--type-h5);
   font-weight: 700;
   line-height: var(--line-tight);
+  text-wrap: balance;
   text-transform: uppercase;
 }
 

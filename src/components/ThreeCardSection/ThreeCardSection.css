@@ -36,6 +36,7 @@
   font-size: var(--type-h5);
   font-weight: 700;
   line-height: var(--line-tight);
+  text-wrap: balance;
   text-transform: uppercase;
 }
 
@@ -55,7 +56,7 @@
   font-family: var(--font-body);
   font-size: var(--type-body-large);
   line-height: var(--line-body);
-  text-wrap: pretty;
+  text-wrap: balance;
 }
 
 .three-card-section__grid {
@@ -99,7 +100,7 @@
   font-family: var(--font-body);
   font-size: var(--type-body);
   line-height: var(--line-body);
-  text-wrap: pretty;
+  text-wrap: balance;
 }
 
 .three-card-section__card-button {
