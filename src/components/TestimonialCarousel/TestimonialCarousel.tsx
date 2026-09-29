@@ -1,4 +1,4 @@
-import { type PointerEvent, useEffect, useState } from "react";
+import { type PointerEvent, useEffect, useRef, useState } from "react";
 import "./TestimonialCarousel.css";
 
 type Testimonial = {
@@ -15,7 +15,7 @@ const swipeThreshold = 40;
 
 export function TestimonialCarousel({ testimonials }: TestimonialCarouselProps) {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [pointerStartX, setPointerStartX] = useState<number | null>(null);
+  const pointerStartX = useRef<number | null>(null);
 
   useEffect(() => {
     if (testimonials.length <= 1) {
@@ -43,17 +43,17 @@ export function TestimonialCarousel({ testimonials }: TestimonialCarouselProps) 
   };
 
   const handlePointerDown = (event: PointerEvent<HTMLElement>) => {
-    setPointerStartX(event.clientX);
+    pointerStartX.current = event.clientX;
   };
 
   const handlePointerUp = (event: PointerEvent<HTMLElement>) => {
-    if (pointerStartX === null || testimonials.length <= 1) {
-      setPointerStartX(null);
+    if (pointerStartX.current === null || testimonials.length <= 1) {
+      pointerStartX.current = null;
       return;
     }
 
-    const distance = event.clientX - pointerStartX;
-    setPointerStartX(null);
+    const distance = event.clientX - pointerStartX.current;
+    pointerStartX.current = null;
 
     if (Math.abs(distance) < swipeThreshold) {
       return;
@@ -72,7 +72,7 @@ export function TestimonialCarousel({ testimonials }: TestimonialCarouselProps) 
           key={activeTestimonial.name}
           onPointerDown={handlePointerDown}
           onPointerUp={handlePointerUp}
-          onPointerCancel={() => setPointerStartX(null)}
+          onPointerCancel={() => { pointerStartX.current = null; }}
         >
           <h2 className="testimonial-carousel__name">{activeTestimonial.name}</h2>
           <p className="testimonial-carousel__quote">“{activeTestimonial.quote}”</p>

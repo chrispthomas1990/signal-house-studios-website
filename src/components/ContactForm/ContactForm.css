@@ -4,7 +4,7 @@
   gap: 24px;
   padding: var(--page-pad-x) var(--page-pad-x) var(--page-pad-y);
   border-radius: 12px;
-  background: var(--color-grey);
+  background: var(--color-charcoal);
 }
 
 .contact-form__grid {
@@ -37,7 +37,7 @@
 
 .contact-form label,
 .contact-form__consent {
-  color: var(--color-charcoal);
+  color: var(--color-white);
   font-family: var(--font-display);
   font-size: var(--type-h5);
   font-weight: 700;
@@ -90,7 +90,7 @@
 }
 
 .contact-form .contact-form__hint {
-  color: var(--color-charcoal);
+  color: var(--color-white);
   font-size: var(--type-small);
 }
 
@@ -150,7 +150,7 @@
 
 .contact-form .contact-form__note {
   max-width: 420px;
-  color: var(--color-charcoal);
+  color: var(--color-white);
   font-size: var(--type-small);
 }
 

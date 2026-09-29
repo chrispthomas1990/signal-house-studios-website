@@ -69,7 +69,7 @@ export function VideoProduction() {
             </p>
             <p>
               <strong>Annie</strong> grounds the work in story, aesthetic, and meticulous detail.
-              Drawing on her experience in product development, studio photography, and interiors,
+              Drawing on her experience in product development, studio photography and interiors,
               she excels at capturing the true character of people and places, ensuring every frame
               feels intentional.
             </p>
@@ -138,15 +138,20 @@ export function VideoProduction() {
             <h2 id="video-services-title">From strategy to delivery.</h2>
           </div>
           <div className="video-services__groups">
-            {videoServiceGroups.map((group, groupIndex) => (
-              <ul className="video-services__group" key={groupIndex}>
-                {group.map((service) => (
-                  <li key={service.title}>
-                    <img src={service.icon} alt="" aria-hidden="true" />
-                    <h3>{service.title}</h3>
-                  </li>
-                ))}
-              </ul>
+            {videoServiceGroups.map((group) => (
+              <div className="video-services__group" key={group.title}>
+                <h3 className="video-services__group-title">
+                  {group.title}
+                </h3>
+                <ul>
+                  {group.services.map((service) => (
+                    <li key={service.title}>
+                      <img src={service.icon} alt="" aria-hidden="true" />
+                      <p>{service.title}</p>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             ))}
           </div>
         </div>

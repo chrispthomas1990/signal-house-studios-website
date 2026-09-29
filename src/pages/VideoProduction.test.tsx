@@ -30,9 +30,9 @@ describe("VideoProduction", () => {
     expect(groups).toHaveLength(3);
     groups.forEach((group, groupIndex) => {
       const titles = within(group as HTMLElement)
-        .getAllByRole("heading", { level: 3 })
-        .map((heading) => heading.textContent);
-      expect(titles).toEqual(videoServiceGroups[groupIndex].map((service) => service.title));
+        .getAllByRole("listitem")
+        .map((item) => item.textContent);
+      expect(titles).toEqual(videoServiceGroups[groupIndex].services.map((service) => service.title));
     });
   });
 });

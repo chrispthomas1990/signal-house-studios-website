@@ -9,19 +9,28 @@ import scoutingIcon from "../assets/icons/services/video/shs-services-video-scou
 import storyboardIcon from "../assets/icons/services/video/shs-services-video-storyboard.svg";
 
 export const videoServiceGroups = [
-  [
-    { title: "Script & Concept", icon: preProductionIcon },
-    { title: "Visuals & Storyboard", icon: storyboardIcon },
-    { title: "Logistics & Scouting", icon: scoutingIcon },
-  ],
-  [
-    { title: "Principal Photography", icon: filmingIcon },
-    { title: "Stills & BTS", icon: photographyIcon },
-    { title: "Drone Operation", icon: droneOperationIcon },
-  ],
-  [
-    { title: "Editing", icon: editingIcon },
-    { title: "Sound Design", icon: masteringIcon },
-    { title: "Colour Grading", icon: colourGradingIcon },
-  ],
+  {
+    title: "Pre-Production",
+    services: [
+      { title: "Script & Concept", icon: preProductionIcon },
+      { title: "Visuals & Storyboard", icon: storyboardIcon },
+      { title: "Logistics & Scouting", icon: scoutingIcon },
+    ],
+  },
+  {
+    title: "Production",
+    services: [
+      { title: "Principal Photography", icon: filmingIcon },
+      { title: "Stills & BTS", icon: photographyIcon },
+      { title: "Drone Operation", icon: droneOperationIcon },
+    ],
+  },
+  {
+    title: "Post-Production",
+    services: [
+      { title: "Editing", icon: editingIcon },
+      { title: "Sound Design", icon: masteringIcon },
+      { title: "Colour Grading", icon: colourGradingIcon },
+    ],
+  },
 ] as const;
