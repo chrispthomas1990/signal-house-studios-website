@@ -15,6 +15,29 @@
   size-adjust: 80.58%;
 }
 
+/* Centre uppercase button labels using Korolev's 70.5% cap height.
+   Keep these metrics separate from the display font used for headings. */
+@font-face {
+  font-family: "Korolev Button";
+  src: url("/fonts/korolev-condensed-bold.woff2") format("woff2");
+  font-display: swap;
+  font-style: normal;
+  font-weight: 700;
+  ascent-override: 85.25%;
+  descent-override: 14.75%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: "Korolev Button Placeholder";
+  src: local("Arial Bold"), local("Arial-BoldMT");
+  font-style: normal;
+  font-weight: 700;
+  ascent-override: 85.8%;
+  descent-override: 14.2%;
+  line-gap-override: 0%;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -37,7 +60,7 @@
   --transition-menu: 300ms var(--ease-standard);
   --transition-icon: 180ms ease;
   --button-min-height: 38px;
-  --button-padding: 5px 18px 7px;
+  --button-padding: 6px 18px;
   --button-font-size: 20px;
   --type-h1: 40px;
   --type-h2: 34px;
@@ -159,11 +182,11 @@ a:focus-visible {
   background-color: var(--color-gold);
   color: var(--color-dark-charcoal);
   cursor: pointer;
-  font-family: var(--font-display);
+  font-family: "Korolev Button", "Korolev Button Placeholder", Arial, sans-serif;
   font-size: var(--button-font-size);
   font-weight: 700;
   letter-spacing: 0;
-  line-height: 1.1;
+  line-height: 1;
   text-align: center;
   text-decoration: none;
   text-transform: uppercase;

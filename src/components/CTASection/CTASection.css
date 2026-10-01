@@ -54,6 +54,17 @@
 .cta-section__action {
   display: flex;
   justify-content: flex-end;
+  padding-right: clamp(24px, 4vw, 56px);
+}
+
+.cta-section .cta-section__button {
+  /* Grow from the standard button size at 576px to full size at 1344px. */
+  --cta-button-growth: clamp(0px, calc((100vw - 576px) / 96), 8px);
+  min-height: calc(var(--button-min-height) + var(--cta-button-growth) * 2.25);
+  padding: var(--button-padding);
+  padding-block: calc(6px + var(--cta-button-growth) * 0.5);
+  padding-inline: calc(18px + var(--cta-button-growth) * 1.75);
+  font-size: calc(var(--button-font-size) + var(--cta-button-growth));
 }
 
 .cta-section--light {
@@ -83,6 +94,7 @@
 
   .cta-section__action {
     justify-content: flex-start;
+    padding-right: 0;
   }
 }
 
