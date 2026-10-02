@@ -1,3 +1,4 @@
+import { responsiveImageSrcSet, sectionImageSizes } from "../../lib/responsiveImages";
 import "./HeroSection.css";
 
 type HeroSectionTheme = "light" | "dark";
@@ -42,6 +43,8 @@ export function HeroSection({
           {imageSrc ? (
             <img
               src={imageSrc}
+              srcSet={responsiveImageSrcSet(imageSrc)}
+              sizes={sectionImageSizes}
               alt={imageAlt ?? ""}
               style={imagePosition ? { objectPosition: imagePosition } : undefined}
               decoding="async"

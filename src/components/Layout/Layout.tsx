@@ -1,10 +1,10 @@
-import { useEffect, useRef } from "react";
+import { Suspense, useEffect, useRef } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import { CookieConsentBanner } from "../CookieConsentBanner/CookieConsentBanner";
 import { Footer } from "../Footer/Footer";
 import { Header } from "../Header/Header";
 
-export function Layout() {
+function RouteContent() {
   const { pathname } = useLocation();
   const previousPathRef = useRef(pathname);
 
@@ -25,14 +25,20 @@ export function Layout() {
     return () => window.cancelAnimationFrame(frameId);
   }, [pathname]);
 
+  return <Outlet />;
+}
+
+export function Layout() {
   return (
     <>
       <a className="button skip-link" href="#main-content">
-        Skip to content
+        <span className="button__label">Skip to content</span>
       </a>
       <Header />
       <main className="site-main" id="main-content" tabIndex={-1}>
-        <Outlet />
+        <Suspense fallback={<div role="status" className="route-loading">Loading page…</div>}>
+          <RouteContent />
+        </Suspense>
       </main>
       <Footer />
       <CookieConsentBanner />

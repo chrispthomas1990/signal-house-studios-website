@@ -88,7 +88,7 @@ export function Header() {
           ))}
 
           <NavLink to="/contact" className="button site-nav__cta">
-            Let’s Talk
+            <span className="button__label">Let’s Talk</span>
           </NavLink>
 
           <div className="site-nav__item">
@@ -129,7 +129,7 @@ export function Header() {
         ))}
 
         <NavLink to="/contact" className="button site-nav__cta" onClick={closeMenu}>
-          Let’s Talk
+          <span className="button__label">Let’s Talk</span>
         </NavLink>
 
         <div className="site-nav-mobile__item">

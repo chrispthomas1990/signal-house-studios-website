@@ -61,7 +61,7 @@ export function ThreeCardSection({
               <p className="three-card-section__card-body">{card.body}</p>
               {card.buttonText && card.buttonHref ? (
                 <Link className="button three-card-section__card-button" to={card.buttonHref}>
-                  {card.buttonText}
+                  <span className="button__label">{card.buttonText}</span>
                 </Link>
               ) : null}
             </article>

@@ -22,7 +22,7 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
             <h1>Something went wrong</h1>
             <p>Please refresh the page and try again.</p>
             <button className="button" type="button" onClick={() => window.location.reload()}>
-              Refresh page
+              <span className="button__label">Refresh page</span>
             </button>
           </section>
         </main>

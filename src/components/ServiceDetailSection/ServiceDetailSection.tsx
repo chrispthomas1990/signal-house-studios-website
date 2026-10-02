@@ -1,3 +1,5 @@
+import { useNearViewport } from "../../lib/useNearViewport";
+import { responsiveImageSrcSet, sectionImageSizes, cardImageSizes } from "../../lib/responsiveImages";
 import { useEffect, useMemo, useRef } from "react";
 import {
   getApiEnabledYouTubeSrc,
@@ -67,7 +69,7 @@ type ServiceDetailSectionProps = {
 };
 
 function ServiceDetailCardEmbed({ src, title }: ServiceDetailEmbed) {
-  const iframeRef = useRef<HTMLIFrameElement>(null);
+  const { ref: iframeRef, ready } = useNearViewport<HTMLIFrameElement>();
   const playerRef = useRef<YouTubePlayer | null>(null);
   const provider = useMemo(() => getEmbedProvider(src), [src]);
   const iframeSrc = useMemo(
@@ -76,7 +78,7 @@ function ServiceDetailCardEmbed({ src, title }: ServiceDetailEmbed) {
   );
 
   useEffect(() => {
-    if (provider !== "youtube") {
+    if (!ready || provider !== "youtube") {
       return;
     }
 
@@ -118,18 +120,24 @@ function ServiceDetailCardEmbed({ src, title }: ServiceDetailEmbed) {
         playerRef.current = null;
       }
     };
-  }, [provider]);
+  }, [provider, ready, iframeSrc, iframeRef]);
 
   return (
     <iframe
       ref={iframeRef}
-      src={iframeSrc}
+      src={ready ? iframeSrc : undefined}
+      loading="lazy"
       title={title}
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen"
       referrerPolicy="strict-origin-when-cross-origin"
       allowFullScreen
     />
   );
+}
+
+function DeferredEmbed({ src, title }: ServiceDetailEmbed) {
+  const { ref, ready } = useNearViewport<HTMLIFrameElement>();
+  return <iframe ref={ref} src={ready ? src : undefined} title={title} loading="lazy" allow="encrypted-media; fullscreen" />;
 }
 
 export function ServiceDetailSection({
@@ -199,11 +207,7 @@ export function ServiceDetailSection({
               .filter(Boolean)
               .join(" ")}
           >
-            <iframe
-              src={embed.src}
-              title={embed.title}
-              allow="encrypted-media; fullscreen"
-            />
+            <DeferredEmbed {...embed} />
           </div>
         ) : null}
 
@@ -211,6 +215,8 @@ export function ServiceDetailSection({
           <div className="service-detail-section__image">
             <img
               src={imageSrc}
+              srcSet={responsiveImageSrcSet(imageSrc)}
+              sizes={sectionImageSizes}
               alt={imageAlt ?? ""}
               style={imagePosition ? { objectPosition: imagePosition } : undefined}
               loading="lazy"
@@ -239,6 +245,8 @@ export function ServiceDetailSection({
                   <div className="service-detail-section__card-image">
                     <img
                       src={card.imageSrc}
+                      srcSet={responsiveImageSrcSet(card.imageSrc)}
+                      sizes={cardImageSizes}
                       alt={card.imageAlt ?? ""}
                       style={card.imagePosition ? { objectPosition: card.imagePosition } : undefined}
                       loading="lazy"

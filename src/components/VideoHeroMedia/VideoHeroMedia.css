@@ -1,3 +1,9 @@
+.video-hero {
+  position: relative;
+  width: 100%;
+  background: var(--color-dark-charcoal);
+}
+
 .video-hero__media {
   width: 100%;
   aspect-ratio: 1720 / 720;
@@ -11,8 +17,16 @@
   object-fit: contain;
 }
 
+.video-hero__media--ultrawide {
+  aspect-ratio: 1720 / 720;
+}
+
 @media (max-width: 360px) {
   .video-hero__media {
     aspect-ratio: 4 / 5;
+  }
+
+  .video-hero__media--ultrawide {
+    aspect-ratio: 1720 / 720;
   }
 }

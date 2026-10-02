@@ -170,6 +170,8 @@ a:focus-visible {
 }
 
 .button {
+  -webkit-appearance: none;
+  appearance: none;
   display: inline-flex;
   flex: none;
   align-items: center;
@@ -195,6 +197,24 @@ a:focus-visible {
     transform var(--transition-link),
     color var(--transition-link),
     background-color var(--transition-link);
+}
+
+/* A block label lets flexbox centre the capital letters rather than the
+   browser's font line box. Older engines retain the metric-adjusted face. */
+.button__label {
+  display: block;
+  line-height: 1;
+}
+
+@supports (text-box-trim: trim-both) and (text-box-edge: cap alphabetic) {
+  .button {
+    font-family: var(--font-display);
+  }
+
+  .button__label {
+    text-box-trim: trim-both;
+    text-box-edge: cap alphabetic;
+  }
 }
 
 .button:hover,

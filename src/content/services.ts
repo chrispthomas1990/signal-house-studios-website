@@ -11,12 +11,13 @@ import livePanelsIcon from "../assets/icons/services/live/shs-services-live-pane
 import livePerformancesIcon from "../assets/icons/services/live/shs-services-live-performances.svg";
 import liveTrainingIcon from "../assets/icons/services/live/shs-services-live-training.svg";
 import audioProductionEquipmentImage from "../assets/images/pages/audio/audio-production-equipment.webp";
-import vocalRecordingSessionImage from "../assets/images/pages/audio/vocal-recording-session.webp";
-import recordingStudioControlRoomImage from "../assets/images/pages/audio/recording-studio-control-room.webp";
-import recordingStudioLoungeImage from "../assets/images/pages/audio/recording-studio-lounge.webp";
-import liveStreamingCameraSetupImage from "../assets/images/pages/live/live-streaming-camera-setup.webp";
-import liveStreamingCameraMonitorImage from "../assets/images/pages/live/live-streaming-camera-monitor.webp";
+import recordingStudioMixingSessionImage from "../assets/images/pages/audio/recording-studio-mixing-session.webp";
+import recordingStudioDrumKitImage from "../assets/images/pages/audio/recording-studio-drum-kit.webp";
+import liveStreamingApproachCameraImage from "../assets/images/pages/live/live-streaming-approach-camera.webp";
+import liveStreamingMultiviewMonitorImage from "../assets/images/pages/live/live-streaming-multiview-monitor.webp";
+import liveStreamingEventProductionImage from "../assets/images/pages/live/live-streaming-event-production.webp";
 import liveStreamingInterviewProductionImage from "../assets/images/pages/live/live-streaming-interview-production.webp";
+import liveStreamingStudioProductionImage from "../assets/images/pages/live/live-streaming-studio-production.webp";
 
 export const servicePageContent = {
   audioProduction: {
@@ -46,8 +47,8 @@ export const servicePageContent = {
         "The aim is to help new and established artists create records that feel unique, focused and fully realised. Sessions are designed to make people feel comfortable, creative and ready to perform at their best.",
         "Depending on the project, tracking can happen at Signal House or across a range of suitable studios and spaces. That flexibility means the production can be shaped around budget, scale, instrumentation and the sound the record needs.",
       ],
-      imageSrc: vocalRecordingSessionImage,
-      imageAlt: "Vocalist performing during a recording session",
+      imageSrc: audioProductionEquipmentImage,
+      imageAlt: "Audio production equipment at Signal House Studios",
       imagePosition: "center 25%",
       mediaOnLeft: true,
       theme: "light",
@@ -98,16 +99,16 @@ export const servicePageContent = {
         {
           title: "Control room",
           body: "A central production space built around Cubase Pro, Universal Audio Apollo conversion, Adam Audio S3V monitoring and a wide choice of preamps and outboard.",
-          imageSrc: recordingStudioControlRoomImage,
-          imageAlt: "Signal House Studios control room and recording equipment",
+          imageSrc: recordingStudioMixingSessionImage,
+          imageAlt: "Mixing session at Signal House Studios",
           imagePosition: "center 45%",
           hideCopy: true,
         },
         {
-          title: "Studio lounge",
-          body: "A comfortable space for writing, listening and taking a break during longer recording and production sessions.",
-          imageSrc: recordingStudioLoungeImage,
-          imageAlt: "A comfortable lounge corner at Signal House Studios",
+          title: "Recording room",
+          body: "A drum kit set up for recording at Signal House Studios.",
+          imageSrc: recordingStudioDrumKitImage,
+          imageAlt: "Drum kit in the recording studio at Signal House Studios",
           imagePosition: "center 35%",
           hideCopy: true,
         },
@@ -122,9 +123,9 @@ export const servicePageContent = {
       eyebrow: "Live Streaming",
       title: "Multi-camera live streaming that reaches people in real time.",
       body: "Whether you are hosting a product or brand launch, an intimate executive briefing, or a multi-office conference, Signal House Studios delivers end-to-end audio-visual support.",
-      imageSrc: liveStreamingCameraMonitorImage,
-      imageAlt: "Production camera monitor displaying a live performance",
-      imagePosition: "center 18%",
+      imageSrc: liveStreamingEventProductionImage,
+      imageAlt: "Live streaming event production",
+      imagePosition: "center 20%",
       theme: "light",
     },
     approach: {
@@ -135,17 +136,17 @@ export const servicePageContent = {
         "We are direct about scale and limitations. A one-camera stream, a multi-camera production and a hybrid event all demand different levels of crew, connection, monitoring and backup planning, so the right setup depends on the venue, budget and delivery requirement.",
         "Take your virtual events to the next level with multi-camera live streaming. By removing spatial and geographical barriers, and with on-demand event recordings, you can elevate your event and increase total views and reach tailored to your needs.",
       ],
-      imageSrc: liveStreamingCameraSetupImage,
-      imageAlt: "Camera operator preparing a professional multi-camera production setup",
-      imagePosition: "center 30%",
+      imageSrc: liveStreamingApproachCameraImage,
+      imageAlt: "Professional cameras and a camera-mounted monitor set up for live streaming",
+      imagePosition: "center 100%",
       theme: "dark",
     },
     whyItMatters: {
       eyebrow: "Why it matters",
       title: "A good live stream gives your message reach without losing the immediacy of the room.",
-      imageSrc: liveStreamingInterviewProductionImage,
-      imageAlt: "Camera crew filming a live interview production",
-      imagePosition: "center 40%",
+      imageSrc: liveStreamingStudioProductionImage,
+      imageAlt: "Live streaming studio production",
+      imagePosition: "center 60%",
       body: [
         "Live video creates real-time participation. Audiences typically watch live video up to 10 to 20 times longer than pre-recorded on-demand content, fostering a direct sense of connection.",
         "It’s essential when the people who matter most cannot all be in one place. The same session can often be repurposed into clips, highlights or social media assets. We build your service package to each individual event to flawlessly connect with people globally.",
@@ -199,7 +200,7 @@ export const servicePageContent = {
       ],
       imageSrc: liveStreamingInterviewProductionImage,
       imageAlt: "Camera crew filming a live interview production",
-      imagePosition: "center 40%",
+      imagePosition: "center 50%",
       theme: "light",
     },
     additionalSupport: {
@@ -214,8 +215,8 @@ export const servicePageContent = {
         "Individual ISO recordings: Utilise footage for your website and social media channels.",
         "Global Reach: Flawlessly connect with overseas offices, or international clients.",
       ],
-      imageSrc: liveStreamingCameraSetupImage,
-      imageAlt: "Camera operator preparing a professional multi-camera production setup",
+      imageSrc: liveStreamingMultiviewMonitorImage,
+      imageAlt: "Multiview monitor for live streaming production",
       imagePosition: "center 30%",
       theme: "dark",
     },

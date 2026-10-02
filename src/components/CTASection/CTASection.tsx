@@ -39,7 +39,7 @@ export function CTASection({
 
         <div className="cta-section__action">
           <Link className="button cta-section__button" to={buttonHref}>
-            {buttonText}
+            <span className="button__label">{buttonText}</span>
           </Link>
         </div>
       </div>

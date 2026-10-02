@@ -250,7 +250,7 @@ export function ContactForm() {
           Submitting the form will open an email draft to {destinationEmail}.
         </p>
         <button className="button content-page__button" type="submit">
-          Send enquiry
+          <span className="button__label">Send enquiry</span>
         </button>
       </div>
     </form>

@@ -1,23 +1,14 @@
+import { responsiveImageSrcSet, sectionImageSizes } from "../lib/responsiveImages";
 import { CTASection } from "../components/CTASection/CTASection";
 import { ClientLogoTicker } from "../components/ClientLogoTicker/ClientLogoTicker";
 import { VideoHeroMedia } from "../components/VideoHeroMedia/VideoHeroMedia";
 import videoProductionCameraRigImage from "../assets/images/pages/video/video-production-camera-rig.webp";
 import teamImage from "../assets/images/pages/video/signal-house-studios-team.webp";
-import { smoothScrollToElement } from "../lib/smoothScroll";
+import { ScrollCue } from "../components/ScrollCue/ScrollCue";
 import { videoServiceGroups } from "./videoServices";
 import "./VideoProduction.css";
 
 export function VideoProduction() {
-  const scrollToTrustedClients = (event: React.MouseEvent<HTMLAnchorElement>) => {
-    event.preventDefault();
-    const trustedClients = document.querySelector<HTMLElement>("#client-logos");
-    if (!trustedClients) return;
-
-    const headerHeight = Number.parseFloat(
-      getComputedStyle(document.documentElement).getPropertyValue("--header-height"),
-    );
-    smoothScrollToElement(trustedClients, { offset: headerHeight });
-  };
 
   return (
     <article className="content-page video-page">
@@ -28,13 +19,7 @@ export function VideoProduction() {
         </div>
       </section>
 
-      <div className="video-scroll-cue">
-        <a href="#client-logos" onClick={scrollToTrustedClients} aria-label="Scroll to trusted clients">
-          <svg viewBox="0 0 448 512" role="img" aria-hidden="true" focusable="false">
-            <path d="M207 381.5 12.7 187.1c-9.4-9.4-9.4-24.6 0-33.9l22.6-22.6c9.4-9.4 24.6-9.4 33.9 0L224 285.3l154.7-154.7c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L241 381.5c-9.4 9.4-24.6 9.4-34 0z" />
-          </svg>
-        </a>
-      </div>
+      <ScrollCue targetId="client-logos" label="Scroll to trusted clients" />
 
       <section id="client-logos" className="client-logos" aria-labelledby="client-logos-title">
         <div className="video-page__inner client-logos__inner">
@@ -48,6 +33,8 @@ export function VideoProduction() {
           <div className="video-team__image">
             <img
               src={teamImage}
+              srcSet={responsiveImageSrcSet(teamImage)}
+              sizes={sectionImageSizes}
               alt="Annie and Tim, the couple behind Signal House Studios"
               loading="lazy"
               decoding="async"
@@ -123,6 +110,8 @@ export function VideoProduction() {
           <div className="video-positioning__image">
             <img
               src={videoProductionCameraRigImage}
+              srcSet={responsiveImageSrcSet(videoProductionCameraRigImage)}
+              sizes={sectionImageSizes}
               alt="Camera operator filming a motorsport production with a stabilised cinema rig"
               loading="lazy"
               decoding="async"

@@ -37,6 +37,7 @@ function setOpenGraphMeta(property: string, content: string) {
 }
 
 export function applySeoMetadata(pathname: string) {
+  pathname = pathname.replace(/\/+$/, "") || "/";
   const seo = routeSeo[pathname] ?? notFoundSeo;
   const canonicalPath = routeSeo[pathname] ? pathname : "/";
   const baseUrl = getCanonicalUrl("/", window.location.origin, import.meta.env.BASE_URL);
