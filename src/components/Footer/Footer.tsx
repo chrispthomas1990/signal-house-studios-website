@@ -1,4 +1,5 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
+import { handleHomeLogoClick } from "../../lib/homeLogoClick";
 import monogram from "../../assets/brand/shs-gold-monogram.svg";
 import locationIcon from "../../assets/icons/contact/shs-gold-location.svg";
 import phoneIcon from "../../assets/icons/contact/shs-gold-phone.svg";
@@ -19,6 +20,7 @@ const socialIcons: Record<string, string> = {
 };
 
 export function Footer() {
+  const { pathname } = useLocation();
   return (
     <footer className="site-footer">
       <div className="site-footer__inner">
@@ -96,7 +98,11 @@ export function Footer() {
         </div>
 
         <div className="site-footer__brand">
-          <NavLink to="/" className="site-footer__logo">
+          <NavLink
+            to="/"
+            className="site-footer__logo"
+            onClick={(event) => handleHomeLogoClick(event, pathname)}
+          >
             <img className="site-footer__monogram" src={monogram} alt="" aria-hidden="true" />
             <span className="visually-hidden">{siteInfo.name}</span>
           </NavLink>

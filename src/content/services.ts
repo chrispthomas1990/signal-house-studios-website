@@ -120,8 +120,8 @@ export const servicePageContent = {
   liveStreaming: {
     hero: {
       eyebrow: "Live Streaming",
-      title: "Live streaming for launches, performances and events that need to reach people in real time.",
-      body: "Signal House Studios plans and delivers live broadcasts with a focus on clarity, stability and a result that still works after the stream ends.",
+      title: "Multi-camera live streaming that reaches people in real time.",
+      body: "Whether you are hosting a product or brand launch, an intimate executive briefing, or a multi-office conference, Signal House Studios delivers end-to-end audio-visual support.",
       imageSrc: liveStreamingCameraMonitorImage,
       imageAlt: "Production camera monitor displaying a live performance",
       imagePosition: "center 18%",
@@ -132,7 +132,8 @@ export const servicePageContent = {
       title: "The stream should feel simple for the audience and tightly managed behind the scenes.",
       body: [
         "Live content needs more than a camera and a platform. The broadcast needs a clear technical route, a run of show, audio that actually carries the message and enough rehearsal time to remove unnecessary stress from the day.",
-        "We are also direct about scale and limitations. A one-camera stream, a multi-camera production and a hybrid event all demand different levels of crew, connection, monitoring and backup planning, so the right setup depends on the venue, budget and delivery requirement.",
+        "We are direct about scale and limitations. A one-camera stream, a multi-camera production and a hybrid event all demand different levels of crew, connection, monitoring and backup planning, so the right setup depends on the venue, budget and delivery requirement.",
+        "Take your virtual events to the next level with multi-camera live streaming. By removing spatial and geographical barriers, and with on-demand event recordings, you can elevate your event and increase total views and reach tailored to your needs.",
       ],
       imageSrc: liveStreamingCameraSetupImage,
       imageAlt: "Camera operator preparing a professional multi-camera production setup",
@@ -142,9 +143,12 @@ export const servicePageContent = {
     whyItMatters: {
       eyebrow: "Why it matters",
       title: "A good live stream gives your message reach without losing the immediacy of the room.",
+      imageSrc: liveStreamingInterviewProductionImage,
+      imageAlt: "Camera crew filming a live interview production",
+      imagePosition: "center 40%",
       body: [
-        "It is useful when the people who matter most cannot all be in one place, or when the event needs to create urgency and engagement in the moment.",
-        "The same session can often be repurposed into clips, highlights or an on-demand replay if the production is planned to capture both the live and the edit-friendly versions of the content.",
+        "Live video creates real-time participation. Audiences typically watch live video up to 10 to 20 times longer than pre-recorded on-demand content, fostering a direct sense of connection.",
+        "It’s essential when the people who matter most cannot all be in one place. The same session can often be repurposed into clips, highlights or social media assets. We build your service package to each individual event to flawlessly connect with people globally.",
       ],
       theme: "light",
     },
@@ -159,7 +163,7 @@ export const servicePageContent = {
         },
         {
           title: "Live performances",
-          body: "Suitable for sets, acoustic sessions, DJ streams and other performance-led formats where the audience needs to feel present even when they are remote.",
+          body: "Suitable for sets, acoustic sessions, DJ streams, live podcasts and other performance-led formats where the audience needs to feel present even when they are remote.",
           iconSrc: livePerformancesIcon,
         },
         {
@@ -189,13 +193,31 @@ export const servicePageContent = {
       eyebrow: "Platforms and delivery",
       title: "We can stream to public or private platforms and shape the output around the event.",
       body: [
-        "Depending on the brief, the stream can be configured for YouTube Live, Vimeo, Zoom, Teams or a private RTMP destination. OBS-style workflows, switchers and capture paths can be matched to the scale of the job rather than forcing every event through the same setup.",
-        "The main decision is not just where the stream goes, but how much control the client needs over the broadcast, the latency and the downstream use of the recording.",
+        "Depending on the brief, the stream can be configured for YouTube Live, Google Meet, Zoom, Teams or a private RTMP destination.",
+        "OBS-style workflows, switchers and capture paths can be matched to the scale of the job rather than forcing every event through the same setup.",
+        "The main decision is not just where the stream goes, but how much control the client needs over the broadcast.",
       ],
       imageSrc: liveStreamingInterviewProductionImage,
       imageAlt: "Camera crew filming a live interview production",
       imagePosition: "center 40%",
       theme: "light",
+    },
+    additionalSupport: {
+      eyebrow: "Additional Support and Services",
+      serviceHeadings: [
+        "Equipment Rental & Hire",
+        "Audio Visual Consulting & Support",
+        "AV Installation & Maintenance",
+      ],
+      bulletPoints: [
+        "360 service: We take care of the technical & logistics, while you run the event.",
+        "Individual ISO recordings: Utilise footage for your website and social media channels.",
+        "Global Reach: Flawlessly connect with overseas offices, or international clients.",
+      ],
+      imageSrc: liveStreamingCameraSetupImage,
+      imageAlt: "Camera operator preparing a professional multi-camera production setup",
+      imagePosition: "center 30%",
+      theme: "dark",
     },
   },
 } as const;

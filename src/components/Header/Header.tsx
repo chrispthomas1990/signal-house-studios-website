@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
+import { handleHomeLogoClick } from "../../lib/homeLogoClick";
 import logo from "../../assets/brand/shs-gold-logo.svg";
 import monogram from "../../assets/brand/shs-gold-monogram.svg";
 import { mainNavigation } from "../../content/navigation";
@@ -21,6 +22,7 @@ function Logo({ compact = false }: { compact?: boolean }) {
 }
 
 export function Header() {
+  const { pathname } = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const mobileNavRef = useRef<HTMLElement>(null);
   const menuToggleRef = useRef<HTMLButtonElement>(null);
@@ -63,7 +65,14 @@ export function Header() {
   return (
     <header className={`site-header ${isMenuOpen ? "site-header--menu-open" : ""}`}>
       <div className="site-header__inner">
-        <NavLink to="/" className="site-logo" onClick={closeMenu}>
+        <NavLink
+          to="/"
+          className="site-logo"
+          onClick={(event) => {
+            closeMenu();
+            handleHomeLogoClick(event, pathname);
+          }}
+        >
           <Logo />
           <Logo compact />
           <span className="visually-hidden">{siteInfo.name}</span>

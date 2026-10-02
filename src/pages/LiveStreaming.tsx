@@ -12,13 +12,15 @@ export function LiveStreaming() {
 
       <ServiceDetailSection {...liveStreaming.approach} />
 
-      <ServiceDetailSection {...liveStreaming.whyItMatters} />
+      <ServiceDetailSection {...liveStreaming.whyItMatters} mediaOnLeft />
 
       <ServiceDetailSection {...liveStreaming.typicalFormats} />
 
       <ServiceDetailSection {...liveStreaming.platformsAndDelivery} />
 
-      <CTASection />
+      <ServiceDetailSection {...liveStreaming.additionalSupport} mediaOnLeft />
+
+      <CTASection theme="light" />
     </article>
   );
 }

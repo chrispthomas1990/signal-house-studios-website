@@ -47,9 +47,11 @@ type ServiceDetailEmbed = {
 };
 
 type ServiceDetailSectionProps = {
-  eyebrow: string;
-  title: string;
+  eyebrow?: string;
+  title?: string;
   body?: string | readonly string[];
+  serviceHeadings?: readonly string[];
+  bulletPoints?: readonly string[];
   cards?: readonly ServiceDetailCard[];
   embed?: ServiceDetailEmbed;
   hasBottomDivider?: boolean;
@@ -134,6 +136,8 @@ export function ServiceDetailSection({
   eyebrow,
   title,
   body,
+  serviceHeadings,
+  bulletPoints,
   cards,
   embed,
   hasBottomDivider = false,
@@ -167,11 +171,23 @@ export function ServiceDetailSection({
     <section className={className}>
       <div className="service-detail-section__inner">
         <div className="service-detail-section__intro">
-          <p className="service-detail-section__eyebrow">{eyebrow}</p>
-          <h2>{title}</h2>
+          {eyebrow ? <p className="service-detail-section__eyebrow">{eyebrow}</p> : null}
+          {title ? <h2>{title}</h2> : null}
+          {serviceHeadings?.map((heading) => (
+            <h3 className="service-detail-section__service-heading" key={heading}>
+              {heading}
+            </h3>
+          ))}
           {bodyParagraphs?.map((paragraph) => (
             <p key={paragraph}>{paragraph}</p>
           ))}
+          {bulletPoints ? (
+            <ul className="service-detail-section__bullet-points">
+              {bulletPoints.map((point) => (
+                <li key={point}>{point}</li>
+              ))}
+            </ul>
+          ) : null}
         </div>
 
         {embed ? (
