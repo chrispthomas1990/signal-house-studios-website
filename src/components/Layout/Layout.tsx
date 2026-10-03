@@ -1,4 +1,4 @@
-import { Suspense, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import { CookieConsentBanner } from "../CookieConsentBanner/CookieConsentBanner";
 import { Footer } from "../Footer/Footer";
@@ -36,9 +36,7 @@ export function Layout() {
       </a>
       <Header />
       <main className="site-main" id="main-content" tabIndex={-1}>
-        <Suspense fallback={<div role="status" className="route-loading">Loading page…</div>}>
-          <RouteContent />
-        </Suspense>
+        <RouteContent />
       </main>
       <Footer />
       <CookieConsentBanner />

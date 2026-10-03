@@ -7,6 +7,7 @@ type HeroSectionHeadingLevel = "h1" | "h2";
 type HeroSectionProps = {
   eyebrow: string;
   title: string;
+  titleClassName?: string;
   body: string;
   imageSrc?: string;
   imageAlt?: string;
@@ -19,6 +20,7 @@ type HeroSectionProps = {
 export function HeroSection({
   eyebrow,
   title,
+  titleClassName,
   body,
   imageSrc,
   imageAlt,
@@ -55,7 +57,7 @@ export function HeroSection({
 
         <div className="hero-section__content">
           <p className="hero-section__eyebrow">{eyebrow}</p>
-          <Heading className="hero-section__title">{title}</Heading>
+          <Heading className={["hero-section__title", titleClassName].filter(Boolean).join(" ")}>{title}</Heading>
           <p>{body}</p>
         </div>
       </div>

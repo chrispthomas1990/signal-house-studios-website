@@ -22,7 +22,7 @@
 
 .contact-form__error-summary p {
   margin: 0;
-  font-size: var(--type-small);
+  font-size: var(--type-body);
 }
 
 .contact-form__field {

@@ -104,6 +104,7 @@
   font-family: var(--font-body);
   font-size: var(--type-body);
   line-height: var(--line-body);
+  text-wrap: balance;
 }
 
 .service-detail-section__bullet-points li + li {
@@ -120,6 +121,12 @@
 
 .service-detail-section__embed--tidal {
   border: 0;
+}
+
+.service-detail-section__embed--tidal,
+.service-detail-section__embed--tidal iframe {
+  color-scheme: only light;
+  background: var(--color-white);
 }
 
 .service-detail-section__embed--youtube,

@@ -51,6 +51,7 @@ type ServiceDetailEmbed = {
 type ServiceDetailSectionProps = {
   eyebrow?: string;
   title?: string;
+  titleClassName?: string;
   body?: string | readonly string[];
   serviceHeadings?: readonly string[];
   bulletPoints?: readonly string[];
@@ -143,6 +144,7 @@ function DeferredEmbed({ src, title }: ServiceDetailEmbed) {
 export function ServiceDetailSection({
   eyebrow,
   title,
+  titleClassName,
   body,
   serviceHeadings,
   bulletPoints,
@@ -180,7 +182,7 @@ export function ServiceDetailSection({
       <div className="service-detail-section__inner">
         <div className="service-detail-section__intro">
           {eyebrow ? <p className="service-detail-section__eyebrow">{eyebrow}</p> : null}
-          {title ? <h2>{title}</h2> : null}
+          {title ? <h2 className={titleClassName}>{title}</h2> : null}
           {serviceHeadings?.map((heading) => (
             <h3 className="service-detail-section__service-heading" key={heading}>
               {heading}

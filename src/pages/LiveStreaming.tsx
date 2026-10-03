@@ -8,15 +8,15 @@ export function LiveStreaming() {
 
   return (
     <article className="content-page">
-      <HeroSection {...liveStreaming.hero} />
+      <HeroSection {...liveStreaming.hero} titleClassName="section-title--larger" />
 
-      <ServiceDetailSection {...liveStreaming.approach} />
+      <ServiceDetailSection {...liveStreaming.approach} titleClassName="section-title--larger" />
 
-      <ServiceDetailSection {...liveStreaming.whyItMatters} mediaOnLeft />
+      <ServiceDetailSection {...liveStreaming.whyItMatters} titleClassName="section-title--larger" mediaOnLeft />
 
-      <ServiceDetailSection {...liveStreaming.typicalFormats} />
+      <ServiceDetailSection {...liveStreaming.typicalFormats} titleClassName="section-title--larger" />
 
-      <ServiceDetailSection {...liveStreaming.platformsAndDelivery} />
+      <ServiceDetailSection {...liveStreaming.platformsAndDelivery} titleClassName="section-title--larger" />
 
       <ServiceDetailSection {...liveStreaming.additionalSupport} mediaOnLeft />
 

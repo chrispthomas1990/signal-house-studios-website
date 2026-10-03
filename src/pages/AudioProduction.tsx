@@ -25,14 +25,14 @@ export function AudioProduction() {
       <ScrollCue targetId="audio-showreel" label="Scroll to audio showreel" dark />
 
       <div id="audio-showreel">
-        <ServiceDetailSection {...audioProduction.audioShowreel} />
+        <ServiceDetailSection {...audioProduction.audioShowreel} titleClassName="section-title--larger" />
       </div>
 
-      <ServiceDetailSection {...audioProduction.approach} />
+      <ServiceDetailSection {...audioProduction.approach} titleClassName="section-title--larger" />
 
-      <ServiceDetailSection {...audioProduction.services} />
+      <ServiceDetailSection {...audioProduction.services} titleClassName="section-title--larger" />
 
-      <ServiceDetailSection {...audioProduction.studio} />
+      <ServiceDetailSection {...audioProduction.studio} titleClassName="section-title--larger" />
 
       <TestimonialCarousel testimonials={testimonials} />
 

@@ -124,8 +124,25 @@
   transition: transform var(--transition-link);
 }
 
-.site-nav--desktop > :not(.site-nav__cta) {
-  padding-bottom: 2px;
+.site-nav--desktop a:not(.site-nav__cta):not(.black-bench-link) {
+  font-family: "Korolev Button", "Korolev Button Placeholder", Arial, sans-serif;
+  line-height: 1;
+}
+
+.site-nav__label {
+  display: block;
+  line-height: 1;
+}
+
+@supports (text-box-trim: trim-both) and (text-box-edge: cap alphabetic) {
+  .site-nav--desktop a:not(.site-nav__cta):not(.black-bench-link) {
+    font-family: var(--font-display);
+  }
+
+  .site-nav__label {
+    text-box-trim: trim-both;
+    text-box-edge: cap alphabetic;
+  }
 }
 
 .site-nav--desktop > .site-nav__item:last-child {
@@ -135,10 +152,12 @@
 .black-bench-link {
   display: inline-flex;
   align-items: center;
+  cursor: pointer;
 }
 
 .black-bench-logo {
   transform: translateY(1px);
+  pointer-events: none;
 }
 
 .site-nav a.black-bench-link::after,

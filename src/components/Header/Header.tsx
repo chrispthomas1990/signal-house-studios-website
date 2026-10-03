@@ -82,7 +82,7 @@ export function Header() {
           {mainNavigation.map((item) => (
             <div key={item.href} className="site-nav__item">
               <NavLink to={item.href} aria-label={item.label}>
-                {item.label}
+                <span className="site-nav__label">{item.label}</span>
               </NavLink>
             </div>
           ))}

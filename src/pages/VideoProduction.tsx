@@ -42,7 +42,7 @@ export function VideoProduction() {
           </div>
           <div className="video-page__copy">
             <p className="video-page__eyebrow">The team</p>
-            <h2 id="video-team-title">
+            <h2 id="video-team-title" className="section-title--larger">
               <strong>Two Sides of the Same Studio.</strong>
             </h2>
             <p>
@@ -68,7 +68,7 @@ export function VideoProduction() {
         <div className="video-page__inner video-positioning__inner">
           <div className="video-positioning__content">
             <p className="video-page__eyebrow">The Approach</p>
-            <h2 id="video-positioning-title">
+            <h2 id="video-positioning-title" className="section-title--larger">
               Built for Impact, Not Just Aesthetics.
             </h2>
             <p>
@@ -124,7 +124,7 @@ export function VideoProduction() {
         <div className="video-page__inner">
           <div className="video-page__section-heading">
             <p className="video-page__eyebrow">Services</p>
-            <h2 id="video-services-title">From strategy to delivery.</h2>
+            <h2 id="video-services-title" className="section-title--larger">From strategy to delivery.</h2>
           </div>
           <div className="video-services__groups">
             {videoServiceGroups.map((group) => (

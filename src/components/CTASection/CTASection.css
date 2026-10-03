@@ -36,6 +36,7 @@
   color: var(--color-gold);
   font-family: var(--font-display);
   font-size: clamp(46px, 5vw, 68px);
+  font-size: round(up, clamp(46px, 5vw, 68px), 2px);
   font-weight: 700;
   letter-spacing: -0.015em;
   line-height: 1;
@@ -46,7 +47,7 @@
 .cta-section__body {
   margin: 0;
   font-family: var(--font-body);
-  font-size: var(--type-body-large);
+  font-size: var(--type-body);
   line-height: var(--line-body);
   text-wrap: balance;
 }
@@ -65,6 +66,7 @@
   padding-block: calc(6px + var(--cta-button-growth) * 0.5);
   padding-inline: calc(18px + var(--cta-button-growth) * 1.75);
   font-size: calc(var(--button-font-size) + var(--cta-button-growth));
+  font-size: round(up, calc(var(--button-font-size) + var(--cta-button-growth)), 2px);
 }
 
 .cta-section--light {
@@ -107,5 +109,6 @@
 
   .cta-section .cta-section__title {
     font-size: clamp(38px, 10vw, 54px);
+    font-size: round(up, clamp(38px, 10vw, 54px), 2px);
   }
 }

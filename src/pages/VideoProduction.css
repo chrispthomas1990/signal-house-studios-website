@@ -30,7 +30,7 @@
 .video-positioning h2,
 .video-page__copy h2,
 .video-page__section-heading h2 {
-  font-size: clamp(32px, 4vw, 54px);
+  font-size: var(--type-h2);
 }
 
 .video-positioning__content h3 {
@@ -38,7 +38,7 @@
   grid-template-columns: 26px minmax(0, 1fr);
   align-items: baseline;
   column-gap: 10px;
-  font-size: var(--type-h4);
+  font-size: var(--type-h3);
   text-align: left;
 }
 
@@ -89,7 +89,7 @@
 }
 
 .video-positioning p {
-  font-size: var(--type-body-large);
+  font-size: var(--type-body);
 }
 
 .client-logos {

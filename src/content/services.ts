@@ -21,15 +21,6 @@ import liveStreamingStudioProductionImage from "../assets/images/pages/live/live
 
 export const servicePageContent = {
   audioProduction: {
-    hero: {
-      eyebrow: "Audio Production",
-      title: "Recording, production, mixing and mastering.",
-      body: "For artists who want a focused studio process, strong creative direction and records that feel deliberate from the first take to the final master.",
-      imageSrc: audioProductionEquipmentImage,
-      imageAlt: "Audio production equipment in use at Signal House Studios",
-      imagePosition: "center 50%",
-      theme: "light",
-    },
     audioShowreel: {
       eyebrow: "Audio showreel",
       title: "Recent productions with depth, detail and intent.",

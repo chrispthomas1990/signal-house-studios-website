@@ -1,22 +1,15 @@
-import { lazy, useEffect } from "react";
+import { useEffect } from "react";
 import { BrowserRouter, Navigate, Route, Routes, useLocation } from "react-router-dom";
 import { Layout } from "./components/Layout/Layout";
 import { cookiePolicyContent, privacyPolicyContent } from "./content/legal";
+import { AudioProduction } from "./pages/AudioProduction";
+import { BlackBench } from "./pages/BlackBench";
+import { Contact } from "./pages/Contact";
+import { LegalPage } from "./pages/LegalPage";
+import { LiveStreaming } from "./pages/LiveStreaming";
+import { NotFound } from "./pages/NotFound";
+import { VideoProduction } from "./pages/VideoProduction";
 import { SeoMetadata } from "./seo/SeoMetadata";
-
-const AudioProduction = lazy(() => import("./pages/AudioProduction").then((module) => ({ default: module.AudioProduction })));
-
-const BlackBench = lazy(() => import("./pages/BlackBench").then((module) => ({ default: module.BlackBench })));
-
-const Contact = lazy(() => import("./pages/Contact").then((module) => ({ default: module.Contact })));
-
-const LegalPage = lazy(() => import("./pages/LegalPage").then((module) => ({ default: module.LegalPage })));
-
-const LiveStreaming = lazy(() => import("./pages/LiveStreaming").then((module) => ({ default: module.LiveStreaming })));
-
-const NotFound = lazy(() => import("./pages/NotFound").then((module) => ({ default: module.NotFound })));
-
-const VideoProduction = lazy(() => import("./pages/VideoProduction").then((module) => ({ default: module.VideoProduction })));
 
 function ScrollToTop() {
   const { pathname, search } = useLocation();

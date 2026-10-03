@@ -55,7 +55,7 @@
   max-width: 560px;
   margin: 0;
   font-family: var(--font-body);
-  font-size: var(--type-body-large);
+  font-size: var(--type-body);
   line-height: var(--line-body);
   text-wrap: balance;
 }
