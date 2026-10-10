@@ -6,26 +6,30 @@ const mobileVideoQuery = "(max-width: 360px)";
 
 type VideoHeroMediaProps = {
   videoSrc?: string;
+  mobileVideoSrc?: string;
   label?: string;
 };
 
 export function VideoHeroMedia({
   videoSrc,
+  mobileVideoSrc,
   label = "Signal House Studios video production showreel",
 }: VideoHeroMediaProps = {}) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isMobile, setIsMobile] = useState(() =>
     window.matchMedia(mobileVideoQuery).matches,
   );
-  const heroVideoSrc = videoSrc ?? selectHeroVideo(isMobile);
+  const heroVideoSrc = isMobile && mobileVideoSrc
+    ? mobileVideoSrc
+    : videoSrc ?? selectHeroVideo(isMobile);
 
   useEffect(() => {
-    if (videoSrc) return;
+    if (videoSrc && !mobileVideoSrc) return;
     const mediaQuery = window.matchMedia(mobileVideoQuery);
     const handleViewportChange = (event: MediaQueryListEvent) => setIsMobile(event.matches);
     mediaQuery.addEventListener("change", handleViewportChange);
     return () => mediaQuery.removeEventListener("change", handleViewportChange);
-  }, [videoSrc]);
+  }, [videoSrc, mobileVideoSrc]);
 
   useEffect(() => {
     const video = videoRef.current;

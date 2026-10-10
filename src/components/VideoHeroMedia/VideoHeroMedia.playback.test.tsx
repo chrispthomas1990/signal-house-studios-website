@@ -1,10 +1,34 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+import { act, fireEvent, render, screen } from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { VideoHeroMedia } from "./VideoHeroMedia";
 
 afterEach(() => vi.restoreAllMocks());
 
 describe("hero playback", () => {
+  it("switches custom hero videos when the viewport changes", () => {
+    let viewportChange: ((event: { matches: boolean }) => void) | undefined;
+    const viewport = {
+      matches: true,
+      addEventListener: vi.fn((_event: string, listener: typeof viewportChange) => { viewportChange = listener; }),
+      removeEventListener: vi.fn(),
+    };
+    const motion = { matches: false, addEventListener: vi.fn(), removeEventListener: vi.fn() };
+    vi.spyOn(window, "matchMedia").mockImplementation((query) =>
+      (query.includes("prefers-reduced-motion") ? motion : viewport) as unknown as MediaQueryList,
+    );
+    const { unmount } = render(
+      <VideoHeroMedia videoSrc="desktop.mp4" mobileVideoSrc="portrait.mp4" label="Responsive hero" />,
+    );
+    const video = screen.getByLabelText("Responsive hero");
+    expect(video).toHaveAttribute("src", "portrait.mp4");
+    act(() => viewportChange?.({ matches: false }));
+    expect(video).toHaveAttribute("src", "desktop.mp4");
+    act(() => viewportChange?.({ matches: true }));
+    expect(video).toHaveAttribute("src", "portrait.mp4");
+    unmount();
+    expect(viewport.removeEventListener).toHaveBeenCalledWith("change", viewportChange);
+  });
+
   it("pauses hidden tabs and resumes visible tabs without reloading", () => {
     vi.mocked(HTMLMediaElement.prototype.play).mockClear();
     vi.mocked(HTMLMediaElement.prototype.load).mockClear();

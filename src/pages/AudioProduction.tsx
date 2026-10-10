@@ -1,6 +1,7 @@
 import { CTASection } from "../components/CTASection/CTASection";
 import { VideoHeroMedia } from "../components/VideoHeroMedia/VideoHeroMedia";
 import audioHeroVideo from "../assets/videos/shs-audio-landing-ultrawide-21x9.mp4";
+import audioMobileHeroVideo from "../assets/videos/shs-audio-landing-portrait-4x5.mp4";
 import { ServiceDetailSection } from "../components/ServiceDetailSection/ServiceDetailSection";
 import { TestimonialCarousel } from "../components/TestimonialCarousel/TestimonialCarousel";
 import { servicePageContent } from "../content/services";
@@ -14,9 +15,10 @@ export function AudioProduction() {
     <article className="content-page">
       <section className="video-hero" aria-label="Audio production hero">
         <h1 className="visually-hidden">Audio Production</h1>
-        <div className="video-hero__media video-hero__media--ultrawide">
+        <div className="video-hero__media">
           <VideoHeroMedia
             videoSrc={audioHeroVideo}
+            mobileVideoSrc={audioMobileHeroVideo}
             label="Signal House Studios audio production showreel"
           />
         </div>
