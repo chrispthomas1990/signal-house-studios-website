@@ -16,14 +16,13 @@ export const privacyPolicyContent = {
       title: "Information we collect",
       body: [
         "If you contact us through the website, we may collect your name, email address, phone number, project details and any other information you choose to include in your message.",
-        "We may also receive basic technical information such as your IP address, browser type and device information through hosting, security or analytics tools.",
+        "We may also receive basic technical information such as your IP address, browser type and device information through hosting or security tools.",
       ],
     },
     {
       title: "How we use information",
       body: [
         "We use the information you provide to reply to enquiries, discuss potential projects, manage bookings and provide studio services.",
-        "We use Google Analytics to understand how visitors use the website, which pages are viewed and how the site can be improved.",
       ],
     },
     {
@@ -52,7 +51,7 @@ export const privacyPolicyContent = {
 export const cookiePolicyContent = {
   title: "Cookie Policy",
   intro:
-    "This cookie policy explains how Signal House Studios uses cookies and similar technologies, including Google Analytics and Google Maps.",
+    "This cookie policy explains how Signal House Studios uses cookies and similar technologies.",
   sections: [
     {
       title: "What cookies are",
@@ -68,26 +67,9 @@ export const cookiePolicyContent = {
       ],
     },
     {
-      title: "Google Analytics",
-      body: [
-        "We use Google Analytics to understand how people use the website, including which pages are visited, how visitors arrive at the site and how the site performs.",
-        "Google Analytics may set cookies or use similar technologies to collect information such as device, browser, approximate location and interaction data.",
-        "Analytics cookies are not essential, so they are only used where consent has been given.",
-      ],
-    },
-    {
-      title: "Google Maps",
-      body: [
-        "The website uses Google Maps to show the studio location. When a map is loaded, Google may set cookies or collect technical information such as your IP address, device information and map interaction data.",
-        "Google Maps is provided by Google, so its use is also subject to Google's own terms and privacy information.",
-        "Where consent controls are shown, the embedded map should only load after consent has been given. You can also choose to open the location directly in Google Maps instead.",
-      ],
-    },
-    {
       title: "Managing cookies",
       body: [
         "You can accept or reject non-essential cookies through the cookie consent banner. You can also control or delete cookies through your browser settings.",
-        "If you reject non-essential cookies, analytics will not be used and some third-party embedded features, such as Google Maps, may not load until you choose to allow them.",
       ],
     },
   ],

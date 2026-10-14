@@ -1,8 +1,18 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useSyncExternalStore } from "react";
 import { selectHeroVideo } from "./videoSources";
 import "./VideoHeroMedia.css";
 
 const mobileVideoQuery = "(max-width: 360px)";
+
+function subscribeViewport(callback: () => void) {
+  const query = window.matchMedia(mobileVideoQuery);
+  query.addEventListener("change", callback);
+  return () => query.removeEventListener("change", callback);
+}
+
+function getMobileViewport() {
+  return window.matchMedia(mobileVideoQuery).matches;
+}
 
 type VideoHeroMediaProps = {
   videoSrc?: string;
@@ -16,20 +26,10 @@ export function VideoHeroMedia({
   label = "Signal House Studios video production showreel",
 }: VideoHeroMediaProps = {}) {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [isMobile, setIsMobile] = useState(() =>
-    window.matchMedia(mobileVideoQuery).matches,
-  );
+  const isMobile = useSyncExternalStore(subscribeViewport, getMobileViewport, () => false);
   const heroVideoSrc = isMobile && mobileVideoSrc
     ? mobileVideoSrc
     : videoSrc ?? selectHeroVideo(isMobile);
-
-  useEffect(() => {
-    if (videoSrc && !mobileVideoSrc) return;
-    const mediaQuery = window.matchMedia(mobileVideoQuery);
-    const handleViewportChange = (event: MediaQueryListEvent) => setIsMobile(event.matches);
-    mediaQuery.addEventListener("change", handleViewportChange);
-    return () => mediaQuery.removeEventListener("change", handleViewportChange);
-  }, [videoSrc, mobileVideoSrc]);
 
   useEffect(() => {
     const video = videoRef.current;

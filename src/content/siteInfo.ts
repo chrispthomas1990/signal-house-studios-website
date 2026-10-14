@@ -3,7 +3,7 @@ export const siteInfo = {
   location: "Hertfordshire, UK",
   phone: "+44 (0)7859 821 284",
   phoneHref: "+447859821284",
-  email: "info@signalhousestudios.com",
+  email: "signalhousestudios@gmail.com",
   copyright: "© Signal House Studios Ltd 2026",
   socialLinks: [
     {

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useSyncExternalStore } from "react";
 import { Link } from "react-router-dom";
 import "./CookieConsentBanner.css";
 
@@ -34,12 +34,21 @@ function storeConsent(status: CookieConsentStatus) {
   );
 }
 
+function subscribeConsent(callback: () => void) {
+  window.addEventListener("signalHouseCookieConsentChange", callback);
+  window.addEventListener("storage", callback);
+  return () => {
+    window.removeEventListener("signalHouseCookieConsentChange", callback);
+    window.removeEventListener("storage", callback);
+  };
+}
+
 export function CookieConsentBanner() {
-  const [consentStatus, setConsentStatus] = useState<CookieConsentStatus | null>(getStoredConsent);
+  const consentStatus = useSyncExternalStore(subscribeConsent, getStoredConsent, () => null);
 
   const handleConsent = (status: CookieConsentStatus) => {
     storeConsent(status);
-    setConsentStatus(status);
+
   };
 
   if (consentStatus !== null) {
@@ -50,8 +59,8 @@ export function CookieConsentBanner() {
     <aside className="cookie-consent" aria-label="Cookie consent">
       <div className="cookie-consent__content">
         <p>
-          We use essential cookies to keep the site working. With your permission, we may also use
-          analytics or third-party embeds to improve the site.
+          We use essential cookies to keep the site working. With your permission, we may also load
+          third-party embeds.
         </p>
         <Link to="/cookie-policy">Cookie Policy</Link>
       </div>

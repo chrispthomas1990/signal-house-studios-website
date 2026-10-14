@@ -55,7 +55,7 @@ export function loadYouTubeIframeApi(timeoutMs = 15000) {
   return apiPromise;
 }
 
-export function getApiEnabledYouTubeSrc(src: string, origin = window.location.origin) {
+export function getApiEnabledYouTubeSrc(src: string, origin = typeof window === "undefined" ? "" : window.location.origin) {
   const url = new URL(src);
   url.searchParams.set("enablejsapi", "1");
   url.searchParams.set("origin", origin);

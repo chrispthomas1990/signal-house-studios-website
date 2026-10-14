@@ -1,17 +1,21 @@
-import { mkdirSync, readFileSync, writeFileSync, copyFileSync } from "node:fs";
+import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
-import { loadConfigFromFile } from "vite";
-import { routeSeo, getCanonicalUrl, getStructuredData } from "../src/seo/seoConfig.ts";
+import { build, loadConfigFromFile } from "vite";
+import { routeSeo, notFoundSeo, getCanonicalUrl, getStructuredData } from "../src/seo/seoConfig.ts";
 
 const { config } = await loadConfigFromFile({ command: "build", mode: "production" });
 const base = config.base ?? "/";
-// Matches the existing sitemap deployment; override when moving hosting.
-const origin = process.env.SITE_ORIGIN ?? "https://chrispthomas1990.github.io";
+// Production origin; override only when preparing a different deployment.
+const origin = process.env.SITE_ORIGIN ?? "https://www.signalhousestudios.com";
 const baseUrl = getCanonicalUrl("/", origin, base);
+await build({
+  build: { ssr: "src/entry-server.tsx", outDir: "dist-ssr", emitAssets: true },
+});
+const { render } = await import("../dist-ssr/entry-server.js");
 const template = readFileSync(resolve("dist/index.html"), "utf8");
 const escape = (value) => value.replaceAll("&", "&amp;").replaceAll('"', "&quot;").replaceAll("<", "&lt;").replaceAll(">", "&gt;");
 
-for (const [pathname, seo] of Object.entries(routeSeo)) {
+for (const [pathname, seo] of [...Object.entries(routeSeo), ["/404.html", notFoundSeo]]) {
   const canonical = getCanonicalUrl(pathname, origin, base);
   let html = template.replace(/<title>[\s\S]*?<\/title>/, `<title>${escape(seo.title)}</title>`);
   const values = { description: seo.description, "og:title": seo.title, "og:description": seo.description, "og:url": canonical, "og:image": `${baseUrl}shs-social-image.png` };
@@ -21,12 +25,17 @@ for (const [pathname, seo] of Object.entries(routeSeo)) {
   }
   html = html.replace(/<link\s+rel="canonical"\s+href="[^"]*"\s*\/?>(?:\s*)/, `<link rel="canonical" href="${escape(canonical)}" />\n`);
   html = html.replace(/(<script type="application\/ld\+json" data-seo="structured-data">)[\s\S]*?(<\/script>)/, (_, open, close) => `${open}${JSON.stringify(getStructuredData(canonical, baseUrl, seo)).replaceAll("<", "\\u003c")}${close}`);
+  html = html.replace('<div id="root"></div>', () => `<div id="root">${render(`${base.replace(/\/$/, "")}${pathname}`)}</div>`);
+  if (pathname === "/404.html") {
+    html = html.replace("</head>", '<meta name="robots" content="noindex, follow" /></head>');
+    writeFileSync(resolve("dist/404.html"), html);
+    continue;
+  }
   const directory = resolve("dist", pathname.slice(1));
   mkdirSync(directory, { recursive: true });
   writeFileSync(resolve(directory, "index.html"), html);
 }
-copyFileSync(resolve("dist/index.html"), resolve("dist/404.html"));
 // Keep the legacy video route usable without JavaScript.
 mkdirSync(resolve("dist/video-production"), { recursive: true });
 writeFileSync(resolve("dist/video-production/index.html"), `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="refresh" content="0;url=${base}"><link rel="canonical" href="${baseUrl}"><title>Video Production</title></head><body><a href="${base}">Video Production</a></body></html>`);
-console.log(`Generated metadata for ${Object.keys(routeSeo).length} routes.`);
+console.log(`Pre-rendered content and metadata for ${Object.keys(routeSeo).length} routes.`);

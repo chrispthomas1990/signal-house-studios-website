@@ -8,9 +8,9 @@ export const routeSeo: Record<string, SeoConfig> = {
   "/black-bench": { title: "Signal House Studios | Black Bench", description: "Black Bench content is being prepared. Contact Signal House Studios for current information." },
   "/contact": { title: "Signal House Studios | Contact", description: "Contact Signal House Studios to discuss audio production, video production, live streaming or a mixed production project." },
   "/privacy-policy": { title: "Signal House Studios | Privacy Policy", description: "Read the Signal House Studios privacy policy for information about how enquiries and site data are handled." },
-  "/cookie-policy": { title: "Signal House Studios | Cookie Policy", description: "Read the Signal House Studios cookie policy for information about cookies, analytics and third-party embedded features." },
+  "/cookie-policy": { title: "Signal House Studios | Cookie Policy", description: "Read the Signal House Studios cookie policy for information about cookies and third-party embedded features." },
 };
-const notFoundSeo: SeoConfig = { title: "Signal House Studios | Page Not Found", description: "The page you were looking for could not be found. Explore Signal House Studios audio, video and live streaming services." };
+export const notFoundSeo: SeoConfig = { title: "Signal House Studios | Page Not Found", description: "The page you were looking for could not be found. Explore Signal House Studios audio, video and live streaming services." };
 
 export function getCanonicalUrl(pathname: string, origin: string, basePath: string) {
   return `${origin}${basePath.replace(/\/$/, "")}${pathname === "/" ? "/" : pathname}`;
@@ -22,7 +22,7 @@ export function getStructuredData(canonicalUrl: string, baseUrl: string, seo: Se
   const businessId = `${normalizedBaseUrl}/#organization`;
   const websiteId = `${normalizedBaseUrl}/#website`;
   const graph: Record<string, unknown>[] = [
-    { "@type": ["Organization", "LocalBusiness"], "@id": businessId, name: "Signal House Studios", url: baseUrl, image: logoUrl, telephone: "+447859821284", email: "info@signalhousestudios.com", address: { "@type": "PostalAddress", addressLocality: "Hertfordshire", addressCountry: "GB" }, sameAs: ["https://www.facebook.com/signalhousestudios/", "https://www.instagram.com/signalhousestudios/", "https://tidal.com/browse/playlist/6ef56bda-2da3-431b-b083-651303e46c4b", "https://www.youtube.com/channel/UCXJfMQPz61S-NdvhhL9fUHQ"] },
+    { "@type": ["Organization", "LocalBusiness"], "@id": businessId, name: "Signal House Studios", url: baseUrl, image: logoUrl, telephone: "+447859821284", email: "signalhousestudios@gmail.com", address: { "@type": "PostalAddress", addressLocality: "Hertfordshire", addressCountry: "GB" }, sameAs: ["https://www.facebook.com/signalhousestudios/", "https://www.instagram.com/signalhousestudios/", "https://tidal.com/browse/playlist/6ef56bda-2da3-431b-b083-651303e46c4b", "https://www.youtube.com/channel/UCXJfMQPz61S-NdvhhL9fUHQ"] },
     { "@type": "WebSite", "@id": websiteId, name: "Signal House Studios", url: baseUrl, publisher: { "@id": businessId } },
     { "@type": "WebPage", "@id": `${canonicalUrl}#webpage`, url: canonicalUrl, name: seo.title, description: seo.description, isPartOf: { "@id": websiteId }, about: { "@id": businessId } },
   ];
@@ -39,9 +39,12 @@ function setOpenGraphMeta(property: string, content: string) {
 export function applySeoMetadata(pathname: string) {
   pathname = pathname.replace(/\/+$/, "") || "/";
   const seo = routeSeo[pathname] ?? notFoundSeo;
-  const canonicalPath = routeSeo[pathname] ? pathname : "/";
+  const canonicalPath = pathname;
   const baseUrl = getCanonicalUrl("/", window.location.origin, import.meta.env.BASE_URL);
   const canonicalUrl = getCanonicalUrl(canonicalPath, window.location.origin, import.meta.env.BASE_URL);
+  let robots = document.querySelector<HTMLMetaElement>('meta[name="robots"]');
+  if (!robots) { robots = document.createElement("meta"); robots.name = "robots"; document.head.appendChild(robots); }
+  robots.content = routeSeo[pathname] ? "index, follow" : "noindex, follow";
   document.title = seo.title;
   document.querySelector('meta[name="description"]')?.setAttribute("content", seo.description);
   setOpenGraphMeta("og:title", seo.title); setOpenGraphMeta("og:description", seo.description); setOpenGraphMeta("og:type", "website"); setOpenGraphMeta("og:url", canonicalUrl); setOpenGraphMeta("og:image", `${baseUrl.replace(/\/$/, "")}/shs-social-image.png`);

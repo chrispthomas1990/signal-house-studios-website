@@ -21,9 +21,9 @@ describe("hero playback", () => {
     );
     const video = screen.getByLabelText("Responsive hero");
     expect(video).toHaveAttribute("src", "portrait.mp4");
-    act(() => viewportChange?.({ matches: false }));
+    act(() => { viewport.matches = false; viewportChange?.({ matches: false }); });
     expect(video).toHaveAttribute("src", "desktop.mp4");
-    act(() => viewportChange?.({ matches: true }));
+    act(() => { viewport.matches = true; viewportChange?.({ matches: true }); });
     expect(video).toHaveAttribute("src", "portrait.mp4");
     unmount();
     expect(viewport.removeEventListener).toHaveBeenCalledWith("change", viewportChange);
@@ -48,7 +48,7 @@ describe("hero playback", () => {
   it("responds to reduced-motion changes and cleans up listeners", () => {
     let change: (() => void) | undefined;
     const motion = { matches: true, addEventListener: vi.fn((_event: string, listener: () => void) => { change = listener; }), removeEventListener: vi.fn() };
-    vi.spyOn(window, "matchMedia").mockImplementation((query) => (query.includes("prefers-reduced-motion") ? motion : { matches: false }) as MediaQueryList);
+    vi.spyOn(window, "matchMedia").mockImplementation((query) => (query.includes("prefers-reduced-motion") ? motion : { matches: false, addEventListener: vi.fn(), removeEventListener: vi.fn() }) as unknown as MediaQueryList);
     vi.mocked(HTMLMediaElement.prototype.play).mockClear();
     const { unmount } = render(<VideoHeroMedia videoSrc="audio.mp4" />);
     expect(HTMLMediaElement.prototype.play).not.toHaveBeenCalled();

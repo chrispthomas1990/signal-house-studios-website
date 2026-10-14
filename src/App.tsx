@@ -21,9 +21,9 @@ function ScrollToTop() {
   return null;
 }
 
-function App() {
+export function AppRoutes() {
   return (
-    <BrowserRouter basename={import.meta.env.BASE_URL}>
+    <>
       <SeoMetadata />
       <ScrollToTop />
       <Routes>
@@ -39,8 +39,12 @@ function App() {
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
-    </BrowserRouter>
+    </>
   );
+}
+
+function App() {
+  return <BrowserRouter basename={import.meta.env.BASE_URL}><AppRoutes /></BrowserRouter>;
 }
 
 export default App;
